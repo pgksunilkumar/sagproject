@@ -282,6 +282,7 @@
     <Content Include="Views\Rental\List.cshtml" />
     <Content Include="Views\Rental\Index.cshtml" />
     <Content Include="Views\Shared\_LoginFieldPartial.cshtml" />
+    <Content Include="Views\Home\termsandconditions.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
