@@ -19,14 +19,14 @@ else
         @*<li>@Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>*@
         <li>@Html.ActionLink("Add Equipment", "Create", "Used", routeValues: null, htmlAttributes: new { id = "PostRentLink" })</li>
         <li>
-            @if (Session["UserID"] == null)
+            @if (Session["UserID"] == null || Session["UserID"].ToString() == "")
             {
-                @Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })
+                @Html.ActionLink("Sign In", "Signup", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })
             }
             else
             {
-                <li class="dropdown" style="margin-left:10px;">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" style="border-radius: 41px;
+            <li class="dropdown" style="margin-left:10px;">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" style="border-radius: 41px;
                                 background: #fff;
                                 color: #02d8ff !important;
                                 width: 45px;
@@ -36,24 +36,26 @@ else
                                 margin-top: 3px;
                                 margin-bottom: 3px;
                                 padding-top: 13px;">
-                        <span>S</span>
-                    </a>
-                    <ul class="dropdown-menu" style="padding:20px;">
-                        <li>
-                            <div class="navbar-login">
-                                <div class="row">
-                                    <div class="col-lg-12">
-                                        <p><a href="#">My Profile</a></p>
-                                        <p class="text-left">
-                                            @Html.ActionLink("Log Out", "LogOff", "Account", routeValues: null, htmlAttributes: new { id = "LogOffLink" })
-                                        </p>
-                                    </div>
+                    <span>@Session["UserIcon"]</span>
+                </a>
+                <ul class="dropdown-menu" style="padding:20px;">
+                    <li>
+                        <div class="navbar-login">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <p>@Html.ActionLink("My Profile", "MyProfile", "Account")</p>
+                                    <p class="text-left">
+                                        @Html.ActionLink("Sign Out", "LogOff", "Account", routeValues: null, htmlAttributes: new { id = "LogOffLink" })
+                                    </p>
                                 </div>
                             </div>
-                        </li>
-                    </ul>
-                </li>
+                        </div>
+                    </li>
+                </ul>
+            </li>
+                @*@Html.ActionLink("Log Out", "Signup", "Account", routeValues: null, htmlAttributes: new { id = "LogOffLink" })*@
             }
             </li>
         </ul>
 }
+<script src="~/Scripts/bootstrap.min.js"></script>

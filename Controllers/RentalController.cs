@@ -13,6 +13,7 @@ namespace ConGun.Controllers
     public class RentalController : Controller
     {
         RentalEquipmentDAL objRentalEquipmentDAL = new RentalEquipmentDAL();
+        AccountDAL objAccountDAL = new AccountDAL();
         // GET: Rental
         public ActionResult List()
         {
@@ -27,12 +28,22 @@ namespace ConGun.Controllers
                     objRentalModel.EquipmentType = item["EquipmentType"].ToString();
                     objRentalModel.FromDate = DateTime.ParseExact(Convert.ToDateTime(item["FromDate"].ToString()).ToShortDateString(), "M/d/yyyy", CultureInfo.InvariantCulture).ToString("dd/MM/yyyy");
                     objRentalModel.ToDate = DateTime.ParseExact(Convert.ToDateTime(item["ToDate"].ToString()).ToShortDateString(), "M/d/yyyy", CultureInfo.InvariantCulture).ToString("dd/MM/yyyy");
-                    objRentalModel.ContactNumber = item["ContactNumber"].ToString();
-                    objRentalModel.EmailID = item["EmailID"].ToString();
-                    objRentalModel.Price = item["Price"].ToString();
-                    objRentalModel.Location = item["Location"].ToString();
+                    if (Convert.ToString(item["ContactNumber"]) != "")
+                        objRentalModel.ContactNumber = item["ContactNumber"].ToString();
+                    else
+                        objRentalModel.ContactNumber = "NA";
+                    if (Convert.ToString(item["EmailID"]) != "")
+                        objRentalModel.EmailID = item["EmailID"].ToString();
+                    else
+                        objRentalModel.EmailID = "NA";
+                    if (Convert.ToString(item["Location"]) != "")
+                        objRentalModel.Location = item["Location"].ToString();
+                    else
+                        objRentalModel.Location = "NA";
                     if (Convert.ToString(item["Comments"]) != "")
                         objRentalModel.Comments = item["Comments"].ToString();
+                    else
+                        objRentalModel.Comments = "NA";
 
                     objListRentalModel.Add(objRentalModel);
                 }
@@ -65,7 +76,16 @@ namespace ConGun.Controllers
             }
             objUsedModel.EquipmentTypeOption = objListEquipTemp;
             ViewBag.EquipmentTypeOption = new SelectList(objUsedModel.EquipmentTypeOption, "EquipmentTypeID", "EquipmentType", objUsedModel.EquipmentType);
-            return View();
+
+            if (Convert.ToString(Session["UserID"]) != "")
+            {
+                objUsedModel.CheckForUser = true;
+            }
+
+            AccountModel.LoginViewModel objLogin = new AccountModel.LoginViewModel();
+            objUsedModel.LoginModel = objLogin;
+
+            return View(objUsedModel);
         }
 
         // POST: Rental/Create
@@ -134,6 +154,29 @@ namespace ConGun.Controllers
         public ActionResult Index()
         {
             return View();
+        }
+
+        [HttpPost]
+        public string ValidateUserDetail(string ContactNumber, string Password)
+        {
+            bool process = false;
+
+            AccountModel.LoginViewModel objLoginModel = new AccountModel.LoginViewModel();
+            objLoginModel.LoginContactNumber = ContactNumber;
+            objLoginModel.Password = Password;
+            DataTable dtData = objAccountDAL.LoginDetail(objLoginModel);
+            if (dtData.Rows.Count > 0)
+            {
+                Session["UserID"] = dtData.Rows[0]["UserID"];
+                ViewBag.ErrorMessageLogin = "";
+                process = true;
+            }
+            else
+            {
+                Session["UserID"] = null;
+            }
+
+            return process.ToString();
         }
     }
 }

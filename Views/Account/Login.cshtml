@@ -1,6 +1,8 @@
 ﻿@model BusinessAccessLayer.AccountModel.LoginViewModel
 
-
+@{
+    ViewBag.Title = "Login";
+}
 
 <div class="container">
     <h2>@ViewBag.Title</h2>     
@@ -17,10 +19,10 @@
                         <span class="text-danger">@ViewBag.ErrorMessageLogin</span>
                     }
                     <div class="form-group">
-                        @Html.LabelFor(m => m.ContactNumber, new { @class = "col-md-4 control-label" })
+                        @Html.LabelFor(m => m.LoginContactNumber, new { @class = "col-md-4 control-label" })
                         <div class="col-md-5">
-                            @Html.TextBoxFor(m => m.ContactNumber, new { @class = "form-control" })
-                            @Html.ValidationMessageFor(m => m.ContactNumber, "", new { @class = "text-danger" })
+                            @Html.TextBoxFor(m => m.LoginContactNumber, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(m => m.LoginContactNumber, "", new { @class = "text-danger" })
                         </div>
                     </div>
                     <div class="form-group">

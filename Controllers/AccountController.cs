@@ -11,6 +11,7 @@ using Microsoft.Owin.Security;
 using ConGun.Models;
 using DataAccessLayer;
 using System.Data;
+using BusinessAccessLayer;
 
 namespace ConGun.Controllers
 {
@@ -69,18 +70,21 @@ namespace ConGun.Controllers
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public ActionResult Login(BusinessAccessLayer.AccountModel.LoginViewModel model, string returnUrl)
+        public ActionResult Login(BusinessAccessLayer.AccountModel.SignUpViewModel model, string returnUrl)
         {
-            DataTable dtData = objAccountDAL.LoginDetail(model);
+            DataTable dtData = objAccountDAL.LoginDetail(model.LoginModel);
             if (dtData.Rows.Count > 0)
             {
                 Session["UserID"] = dtData.Rows[0]["UserID"];
+                Session["UserIcon"] = dtData.Rows[0]["EmailID"].ToString().ToUpper().Trim()[0];
                 return RedirectToAction("Index", "Home");
             }
             else
             {
+                AccountModel.RegisterViewModel objRegister = new AccountModel.RegisterViewModel();
+                model.RegisterModel = objRegister;
                 ViewBag.ErrorMessageLogin = "Invalid Login. Please enter valid credentails and try again.";
-                return View(model);
+                return View("Signup",model);
             }
         }
 
@@ -141,24 +145,28 @@ namespace ConGun.Controllers
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public ActionResult Register(BusinessAccessLayer.AccountModel.RegisterViewModel model)
+        public ActionResult Register(BusinessAccessLayer.AccountModel.SignUpViewModel model)
         {
             if (ModelState.IsValid)
             {
                 try
                 {
-                    DataTable dtData = objAccountDAL.RegisterUserDetail(model);
+                    DataTable dtData = objAccountDAL.RegisterUserDetail(model.RegisterModel);
                     if (dtData.Rows.Count > 0)
                     {
                         if (Convert.ToString(dtData.Rows[0]["ErrorMessage"]) == "")
                         {
                             Session["UserID"] = dtData.Rows[0]["UserID"];
+                            Session["UserIcon"] = dtData.Rows[0]["EmailID"].ToString().ToUpper().Trim()[0];
                             return RedirectToAction("Index", "Home");
                         }
                         else
                         {
-                            model.ErrorMessage = Convert.ToString(dtData.Rows[0]["ErrorMessage"]);
-                            return View("Register", model);
+                            if (Convert.ToString(dtData.Rows[0]["ErrorMessage"]).ToUpper() == "EMAIL EXISTS")
+                                model.RegisterModel.EmailErrorMessage = Convert.ToString(dtData.Rows[0]["ErrorMessage"]);
+                            if (Convert.ToString(dtData.Rows[0]["ErrorMessage"]).ToUpper() == "CONTACT EXISTS")
+                                model.RegisterModel.ErrorMessage = Convert.ToString(dtData.Rows[0]["ErrorMessage"]);
+                            return View("Signup", model);
                         }
                     }
                 }
@@ -391,7 +399,28 @@ namespace ConGun.Controllers
         public ActionResult LogOff()
         {
             Session["UserID"] = null;
-            return View("Login");
+            AccountModel.RegisterViewModel objRegister = new AccountModel.RegisterViewModel();
+            AccountModel.SignUpViewModel model = new AccountModel.SignUpViewModel();
+            AccountModel.LoginViewModel objLogin = new AccountModel.LoginViewModel();
+            model.RegisterModel = objRegister;
+            model.LoginModel = objLogin;
+            return View("Signup",model);
+        }
+
+        [AllowAnonymous]
+        public ActionResult MyProfile()
+        {
+            DataSet dtSet = objAccountDAL.AccountDetail(Convert.ToInt16(Session["UserID"].ToString()));
+            ViewBag.ProfileDetail = dtSet.Tables[0];
+            if (dtSet.Tables[1].Rows.Count > 0)
+            {
+                ViewBag.ProfileUsedDetail = dtSet.Tables[1];
+            }
+            if (dtSet.Tables[2].Rows.Count > 0)
+            {
+                ViewBag.ProfileRentalDetail = dtSet.Tables[2];
+            }
+            return View();
         }
 
         //
@@ -479,6 +508,24 @@ namespace ConGun.Controllers
                 context.HttpContext.GetOwinContext().Authentication.Challenge(properties, LoginProvider);
             }
         }
+
+        //
+        // GET: /Account/Login
+        [AllowAnonymous]
+        public ActionResult Signup(string returnUrl)
+        {
+            ViewBag.ReturnUrl = returnUrl;
+            AccountModel.SignUpViewModel objSignup = new AccountModel.SignUpViewModel();
+            AccountModel.RegisterViewModel objRegister = new AccountModel.RegisterViewModel();
+            AccountModel.LoginViewModel objLogin = new AccountModel.LoginViewModel();
+            objSignup.RegisterModel = objRegister;
+            objSignup.LoginModel = objLogin;
+            return View(objSignup);
+        }
+
+        
+
+
         #endregion
     }
 }

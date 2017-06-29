@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
 using System.Globalization;
+using System.Linq;
 using System.Text;
 using System.Web;
 using System.Web.Mvc;
@@ -19,76 +20,83 @@ namespace ConGun.Controllers
         // GET: Used
         public ActionResult List()
         {
-            DataTable dtList = objUsedEquipmentDAL.GetUsedEquipmentList();
+            //DataTable dtList = objUsedEquipmentDAL.GetUsedEquipmentList();
             List<UsedModel> objListUsedModel = new List<UsedModel>();
-            if (dtList != null)
-            {
-                foreach (DataRow item in dtList.Rows)
-                {
-                    UsedModel objUsedModel = new UsedModel();
-                    objUsedModel.EquipmentID = Convert.ToInt16(item["EquipmentID"].ToString());
-                    objUsedModel.EquipmentType = item["EquipmentType"].ToString();
-                    if (Convert.ToString(item["Make"]) != "")
-                        objUsedModel.Make = item["Make"].ToString();
-                    else
-                        objUsedModel.Make = "NA";
-                    if (Convert.ToString(item["ModelNumber"]) != "")
-                        objUsedModel.ModelNumber = item["ModelNumber"].ToString();
-                    else
-                        objUsedModel.ModelNumber = "NA";
-                    if (Convert.ToString(item["Readings"]) != "")
-                        objUsedModel.Readings = item["Readings"].ToString();
-                    else
-                        objUsedModel.Readings = "NA";
-                    if (Convert.ToString(item["ContactNumber"]) != "")
-                        objUsedModel.ContactNumber = item["ContactNumber"].ToString();
-                    else
-                        objUsedModel.ContactNumber = "NA";
-                    if (Convert.ToString(item["EmailID"]) != "")
-                        objUsedModel.EmailID = item["EmailID"].ToString();
-                    else
-                        objUsedModel.EmailID = "NA";
-                    if (Convert.ToString(item["Price"]) != "")
-                    {
-                        string fare = item["Price"].ToString();
-                        decimal parsed = decimal.Parse(fare, CultureInfo.InvariantCulture);
-                        CultureInfo hindi = new CultureInfo("hi-IN");
-                        string text = string.Format(hindi, "{0:#,#}", parsed);
+            //if (dtList != null)
+            //{
+            //    foreach (DataRow item in dtList.Rows)
+            //    {
+            //        UsedModel objUsedModel = new UsedModel();
+            //        objUsedModel.EquipmentID = Convert.ToInt16(item["EquipmentID"].ToString());
+            //        objUsedModel.EquipmentType = item["EquipmentType"].ToString();
+            //        if (Convert.ToString(item["Make"]) != "")
+            //            objUsedModel.Make = item["Make"].ToString();
+            //        else
+            //            objUsedModel.Make = "NA";
+            //        if (Convert.ToString(item["ModelNumber"]) != "")
+            //            objUsedModel.ModelNumber = item["ModelNumber"].ToString();
+            //        else
+            //            objUsedModel.ModelNumber = "NA";
+            //        if (Convert.ToString(item["Readings"]) != "")
+            //            objUsedModel.Readings = item["Readings"].ToString();
+            //        else
+            //            objUsedModel.Readings = "NA";
+            //        if (Convert.ToString(item["ContactNumber"]) != "")
+            //            objUsedModel.ContactNumber = item["ContactNumber"].ToString();
+            //        else
+            //            objUsedModel.ContactNumber = "NA";
+            //        if (Convert.ToString(item["EmailID"]) != "")
+            //            objUsedModel.EmailID = item["EmailID"].ToString();
+            //        else
+            //            objUsedModel.EmailID = "NA";
+            //        if (Convert.ToString(item["Price"]) != "")
+            //        {
+            //            string fare = item["Price"].ToString();
+            //            decimal parsed = decimal.Parse(fare, CultureInfo.InvariantCulture);
+            //            CultureInfo hindi = new CultureInfo("hi-IN");
+            //            string text = string.Format(hindi, "{0:#,#}", parsed);
 
-                        objUsedModel.Price = text;
-                    }
-                    else
-                        objUsedModel.Price = "NA";
-                    if (Convert.ToString(item["Location"]) != "")
-                        objUsedModel.Location = item["Location"].ToString();
-                    else
-                        objUsedModel.Location = "NA";
-                    if (Convert.ToString(item["Comments"]) != "")
-                        objUsedModel.Comments = item["Comments"].ToString();
-                    else
-                        objUsedModel.Comments = "NA";
-                    if (Convert.ToString(item["ImageData1"]) != "")
-                    {
-                        byte[] bytes = (byte[])item["ImageData1"];
-                        var base64 = Convert.ToBase64String(bytes);
-                        objUsedModel.ImagePath = String.Format("data:{0};base64,{1}", item["FileType"].ToString(), base64);
-                    }
-                    if (Convert.ToString(item["IsFixed"]) != "")
-                        objUsedModel.PriceCategory = item["IsFixed"].ToString();
-                    else
-                        objUsedModel.PriceCategory = "NA";
+            //            objUsedModel.Price = text;
+            //        }
+            //        else
+            //            objUsedModel.Price = "NA";
+            //        if (Convert.ToString(item["Location"]) != "")
+            //            objUsedModel.Location = item["Location"].ToString();
+            //        else
+            //            objUsedModel.Location = "NA";
+            //        if (Convert.ToString(item["Comments"]) != "")
+            //            objUsedModel.Comments = item["Comments"].ToString();
+            //        else
+            //            objUsedModel.Comments = "NA";
+            //        if (Convert.ToString(item["ImageData1"]) != "")
+            //        {
+            //            byte[] bytes = (byte[])item["ImageData1"];
+            //            var base64 = Convert.ToBase64String(bytes);
+            //            objUsedModel.ImagePath = String.Format("data:{0};base64,{1}", item["FileType"].ToString(), base64);
+            //        }
+            //        if (Convert.ToString(item["IsFixed"]) != "")
+            //            objUsedModel.PriceCategory = item["IsFixed"].ToString();
+            //        else
+            //            objUsedModel.PriceCategory = "NA";
 
 
-                    objListUsedModel.Add(objUsedModel);
-                }
-            }
+            //        objListUsedModel.Add(objUsedModel);
+            //    }
+            //}
             return View(objListUsedModel);
         }
 
         public ActionResult Details(int id)
         {
             UsedModel objUsedModel = new UsedModel();
-            DataTable dtList = objUsedEquipmentDAL.GetUsedEquipmentDetailByID(id);
+            DataTable dtList = new DataTable();
+            DataRow dtRow = dtList.NewRow();
+            DataColumn dtcol = new DataColumn();
+
+         
+
+
+            //objUsedEquipmentDAL.GetUsedEquipmentDetailByID(id);
             foreach (DataRow item in dtList.Rows)
             {
                 objUsedModel.EquipmentType = item["EquipmentType"].ToString();
@@ -237,6 +245,11 @@ namespace ConGun.Controllers
             {
                 objUsedModel.CheckForUser = true;
             }
+
+            AccountModel.LoginViewModel objLogin = new AccountModel.LoginViewModel();
+            objUsedModel.LoginModel = objLogin;
+
+
             return View(objUsedModel);
         }
 
@@ -246,50 +259,11 @@ namespace ConGun.Controllers
         {
             try
             {
-                if (Convert.ToBoolean(objUsedModel.CheckForUser))
+                if (Convert.ToString(Session["UserID"]) != "")
                 {
-                    AccountModel.LoginViewModel objLoginModel = new AccountModel.LoginViewModel();
-                    objLoginModel.ContactNumber = objUsedModel.UserName;
-                    objLoginModel.Password = objUsedModel.Password;
-                    DataTable dtData = objAccountDAL.LoginDetail(objLoginModel);
-                    if (dtData.Rows.Count > 0)
-                    {
-                        Session["UserID"] = dtData.Rows[0]["UserID"];
-                        objUsedModel.UserID = Convert.ToInt16(Convert.ToString(Session["UserID"]));
-                        SaveEquipmentDetails(objUsedModel, file_Uploader);
-                        ViewBag.ErrorMessageLogin = "";
-                    }
-                    else
-                    {
-                        ViewBag.ErrorMessageLogin = "Invalid Login. Please enter valid credentails and try again.";
-                        DataTable deEquipmentType = objUsedEquipmentDAL.GetEquipmentType();
-                        List<EquipmentTypeNew> objListEquipTemp = new List<EquipmentTypeNew>();
-                        if (deEquipmentType != null)
-                        {
-                            foreach (DataRow item in deEquipmentType.Rows)
-                            {
-                                EquipmentTypeNew objEquipTemp = new EquipmentTypeNew();
-                                objEquipTemp.EquipmentTypeID = Convert.ToInt16(item["EquipmentTypeID"].ToString());
-                                objEquipTemp.EquipmentType = item["EquipmentType"].ToString();
-                                objListEquipTemp.Add(objEquipTemp);
-                            }
-                        }
-                        objUsedModel.EquipmentTypeOption = objListEquipTemp;
-                        ViewBag.EquipmentTypeOption = new SelectList(objUsedModel.EquipmentTypeOption, "EquipmentTypeID", "EquipmentType", objUsedModel.EquipmentType);
-                        return View(objUsedModel);
-                    }
+                    objUsedModel.UserID = Convert.ToInt16(Session["UserID"].ToString());
                 }
-                else
-                {
-                    objUsedModel.UserName = "";
-                    objUsedModel.Password = "";
-                    if (Convert.ToString(Session["UserID"]) != "")
-                    {
-                        objUsedModel.UserID = Convert.ToInt16(Session["UserID"].ToString());
-                    }
-                    SaveEquipmentDetails(objUsedModel, file_Uploader);
-                }
-
+                SaveEquipmentDetails(objUsedModel, file_Uploader);
                 return RedirectToAction("List");
             }
             catch
@@ -395,5 +369,46 @@ namespace ConGun.Controllers
 
             int intEquipmentID = objUsedEquipmentDAL.SaveUsedEquipmentDetail(objUsedModel);
         }
+
+        [HttpPost]
+        public string ValidateUserDetail(string ContactNumber, string Password)
+        {
+            bool process = false;
+
+            AccountModel.LoginViewModel objLoginModel = new AccountModel.LoginViewModel();
+            objLoginModel.LoginContactNumber = ContactNumber;
+            objLoginModel.Password = Password;
+            DataTable dtData = objAccountDAL.LoginDetail(objLoginModel);
+            if (dtData.Rows.Count > 0)
+            {
+                Session["UserID"] = dtData.Rows[0]["UserID"];
+                ViewBag.ErrorMessageLogin = "";
+                process = true;
+            }
+            else
+            {
+                Session["UserID"] = null;
+            }
+
+            return process.ToString();
+        }
+
+        public ActionResult EquipmentTypeSearch(string term)
+        {
+            string[] rowAsString = new string[0];
+            DataTable dtDriverDetail = objUsedEquipmentDAL.GetEquipmentType();
+            if (dtDriverDetail != null)
+            {
+                rowAsString = new string[dtDriverDetail.Rows.Count];
+                for (int i = 0; i < dtDriverDetail.Rows.Count; i++)
+                {
+                    rowAsString[i] = dtDriverDetail.Rows[i]["EquipmentType"].ToString().ToLower() + " - " + dtDriverDetail.Rows[i]["EquipmentTypeID"].ToString();
+                }
+
+            }
+            return this.Json(rowAsString.Where(t => t.StartsWith(term)),
+                           JsonRequestBehavior.AllowGet);
+        }
+
     }
 }

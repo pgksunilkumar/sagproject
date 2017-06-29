@@ -1,0 +1,233 @@
+﻿@model BusinessAccessLayer.RentalModel
+
+@{
+    ViewBag.Title = "Rent your Equipment";
+}
+<script src="~/Scripts/jquery-ui-1.11.4.js"></script>
+<link href="~/Content/themes/base/all.css" rel="stylesheet" />
+
+<script type="text/javascript">
+    var userType = "";
+    $(document).ready(function () {
+        $("#EquipmentTypeOption").addClass("CustomDropDown");
+
+
+        $('#txtEquipmentTypeOption').autocomplete(
+        {
+            source: '@Url.Action("EquipmentTypeSearch", "Used")',
+            close: function (event, ui) { SetEquipValue(); }
+        });
+
+        $(".datefieldfuture").datepicker({
+            dateFormat: "dd/mm/yy",
+            changeMonth: true,
+            changeYear: true,
+            duration: "slow",
+            minDate: 'today',
+            yearRange: "-0:+60"
+        });
+
+        if ($("#hdnCheckForUser").val() == "True") {
+            $("#btnSubmitDetail").val("Submit");
+        }
+
+        $("#RentalCreateForm").submit(function (e) {
+            if (userType == 'user') {
+                var strusername = $("#LoginContactNumber").val();
+                var strpassword = $("#LoginPassword").val();
+
+                if (strusername != "" && strpassword != "") {
+
+                    var url = '@Url.Action("ValidateUserDetail", "Rental")';
+
+                    $.ajax({
+                        url: url,
+                        type: "POST",
+                        data: { 'ContactNumber': strusername, 'Password': strpassword },
+                        success: function (result) {
+                            if (result != null && result != undefined && result == "False") {
+                                alert('Invalid Login. Please enter valid credentails and try again.');
+                                e.preventDefault();
+                                return false;
+                            } else {
+                                $("#RentalCreateForm").unbind('submit').submit();
+                                return true;
+                            }
+                        },
+                        error: function (result, error) {
+                            return false;
+                        }
+                    });
+                    return false;
+                }
+            }
+        });
+    });
+
+    function SetEquipValue() {
+        $("#hdnEquipmentTypeSelected").val($("#txtEquipmentTypeOption").val().split("-")[1].trim());
+    }
+
+    function ValidateEquipmentDropDown(type) {
+        userType = type;
+        var equipmentTypeVal = $("#hdnEquipmentTypeSelected").val();
+        var msg = "";
+
+        if (equipmentTypeVal != undefined && equipmentTypeVal == "") {
+            msg = "Please select Equipment Type.";
+        }
+
+        if (msg == "") {
+            if (type == 'guest') {
+                return true;
+            }
+            else if (type == 'user') {
+                var $form = $('form');
+                if ($form.valid()) {
+                    $('#myModal').modal('show');
+                }
+                return false;
+            }
+        }
+        alert(msg);
+        return false;
+    }
+
+</script>
+
+@using (Html.BeginForm("Create", "Rental", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { role = "form", @id = "RentalCreateForm" }))
+{
+    @Html.AntiForgeryToken()
+    <div class="container">
+        <h2>Rent your Equipment</h2>
+        <div class="form-horizontal">
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @Html.HiddenFor(model => model.CheckForUser, new { @id = "hdnCheckForUser" })
+            <div class="form-group">
+                <div class="col-md-2">
+                    <div class="col-md-11 control-label">
+                        @Html.LabelFor(model => model.EquipmentType, new { @class = "" })
+                    </div>
+                    <div style="text-align:center;color:red;font-size:15pt;" class="control-label">
+                        *
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    @*@Html.DropDownList("EquipmentTypeOption", "-- Select --")*@
+                    @Html.TextBox("txtEquipmentTypeOption", "", new { @class = "form-control", @style = "" })
+                    @Html.HiddenFor(m => m.EquipmentType, new { @id = "hdnEquipmentTypeSelected" })
+                    @Html.ValidationMessageFor(model => model.EquipmentType)
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-2">
+                    <div class="col-md-11 control-label">
+                        @Html.LabelFor(model => model.FromDate, htmlAttributes: new { @class = "" })
+                    </div>
+                    <div style="text-align:center;color:red;font-size:15pt;" class="control-label">
+                        *
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    @Html.EditorFor(model => model.FromDate, new { htmlAttributes = new { @class = "form-control datefieldfuture" } })
+                    @Html.ValidationMessageFor(model => model.FromDate, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-2">
+                    <div class="col-md-11 control-label">
+                        @Html.LabelFor(model => model.ToDate, htmlAttributes: new { @class = "" })
+                    </div>
+                    <div style="text-align:center;color:red;font-size:15pt;" class="control-label">
+                        *
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    @Html.EditorFor(model => model.ToDate, new { htmlAttributes = new { @class = "form-control datefieldfuture" } })
+                    @Html.ValidationMessageFor(model => model.ToDate, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-2">
+                    <div class="col-md-11 control-label">
+                        @Html.LabelFor(model => model.Location, htmlAttributes: new { @class = "" })
+                    </div>
+                    <div style="text-align:center;color:red;font-size:15pt;" class="control-label">
+                        *
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    @Html.EditorFor(model => model.Location, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Location, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Comments, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-4">
+                    @Html.EditorFor(model => model.Comments, new { htmlAttributes = new { @class = "form-control", @placeholder = "Model details, Papers, Condition, etc.," } })
+                    @Html.ValidationMessageFor(model => model.Comments, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-2">
+                    <div class="col-md-11 control-label">
+                        @Html.LabelFor(model => model.ContactNumber, htmlAttributes: new { @class = "" })
+                    </div>
+                    <div style="text-align:center;color:red;font-size:15pt;" class="control-label">
+                        *
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    @Html.EditorFor(model => model.ContactNumber, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.ContactNumber, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.EmailID, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-4">
+                    @Html.EditorFor(model => model.EmailID, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.EmailID, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-4">
+                    <input id="btnSubmitDetail" type="submit" value="Post As Guest" class="btn btn-primary" onclick="return ValidateEquipmentDropDown('guest');" />
+                    @if (Session["UserID"] == null)
+                    {
+                        <input type="submit" value="Post As Congun User" class="btn btn-success" onclick="return ValidateEquipmentDropDown('user');" />
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Login</h4>
+                </div>
+                <div class="modal-body">
+                    @Html.Partial("_LoginFieldPartial", Model.LoginModel)
+                </div>
+                @*<div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>*@
+            </div>
+
+        </div>
+    </div>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

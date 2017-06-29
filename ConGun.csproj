@@ -186,6 +186,7 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\jquery.ui.all.css" />
     <Content Include="Content\themes\base\all.css" />
+    <Content Include="Content\themes\base\autocomplete.css" />
     <Content Include="Content\themes\base\base.css" />
     <Content Include="Content\themes\base\core.css" />
     <Content Include="Content\themes\base\datepicker.css" />
@@ -226,7 +227,6 @@
     <Content Include="Scripts\bootstrap.min.js" />
     <None Include="Properties\PublishProfiles\congun - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\congun - Web Deploy.pubxml" />
-    <None Include="Properties\PublishProfiles\HarishInternal.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -282,6 +282,9 @@
     <Content Include="Views\Rental\List.cshtml" />
     <Content Include="Views\Rental\Index.cshtml" />
     <Content Include="Views\Shared\_LoginFieldPartial.cshtml" />
+    <Content Include="Views\Account\Signup.cshtml" />
+    <Content Include="Views\Account\MyProfile.cshtml" />
+    <Content Include="Views\Home\privacy-policy.cshtml" />
     <Content Include="Views\Home\termsandconditions.cshtml" />
   </ItemGroup>
   <ItemGroup>

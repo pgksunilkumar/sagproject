@@ -5,9 +5,10 @@
 }
 
 <script type="text/javascript">
-    function ReturnToDetails(itemID) 
+    function ReturnToDetails(itemID)
     {
-        window.location = 'Details/' + itemID;
+        //window.location = '../Details/' + itemID;
+        window.location = '@Url.Action("Details", "Used")?id=' + itemID;
     }
 </script>
 

@@ -1,15 +1,37 @@
-﻿@model dynamic
-<div class="form-group">
-    @Html.LabelFor(model => model.UserName, htmlAttributes: new { @class = "control-label col-md-2" })
-    <div class="col-md-4">
-        @Html.EditorFor(model => model.UserName, new { htmlAttributes = new { @class = "form-control" } })
-        @Html.ValidationMessageFor(model => model.UserName, "", new { @class = "text-danger" })
-    </div>
-</div>
-<div class="form-group">
-    @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label col-md-2" })
-    <div class="col-md-4">
-        @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control" } })
-        @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+﻿@model BusinessAccessLayer.AccountModel.LoginViewModel
+
+<div class="row">
+    <div class="col-md-12">
+        @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+        {
+            <section id="loginForm">
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                @if (ViewBag.ErrorMessageLogin != null)
+                {
+                    <span class="text-danger">@ViewBag.ErrorMessageLogin</span>
+                }
+                <div class="form-group">
+                    @Html.LabelFor(m => m.LoginContactNumber, new { @class = "col-md-5 control-label" })
+                    <div class="col-md-6">
+                        @Html.TextBoxFor(m => m.LoginContactNumber, new { @class = "form-control", @id = "LoginContactNumber" })
+                        @Html.ValidationMessageFor(m => m.LoginContactNumber, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group" style="margin-top:10px;">
+                    @Html.LabelFor(m => m.Password, new { @class = "col-md-5 control-label", @style = "padding-top:10px;" })
+                    <div class="col-md-6" style="padding-top:10px;">
+                        @Html.PasswordFor(m => m.Password, new { @class = "form-control", @id = "LoginPassword" })
+                        @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-offset-5 col-md-6" style="padding-top:10px;">
+                        <input type="submit" value="Log in" class="btn btn-default"  />&nbsp;&nbsp;
+                        @Html.ActionLink("Register as a new user", "Register", "Account")
+                    </div>
+                </div>
+            </section>
+        }
     </div>
 </div>
