@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="http://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
+
+    <link rel="stylesheet" href="fancybox/jquery.fancybox.css">
+    <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+    <style type="text/css">
+        *{
+            font-family: 'Raleway', sans-serif;
+        }
+        .gallery {
+        }
+        .gallery .previews, .gallery .full, .gallery .desc {
+            float: left;
+            margin-right: 10px;
+        }
+        .gallery .desc, .gallery .full {
+            width: 420px;
+            font-size: 12px;
+        }
+        .gallery .desc h2 {
+            margin-top: 0;
+        }
+        .gallery .previews a {
+            display: block;
+            margin-bottom: 10px;
+        }
+        .gallery .full, .gallery .full img {
+            height: 500px;
+            width: 420px
+        }
+        .gallery .previews a, .gallery .full {
+            border: 4px solid #eee;
+        }
+        .gallery .previews a:hover, .gallery .previews a.selected {
+            border: 4px solid #777;
+        }
+        .gallery .full img:hover {
+            cursor: pointer;
+        }
+        .clearfix:after {
+            content: ".";
+            visibility: hidden;
+            display: block;
+            height: 0;
+            clear: both;
+        }
+
+        .fontcongunicon{
+           font-size: 18px;
+           margin-right: 5px;
+       }
+       .fontcongunname{
+           font-size: 16px;
+           font-weight: 400;
+       }
+       .table>tbody>tr>td{
+        padding: 19px 0px 19px 0px;
+    }
+    ul .a-list-item{
+        color: #111;
+    }
+    .a-ordered-list li, .a-unordered-list li, ol li, ul li{
+        word-wrap: break-word;
+        margin: 0;
+    }
+    .a-unordered-list, ul {
+        margin: 0 0 18px 18px;
+        color: #949494;
+    }
+    .commentlist li {
+        margin-bottom: 20px;
+        clear: both;
+        position: relative;
+        clear: both;
+        list-style: none;
+    }.comment-wrap {
+        position: relative;
+        border-bottom: 1px solid #E7E7E7;
+    }.comment-avatar {
+        float: left;
+        margin: 0 10px 0 0;
+    }.commentlist li img{
+        opacity: 1;
+        -webkit-transition: all .4s ease-in-out;
+        -moz-transition: all .4s ease-in-out;
+        -o-transition: all .4s ease-in-out;
+        transition: all .4s ease-in-out;
+    }
+    .comment-content {
+        position: relative;
+        display: block;
+        overflow: hidden;
+        padding-bottom: 15px;
+        margin-left: 80px;
+        min-height: 80px;
+    }
+    .author-comment {
+        overflow: hidden;
+        position: relative;
+        margin-bottom: 5px;
+    }
+    .author-comment cite {
+        color: #3b3b3b;
+        position: relative;
+        display: block;
+        margin-bottom: 2px;
+        padding-top: 5px;
+        font-style: normal;
+        font-weight: bold;
+        float: left;
+    }
+    .commentmetadata {
+        display: block;
+        font-size: 85%;
+        float: right;
+        padding-top: 5px;
+    }
+    .clear {
+        clear: both;
+    }
+    .comment-content p {
+        line-height: 17px;
+        margin-bottom: 10px;
+    }
+    #respondcomment {
+        margin-bottom: 10px;
+        position: relative;
+        clear: both;
+        border: 1px solid #ddd;
+        padding: 22px;
+        border-radius: 8px;
+    }
+    #respond:before {
+        height: 1px;
+    }
+    #respond h3 {
+        float: left;
+        margin-right: 10px;
+        font-size: 22px;
+        font-family: "raleway", serif;
+    }
+    .exampleInputUsername {
+        font-size: 18px;
+        font-weight: 500;
+        font-family: "raleway", serif;
+        color: #000;
+    }
+    .scrolldoownbtn {
+        background: #ffd740;
+        border-color: #ffd740;
+        color: #fff;
+        font-size: 18px;
+    }
+    .scrolldoownbtn:hover, .scrolldoownbtn:active, .scrolldoownbtn:focus, .scrolldoownbtn:visited {
+        background: #ffd740;
+        border-color: #ffd740;
+        color: #fff;
+    }
+</style>
+</head>
+
+<body>
+    <div style="margin-bottom: 50px;">
+
+    </div>
+    <div class="container clearfix">
+     <div class="row">
+         <div class="col-md-6">
+            <div class="gallery">
+                <div class="previews">
+                    <a href="#" class="selected" data-full="images/top1large.jpg">
+                        <img src="images/top1large.jpg" style="width: 107px;" />
+                    </a>
+                    <a href="#" data-full="images/top2large.jpg">
+                        <img src="images/top2large.jpg" style="width: 107px;" />
+                    </a>
+                    <a href="#" data-full="images/top3large.jpg">
+                        <img src="images/top3large.jpg" style="width: 107px;" />
+                    </a>
+                    <a href="#" data-full="images/top4large.jpg">
+                        <img src="images/top4large.jpg" style="width: 107px;" />
+                    </a>
+                    <a href="#" data-full="images/top5large.jpg">
+                        <img src="images/top5large.jpg" style="width: 107px;">
+                    </a>
+                </div>
+                <div class="full">
+                    <!-- first image is viewable to start -->
+                    <img src="images/top1large.jpg" /> </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+               <h4 style="font-size:31px;">Asphalt Pavers (Chain)</h4>
+
+               <table class="table">
+                   <tr>
+                       <td><div class="">
+                           <label><i class="fa fa-inr fontcongunicon"></i><span class="fontcongunname">Price</span></label> : <label class="fontcongunname">2,10,000.00  (Negotiable)</label>
+                       </div></td>
+                       <td>
+                        <div class="">
+                           <label><i class="fa fa-map-marker fontcongunicon"></i><span class="fontcongunname">Location</span></label> : <label class="fontcongunname">Hyderabad</label>
+                       </div>
+                   </td>
+               </tr>
+
+               <tr>
+                   <td><div class="">
+                       <label><i class="fa fa-building-o fontcongunicon"></i><span class="fontcongunname">Make</span></label> : <label class="fontcongunname">JCB</label>
+                   </div></td>
+                   <td>
+                    <div class="">
+                       <label><i class="fa fa-cube fontcongunicon"></i><span class="fontcongunname">Model</span></label> : <label class="fontcongunname">2016</label>
+                   </div>
+               </td>
+           </tr>
+
+
+           <tr>
+               <td><div class="">
+                   <label><i class="fa fa-calendar fontcongunicon"></i><span class="fontcongunname">Year</span></label> : <label class="fontcongunname">1990</label>
+               </div></td>
+               <td>
+                <div class="">
+                   <label><i class="fa fa-phone fontcongunicon"></i><span class="fontcongunname">Contact</span></label> : <label class="fontcongunname">09876541230</label>
+               </div>
+           </td>
+       </tr>
+       <tr>
+           <td>
+               <a href="#commentbox">
+                   <div class="">
+                       <label><i class="fa fa-comments-o fontcongunicon"></i><span class="fontcongunname">Comments</span></label> : <label class="fontcongunname">3</label>
+                   </div>
+               </a>
+           </td>
+           <td>
+           </td>
+       </tr>
+
+   </table>
+
+
+
+   <div class="col-md-12">
+       <h4>Description</h4>
+
+       <ul class="a-unordered-list a-vertical a-spacing-none">
+
+
+          <li><span class="a-list-item"> 
+           15.6" Full HD LED Touchscreen (1920 x 1080), Intel Core i7-6500U 2.50 GHz with Turbo Boost Technology up to 3.10
+
+       </span></li>
+
+       <li><span class="a-list-item"> 
+           1TB 5400 RPM HDD, 8GB DDR3L 1600 MHz, DVD-RW For CD's and DVD's
+
+       </span></li>
+
+       <li><span class="a-list-item"> 
+           802.11ac/a/b/g/n (Miracast enabled), LAN (10/100), Bluetooth 4.0, Backlit keyboard
+
+       </span></li>
+
+       <li><span class="a-list-item"> 
+           1 USB 3.0, 2 USB 2.0, HDMI, Headphone output/Microphone input combo
+
+       </span></li>
+
+       <li><span class="a-list-item"> 
+           Waves MaxxAudio Pro, SD card reader, Windows 10 Home, 64-bit, Model number: Inspiron 15 i5559-3333SLV • Backlit keyboard • Precision  touchpad • TPM 2.0 • Touchpad dimensions: 104 x 81 mm • Security lock  slot
+
+       </span></li>
+
+   </ul>
+</div>
+
+<div class="row" id="commentbox">
+    <div class="col-md-12">
+        <div class="row">
+            <div class="col-md-6 text-left">
+              <h3>3 comments:</h3>  
+          </div>
+          <div class="col-md-6 text-right">
+              <div style="    margin-top: 20px;
+              margin-bottom: 10px;">
+              
+              <a href="#respondcomment">Post Comment</a>
+          </div>
+      </div>
+  </div>   
+
+  <ul class="commentlist">
+    <li id="comment">
+        <div class="comment odd alt thread-odd thread-alt depth-1 comment-wrap">
+            <div class="comment-avatar"><img alt="" src="images/icon.png" height="65" width="65"></div>
+
+            <div class="comment-content">
+                <div class="author-comment">
+                    <cite class="fn">Raj Shekar</cite>                   <div class="comment-meta commentmetadata"></div>
+                    <div class="clear"></div>
+                </div>
+                <p>Using it to store JSON is an interesting idea. That could be very cool in the right situation.</p>
+            </div>
+        </div>
+    </li>
+    <li id="comment">
+        <div class="comment odd alt thread-odd thread-alt depth-1 comment-wrap">
+            <div class="comment-avatar"><img alt="" src="images/icon.png" height="65" width="65"></div>
+
+            <div class="comment-content">
+                <div class="author-comment">
+                    <cite class="fn">Sagar Babu</cite>                   <div class="comment-meta commentmetadata"></div>
+                    <div class="clear"></div>
+                </div>
+                <p>Nice work Ben - good idea</p>
+            </div>
+        </div>
+    </li>
+    <li id="comment">
+        <div class="comment odd alt thread-odd thread-alt depth-1 comment-wrap">
+            <div class="comment-avatar"><img alt="" src="images/icon.png" height="65" width="65"></div>
+
+            <div class="comment-content">
+                <div class="author-comment">
+                    <cite class="fn">Harish</cite>                   <div class="comment-meta commentmetadata"></div>
+                    <div class="clear"></div>
+                </div>
+                <p>definitely great idea. about 2 years ago i created something similar to dreamweaver templating using comments and js. i should have it somewhere here...</p>
+            </div>
+        </div>
+    </li>
+</ul>
+
+
+<div id="respondcomment" class="comment-respond">
+    <h4>Leave a Comment</h4>
+    <form>
+       <div class="form-group">
+           <label class="exampleInputUsername">Your Name</label>
+           <input type="text" class="form-control" name="name" id="name" placeholder="Enter Name" required="">
+       </div>
+       <div class="form-group">
+        <label class="description">Your Comment</label>
+        <textarea class="form-control" name="comment" id="comment" placeholder="Enter Your Comment" rows="5" required=""></textarea>
+    </div>
+    <div style="text-align: right;">
+        <input type="submit" class="btn btn-warning scrolldoownbtn text-right" value="Post Your Comment">
+    </div>
+</form>
+</div>
+
+
+
+
+</div>
+</div>
+
+</div>
+</div>
+</div>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="fancybox/jquery.fancybox.js"></script>
+<script>
+    $(document).ready(function() {
+        $('a').click(function() {
+            var largeImage = $(this).attr('data-full');
+            $('.selected').removeClass();
+            $(this).addClass('selected');
+            $('.full img').hide();
+            $('.full img').attr('src', largeImage);
+            $('.full img').fadeIn();
+
+            }); // closing the listening on a click
+        $('.full img').on('click', function() {
+            var modalImage = $(this).attr('src');
+            $.fancybox.open(modalImage);
+        });
+        }); //closing our doc ready
+    </script>
+</body>
+
+</html>
