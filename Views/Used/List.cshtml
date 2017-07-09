@@ -47,34 +47,17 @@
         
 @foreach (var item in Model)
 {
-    <div class="col-md-4" style="margin-top:10px;margin-bottom:10px;">
-        <div style=" position: relative;
-    background: #fff;
-    box-shadow: 12px 15px 20px 0 rgba(46,61,73,.15);
-    border-radius: .375rem;
-    transition: all .3s ease;border:1px solid #ddd;">
-            <div style="border-top-left-radius: 8px;
-    border-top-right-radius: 8px;
-    height: 200px;
-    width: 250px;
-    margin: 0 auto;">
+    <div class="col-md-4 sfs1">
+        <div class="sfs2">
+            <div class="sfs3">
                 <a href="#"><img src="@item.ImagePath" class="img-responsive" /></a>
             </div>
             <div class="row">
                 <div class="col-md-12">
-                    <p style="line-height: 2.25rem;
-    border-bottom: 1px solid #ddd;
-    border-top: 1px solid #ddd;
-    padding: 8px;
-    font-size: 16px;
-    color: #121212;
-    font-weight: 800;">@Html.DisplayFor(modelItem => item.Make) (@Html.DisplayFor(modelItem => item.ModelNumber))</p>
+                    <p class="sfs4">@Html.DisplayFor(modelItem => item.Make) (@Html.DisplayFor(modelItem => item.ModelNumber))</p>
                 </div>
             </div>
-            <div class="row" style="border-bottom: 1px solid #ddd;
-    margin-right: 0px;
-    margin-left: 0px;
-    padding: 5px;">
+            <div class="row sfs5">
                 <div class="col-md-6 text-left">
                     <i class="fa fa-inr"></i>&nbsp;@Html.DisplayFor(modelItem => item.Price) &nbsp;(@Html.DisplayFor(modelItem => item.PriceCategory))
                 </div>
@@ -82,10 +65,7 @@
                     <i class="fa fa-phone"></i>&nbsp;@Html.DisplayFor(modelItem => item.ContactNumber)
                 </div>
                 </div>
-            <div class="row" style="border-bottom: 1px solid #ddd;
-    margin-right: 0px;
-    margin-left: 0px;
-        padding: 9px;">
+            <div class="row sfs6">
                 <div class="col-md-6 text-left">
                     <i class="fa fa-map-marker"></i>&nbsp;@Html.DisplayFor(modelItem => item.Location)
                 </div>
@@ -95,33 +75,23 @@
                 </div>
             <div class="row">
                 <div class="col-md-12">
-                    <a href="#" style="    display: block;
-    bottom: 0;
-    right: 0;
-    left: 0;
-    text-align: center;
-    height: 60px;
-    line-height: 60px;
-    background: #20b3e4;
-    color: #fff;
-    border-radius: 0 0 5px 5px;
-    text-transform: uppercase;">View</a>
-                    @*@if (Session["UserID"] != null)
-                {
-                    if (Session["UserID"].ToString() == item.UserID.ToString())
-                    {
-                            <div class="col-md-6">@Html.ActionLink("View", "Details", new { id = item.EquipmentID })</div>
-                            <div class="col-md-6">@Html.ActionLink("Delete", "Delete", new { id = item.EquipmentID }, new { @class = "aDeleteLink" })</div>
-                        }
-                        else
-                        {
-                            @Html.ActionLink("View", "Details", new { id = item.EquipmentID })
-                        }
-                    }
-                    else
-                    {
-                        @Html.ActionLink("View", "Details", new { id = item.EquipmentID })
-                    }*@
+                    @*<a href="#" class="sfs7">View</a>*@
+                    @if (Session["UserID"] != null)
+    {
+        if (Session["UserID"].ToString() == item.UserID.ToString())
+        {
+                <div class="col-md-6">@Html.ActionLink("View", "Details", new { id = item.EquipmentID }, new{@class = "sfs7"})</div>
+                <div class="col-md-6">@Html.ActionLink("Delete", "Delete", new { id = item.EquipmentID }, new { @class = "aDeleteLink, sfs7" })</div>
+            }
+            else
+            {
+                @Html.ActionLink("View", "Details", new { id = item.EquipmentID, @class = "sfs7" })
+            }
+        }
+        else
+        {
+            @Html.ActionLink("View", "Details", new { id = item.EquipmentID, @class = "sfs7" })
+        }
                 </div>
                 </div>
             </div>
