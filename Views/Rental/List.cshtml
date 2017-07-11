@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<BusinessAccessLayer.RentalModel>
 
 @{
-    ViewBag.Title = "Rental Equipment List";
+ViewBag.Title = "Rental Equipment List";
 }
 <div class="container">
     <div class="row">
@@ -13,80 +13,79 @@
         </div>
     </div>
 
-    <table class="table">
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.EquipmentType)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.FromDate)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ToDate)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Location)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ContactNumber)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Comments)
-            </th>
-            <th></th>
-        </tr>
+    <div class="row">
+        <div class="col-md-3">
+            <div class="congun_filter_rental">
+                <div class="checkbox">
+                    <label style="font-size: 1.5em">
+                        <input type="checkbox" value="">
+                        <span class="cr"><i class="cr-icon fa fa-check"></i></span>
+                        Rent
+                    </label>
+                </div>
+                <div class="checkbox">
+                    <label style="font-size: 1.5em">
+                        <input type="checkbox" value="" checked>
+                        <span class="cr"><i class="cr-icon fa fa-check"></i></span>
+                        Buy
+                    </label>
+                </div>
+            </div>
+            
+        </div>
+        <div class="col-md-8">
+            @{int i=0;}
 
-        @*@foreach (var item in Model)
-        {*@
-            <tr>
-                <td>
-                    @*@Html.DisplayFor(modelItem => item.EquipmentType)*@
-                    Test1
-                </td>
-                <td>
-                    @*@Html.DisplayFor(modelItem => item.FromDate)*@ Test1
-                </td>
-                <td>
-                    @*@Html.DisplayFor(modelItem => item.ToDate)*@ Test1
-                </td>
-                <td>
-                    @*@Html.DisplayFor(modelItem => item.Location)*@ Test1
-                </td>
-                <td>
-                    @*@Html.DisplayFor(modelItem => item.ContactNumber)*@ Test1
-                </td>
-                <td>
-                    @*@Html.DisplayFor(modelItem => item.Comments)*@ Test1
-                </td>
-                @*<td>
-                        @Html.ActionLink("Get Details", "Details", new { id = item.RentalID })
-                    </td>*@
-            </tr>
-        <tr>
-            <td>
-                @*@Html.DisplayFor(modelItem => item.EquipmentType)*@
-                Test1
-            </td>
-            <td>
-                @*@Html.DisplayFor(modelItem => item.FromDate)*@ Test1
-            </td>
-            <td>
-                @*@Html.DisplayFor(modelItem => item.ToDate)*@ Test1
-            </td>
-            <td>
-                @*@Html.DisplayFor(modelItem => item.Location)*@ Test1
-            </td>
-            <td>
-                @*@Html.DisplayFor(modelItem => item.ContactNumber)*@ Test1
-            </td>
-            <td>
-                @*@Html.DisplayFor(modelItem => item.Comments)*@ Test1
-            </td>
-            @*<td>
-                @Html.ActionLink("Get Details", "Details", new { id = item.RentalID })
-            </td>*@
-        </tr>
-        @*}  *@
+            @foreach (var item in Model)
+            {
 
-    </table>
+            <div class="row congun_rental_row">
+                <div class="col-md-12">
+                    <div class="col-md-2">
+
+
+                     @if (item.RentalType == "Rent")
+                     {
+                     <img src="~/Images/rent.png" class="img-responsive congun_rental_image">
+                 }
+                 else
+                 {
+                 <img src="~/Images/buy.png" class="img-responsive congun_rental_image">
+             }
+         </div>
+         <div class="col-md-9">
+            <table class="table congun_rental_table">
+                <tr>
+                    <td>    <p>Form Date: <i class="fa fa-calendar"></i> @Html.DisplayFor(modelItem => item.FromDate)</p></td>
+                    <td>    <p>to Date: <i class="fa fa-calendar"></i>@Html.DisplayFor(modelItem => item.ToDate)</p></td>
+                </tr>
+                <tr>
+                    <td>    <p>Equipment Type : @Html.DisplayFor(modelItem => item.EquipmentType)</p>
+                    </td>
+                    <td><p>Contact Number : @Html.DisplayFor(modelItem => item.ContactNumber)</p></td>
+                </tr>
+                <tr>
+                    <td><p>Location : <i class="fa fa-map-marker"></i>@Html.DisplayFor(modelItem => item.Location)</p></td>
+                </tr>
+            </table>                            
+        </div>
+        <div class="col-md-1 text-right">
+            <div>
+                <div class="rent_buy_congun">
+                    <p>@Html.DisplayFor(modelItem => item.RentalType)</p>
+                </div>
+            </div>
+
+        </div>
+        <div class="col-md-12 text-left">
+        <a href="javascript:void(0);" data-toggle="collapse" data-target="#demo_@i">Read More</a>
+            <div id="demo_@i" class="collapse">
+                @Html.DisplayFor(modelItem => item.Comments)
+            </div>
+        </div>
+    </div>
+</div>
+}
+</div>
+</div>
 </div>

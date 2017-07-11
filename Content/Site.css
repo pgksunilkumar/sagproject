@@ -495,6 +495,96 @@ body {
     border-radius: 0 0 5px 5px;
     text-transform: uppercase;
 }
+.sfs10{
+    margin-right: 0px;
+    margin-left: 0px;
+}
+.rent_buy_congun{
+    margin-top: -41px;
+    background: green;
+    margin-right: -32px;
+    width: 89px;
+    float: right;
+    color: #fff;
+    border: green;
+    border-radius: 5px;
+    line-height: 33px;
+    height: 35px;
+    text-align: center;
+}
+.congun_rental_table>tbody>tr>td{
+
+    border-top: 0px solid #ddd;
+}
+.congun_rental_image{
+    width: 75px;
+}
+.congun_rental_row{
+    border: 1px solid #ddd;border-radius: 5px;    padding: 40px 0px 14px;
+}
+.congun_filter_rental{
+   border: 1px solid #ddd;
+   border-radius: 7px;
+   padding: 42px;
+}
+.checkbox label:after, 
+.radio label:after {
+    content: '';
+    display: table;
+    clear: both;
+}
+
+.checkbox .cr,
+.radio .cr {
+    position: relative;
+    display: inline-block;
+    border: 1px solid #a9a9a9;
+    border-radius: .25em;
+    width: 1.3em;
+    height: 1.3em;
+    float: left;
+    margin-right: .5em;
+}
+
+.radio .cr {
+    border-radius: 50%;
+}
+
+.checkbox .cr .cr-icon,
+.radio .cr .cr-icon {
+    position: absolute;
+    font-size: .8em;
+    line-height: 0;
+    top: 50%;
+    left: 20%;
+}
+
+.radio .cr .cr-icon {
+    margin-left: 0.04em;
+}
+
+.checkbox label input[type="checkbox"],
+.radio label input[type="radio"] {
+    display: none;
+}
+
+.checkbox label input[type="checkbox"] + .cr > .cr-icon,
+.radio label input[type="radio"] + .cr > .cr-icon {
+    transform: scale(3) rotateZ(-20deg);
+    opacity: 0;
+    transition: all .3s ease-in;
+}
+
+.checkbox label input[type="checkbox"]:checked + .cr > .cr-icon,
+.radio label input[type="radio"]:checked + .cr > .cr-icon {
+    transform: scale(1) rotateZ(0deg);
+    opacity: 1;
+}
+
+.checkbox label input[type="checkbox"]:disabled + .cr,
+.radio label input[type="radio"]:disabled + .cr {
+    opacity: .5;
+}
 .gallery {
 }
 .gallery .previews, .gallery .full, .gallery .desc {
@@ -534,12 +624,12 @@ body {
 }
 
 .fontcongunicon{
- font-size: 18px;
- margin-right: 5px;
+   font-size: 18px;
+   margin-right: 5px;
 }
 .fontcongunname{
- font-size: 16px;
- font-weight: 400;
+   font-size: 16px;
+   font-weight: 400;
 }
 .table>tbody>tr>td{
     padding: 19px 0px 19px 0px;
