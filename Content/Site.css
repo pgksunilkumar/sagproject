@@ -458,7 +458,6 @@ body {
     border-top-left-radius: 8px;
     border-top-right-radius: 8px;
     height: 200px;
-    width: 250px;
     margin: 0 auto;
 }
 .sfs4 {
@@ -499,6 +498,9 @@ body {
     margin-right: 0px;
     margin-left: 0px;
 }
+.sfs12{    height: 200px;
+    margin: 0 auto;
+    width: 100%;}
 .rent_buy_congun{
     margin-top: -41px;
     background: green;
