@@ -86,6 +86,14 @@ body {
     margin: 0 auto;
 }
 
+.customimage_congun_12 {
+    background: #fff;
+    border: 10px solid #ddd;
+    border-radius: 2px;
+    padding: 15px;
+}
+
+
 .customimage_congun {
     background: #fff;
     border: 10px solid #ddd;
@@ -212,7 +220,10 @@ body {
 .contactus_congun_image {
     display: inline;
 }
-
+.congun_image_feature {
+width:100%;
+height:200px;
+}
 .inputCongun_00 {
     display: inline;
     border-radius: 0px;
@@ -886,11 +897,36 @@ ul .a-list-item{
             .contactus_congun_image_mobile {
                 width: 60px;
             }
-
+            .customimage_congun img {
+                width: 100%;
+                height: 150px;
+            }
+            .customimage_congun_12 img {
+                width: 100%;
+                height: 300px;
+            }
+.navbar-default .navbar-toggle .icon-bar {
+    background-color: #ffffff;
+}
+.navbar-default .navbar-toggle:hover .icon-bar, .navbar-default .navbar-toggle:focus .icon-bar {
+    background-color: #02d8ff;
+}
+.navbar-default .navbar-toggle {
+    border-color: #ffffff;
+}
+    .navbar-default .navbar-toggle:hover, .navbar-default .navbar-toggle:focus {
+        background-color: #fff;
+    }
             @media (min-width: 1024px) {
                 .footer-menu.wid-50-left {
-                    width: 42%;
-                    float: left;
+                                width: 42%;
+                                float: left;
+                            }
+                .shadowBorder h4 {
+                    font-weight: 800;
+                    font-size: 14px;
+                    margin-top: 15px;
+                    margin-bottom: 11px;
                 }
             }
 
@@ -909,10 +945,49 @@ ul .a-list-item{
             }
 
             @media (min-width:768px) {
+                .Congun_Products_00 {
+                    padding: 17px 17px;
+                }
+                .hero_congun_image {
+                    height: 276px;
+                }
             }
 
 
             @media (max-width:425px) {
+                .congun_rent_h2 h2{
+                    font-size:25px;
+                }
+                .congun_cfs_col{
+                    margin-top:15px;
+                }
+                .margintop20 {
+                    margin-top: 15px;
+                }
+                .hero_congun_image {
+                    background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(../Images/C772755.jpg);
+                    background-position: 33% -188px;
+                    padding: 10px;
+                    background-attachment: fixed;
+                    width: 100%;
+                    height: 260px;
+                    background-repeat: no-repeat;
+                    -webkit-background-size: cover;
+                    -moz-background-size: cover;
+                    -o-background-size: cover;
+                    background-size: cover;
+                }
+                .FeaturedBuyMargin h2{
+                    font-size:25px;
+                }
+                .congun_image_feature{
+                    width:100%;
+                    height:150px;
+                }
+                .customimage_congun img {
+                    width: 100%;
+                    height: 120px;
+                } 
                 .hero-content h1 {
                     font-size: 18px;
                 }
@@ -980,9 +1055,61 @@ ul .a-list-item{
                     margin-left: 0px;
                 }
             }
+            @media (max-width: 375px){
+                .shadowBorder_mobile {
+                    background: transparent;
+                    -webkit-box-shadow: none;
+                    -moz-box-shadow: none;
+                    box-shadow: none;
+                    padding: 1px;
+                    border: 0px solid #ddd;
+                }
+            }
 
+@media (max-width:320px) {
+    .inputCongun_00 {
+        display: inline;
+        border-radius: 0px;
+        width: 200px;
+        height: 39px;
+    }
 
+    .hero-content {
+        padding-top: 21px;
+    }
+    .inputCongun_01{
+        display:none;
+    }
+    .inputCongun_02 {
+        display: inline;
+        border-radius: 0px;
+        height: 42px;
+        width: 175px;
+        background-color: #02d8ff;
+        border-color: #02d8ff;
+        border: 1px solid #02d8ff;
+        font-size: 18px;
+        margin-top: 15px;
+    }
+    .FeaturedBuyMargin h2 {
+        font-size: 18px;
+    }
+    .congun_rent_h2 h2 {
+        font-size: 18px;
+    }
+    .shadowBorder_mobile {
+        background: transparent;
+        -webkit-box-shadow: none;
+        -moz-box-shadow: none;
+        box-shadow: none;
+        padding: 1px;
+        border: 0px solid #ddd;
+    }
+    .hero-content h1 {
+        font-size: 14px;
+    }
 
+}
 
 
             /*set a border on the images to prevent shifting*/

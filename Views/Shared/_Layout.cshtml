@@ -4,6 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Congun | @ViewBag.Title</title>
+    <meta name="twitter:domain" content="@ViewBag.ImagePath1" />
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 
@@ -12,6 +13,8 @@
     @RenderSection("scripts", required: false)
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="fancybox/jquery.fancybox.css">
+    <script src="~/Scripts/bootstrap.min.js"></script>
     <style type="text/css">
         .navbar-login {
             padding: 10px;
@@ -80,15 +83,15 @@
             <div class="congun_footer_color">
                 <div class="container">
                     <div class="row">
-                        <div class="col-md-4">
+                        <div class="col-md-4 col-sm-4 col-xs-12">
                             <h4 class="congun_ul_h4">POLICIES</h4>
                             <ul class="congun_ul">
-                                <li><a href="#">Terms & Conditions</a></li>
-                                <li><a href="#">Privacy Policies</a></li>
+                                <li><a href="~/TermsConditions.html" target="_blank">Terms & Conditions</a></li>
+                                <li><a href="~/PrivacyPolicy.html" target="_blank">Privacy Policies</a></li>
 
                             </ul>
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-md-4 col-sm-4 col-xs-12">
                             <h4 class="congun_ul_h4">COMPANY</h4>
                             <ul class="congun_ul">
                                 <li><a href="#">Careers</a></li>
@@ -99,15 +102,15 @@
                             </ul>
                         </div>
 
-                        <div class="col-md-4">
+                        <div class="col-md-4 col-sm-4 col-xs-12">
                             <h4 class="congun_ul_h4">Congun.com</h4>
                             <p class="congun_ul_li_p">Exclusive Construction equipment platform to share, get direct business contacts from all over india at single point for free</p>
                             <div class="test">
-                                <a class="twitter" href="#" target="_blank"><i class="fa fa-twitter fontsize12em" aria-label="twitter for congun"></i></a>
-                                <a class="twitter" href="#" target="_blank"><i class="fa fa-facebook fontsize12em" aria-label="facebook for congun"></i></a>
-                                <a class="twitter" href="#" target="_blank"><i class="fa fa-google-plus fontsize12em" aria-label="Google Plus for congun"></i></a>
-                                <a class="twitter" href="#" target="_blank"><i class="fa fa-youtube fontsize12em" aria-label="Youtube for congun"></i></a>
-                                <a class="twitter" href="#" target="_blank"><i class="fa fa-linkedin  fontsize12em" aria-label="linkedin for congun"></i></a>
+                                <a class="twitter" href="https://twitter.com/Congunltd" target="_blank"><i class="fa fa-twitter fontsize12em" aria-label="twitter for congun"></i></a>
+                                <a class="twitter" href="https://www.facebook.com/Congun.india/" target="_blank"><i class="fa fa-facebook fontsize12em" aria-label="facebook for congun"></i></a>
+                                <a class="twitter" href="https://plus.google.com/u/0/106690083354786500962" target="_blank"><i class="fa fa-google-plus fontsize12em" aria-label="Google Plus for congun"></i></a>
+
+                                <a class="twitter" href="https://www.linkedin.com/company-beta/13198220/" target="_blank"><i class="fa fa-linkedin  fontsize12em" aria-label="linkedin for congun"></i></a>
                             </div>
                         </div>
                     </div>
@@ -115,8 +118,9 @@
             </div>
         </footer>
     </div>
-    <script src="~/Scripts/bootstrap.min.js"></script>
+    @*<script src="~/Scripts/bootstrap.min.js"></script>*@
     <script src="http://cdnjs.cloudflare.com/ajax/libs/typed.js/1.1.4/typed.min.js"></script>
+    <script type="text/javascript" src="fancybox/jquery.fancybox.js"></script>
     <script src="~/Scripts/app.js"></script>
 </body>
 </html>
