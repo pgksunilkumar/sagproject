@@ -944,13 +944,24 @@ ul .a-list-item{
                 }
             }
 
-            @media (min-width:768px) {
+            @media (max-width:768px) {
                 .Congun_Products_00 {
                     padding: 17px 17px;
                 }
                 .hero_congun_image {
                     height: 276px;
                 }
+				.inputCongun_00 {
+    display: inline;
+    border-radius: 0px;
+    width: 357px;
+    height: 55px;
+}
+.hero_congun_image{
+	
+background-position: 100% 100%;
+background-attachment: inherit;
+}
             }
 
 
