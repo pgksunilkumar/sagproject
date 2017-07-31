@@ -17,48 +17,48 @@ body {
 /* Override the default bootstrap behavior where horizontal description lists 
    will truncate terms that are too long to fit in the left column 
    */
-   .dl-horizontal dt {
+.dl-horizontal dt {
     white-space: normal;
 }
 
 /* Set width on the form input elements since they're 100% wide by default */
 .navbar-default {
-    background-color: #02d8ff !important;
-    border-color: #02d8ff !important;
+    background-color: #f36d6d !important;
+    border-color: #f36d6d !important;
 }
 
-.navbar-default .navbar-brand {
-    color: #ffffff !important;
-    font-size: 20px;
-    font-weight: 800;
-}
+    .navbar-default .navbar-brand {
+        color: #ffffff !important;
+        font-size: 20px;
+        font-weight: 800;
+    }
 
-.navbar-default .navbar-nav > li > a {
-    color: #fff !important;
-    font-weight: 400;
-    font-size: 14px;
-}
+    .navbar-default .navbar-nav > li > a {
+        color: #fff !important;
+        font-weight: 400;
+        font-size: 14px;
+    }
 
-.navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
-    color: #02d8ff !important;
-    background-color: #fff !important;
-}
+        .navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
+            color: #f36d6d !important;
+            background-color: #fff !important;
+        }
 
 .shadowBorder {
     background: #fff;
     -webkit-box-shadow: 0px 5px 1px #ccc5c5;
     -moz-box-shadow: 0px 5px 1px #ccc5c5;
     box-shadow: 0px 5px 1px #ccc5c5;
-    padding: 40px 21px 22px;
+    padding: 40px 13px 22px;
     height: 280px;
 }
 
-.shadowBorder h4 {
-    font-weight: 800;
-    font-size: 20px;
-    margin-top: 15px;
-    margin-bottom: 18px;
-}
+    .shadowBorder h4 {
+        font-weight: 800;
+        font-size: 20px;
+        margin-top: 15px;
+        margin-bottom: 18px;
+    }
 
 .roundicon_congun {
     border: 1px solid #ddd;
@@ -98,7 +98,7 @@ body {
     background: #fff;
     border: 10px solid #ddd;
     border-radius: 2px;
-    padding: 15px;
+    padding: 0px;
 }
 
 .customimage_congun_000 {
@@ -116,9 +116,9 @@ body {
     height: 95px;
 }
 
-.desc p {
-    font-size: 25px;
-}
+    .desc p {
+        font-size: 25px;
+    }
 
 .help-tip {
     position: absolute;
@@ -134,54 +134,54 @@ body {
     cursor: default;
 }
 
-.help-tip:before {
-    content: '?';
-    font-weight: bold;
-    color: #fff;
-}
+    .help-tip:before {
+        content: '?';
+        font-weight: bold;
+        color: #fff;
+    }
 
-.help-tip:hover p {
-    display: block;
-    transform-origin: 100% 0%;
-    -webkit-animation: fadeIn 0.3s ease-in-out;
-    animation: fadeIn 0.3s ease-in-out;
-    z-index: 5;
-}
+    .help-tip:hover p {
+        display: block;
+        transform-origin: 100% 0%;
+        -webkit-animation: fadeIn 0.3s ease-in-out;
+        animation: fadeIn 0.3s ease-in-out;
+        z-index: 5;
+    }
 
-.help-tip p { /* The tooltip */
-    display: none;
-    text-align: left;
-    background-color: #1E2021;
-    padding: 20px;
-    width: 300px;
-    position: absolute;
-    border-radius: 3px;
-    box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
-    right: -4px;
-    color: #FFF;
-    font-size: 13px;
-    line-height: 1.4;
-}
+    .help-tip p { /* The tooltip */
+        display: none;
+        text-align: left;
+        background-color: #1E2021;
+        padding: 20px;
+        width: 300px;
+        position: absolute;
+        border-radius: 3px;
+        box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
+        right: -4px;
+        color: #FFF;
+        font-size: 13px;
+        line-height: 1.4;
+    }
 
-.help-tip p:before { /* The pointer of the tooltip */
-    position: absolute;
-    content: '';
-    width: 0;
-    height: 0;
-    border: 6px solid transparent;
-    border-bottom-color: #1E2021;
-    right: 10px;
-    top: -12px;
-}
+        .help-tip p:before { /* The pointer of the tooltip */
+            position: absolute;
+            content: '';
+            width: 0;
+            height: 0;
+            border: 6px solid transparent;
+            border-bottom-color: #1E2021;
+            right: 10px;
+            top: -12px;
+        }
 
-.help-tip p:after { /* Prevents the tooltip from being hidden */
-    width: 100%;
-    height: 40px;
-    content: '';
-    position: absolute;
-    top: -40px;
-    left: 0;
-}
+        .help-tip p:after { /* Prevents the tooltip from being hidden */
+            width: 100%;
+            height: 40px;
+            content: '';
+            position: absolute;
+            top: -40px;
+            left: 0;
+        }
 
 /* CSS animation */
 
@@ -220,15 +220,17 @@ body {
 .contactus_congun_image {
     display: inline;
 }
+
 .congun_image_feature {
-width:100%;
-height:200px;
+    width: 100%;
+    height: 200px;
 }
+
 .inputCongun_00 {
     display: inline;
     border-radius: 0px;
     width: 478px;
-    height: 55px;
+    height: 40px;
 }
 
 .inputCongun_01 {
@@ -246,32 +248,33 @@ height:200px;
 .inputCongun_02 {
     display: inline;
     border-radius: 0px;
-    height: 55px;
-    width: 175px;
-    background-color: #02d8ff;
-    border-color: #02d8ff;
-    border: 1px solid #02d8ff;
-    font-size: 23px;
+    height: 40px;
+    width: 157px;
+   background-color: #f36d6d;
+    border-color: #f36d6d;
+    border: 1px solid #f36d6d;
+    font-size: 17px;
     margin-top: 0px;
+    margin-left: -4px;
 }
 
-.inputCongun_02:hover {
-    background-color: #02d8ff;
-    border-color: #02d8ff;
-    border: 1px solid #02d8ff;
-}
+    .inputCongun_02:hover {
+        background-color: #f36d6d;
+        border-color: #f36d6d;
+        border: 1px solid #f36d6d;
+    }
 
-.inputCongun_02:focus {
-    background-color: #02d8ff;
-    border-color: #02d8ff;
-    border: 1px solid #02d8ff;
-}
+    .inputCongun_02:focus {
+        background-color: #f36d6d;
+        border-color: #f36d6d;
+        border: 1px solid #f36d6d;
+    }
 
-.inputCongun_02:visited {
-    background-color: #02d8ff;
-    border-color: #02d8ff;
-    border: 1px solid #02d8ff;
-}
+    .inputCongun_02:visited {
+        background-color: #f36d6d;
+        border-color: #f36d6d;
+        border: 1px solid #f36d6d;
+    }
 
 
 .Congun_branding_00 {
@@ -305,23 +308,23 @@ height:200px;
     font-weight: 600;
 }
 
-.congun_Applynow:hover {
-    background: #ffce00;
-    border-color: #ffce00;
-    color: #01406a;
-}
+    .congun_Applynow:hover {
+        background: #ffce00;
+        border-color: #ffce00;
+        color: #01406a;
+    }
 
-.congun_Applynow:focus {
-    background: #ffce00;
-    border-color: #ffce00;
-    color: #01406a;
-}
+    .congun_Applynow:focus {
+        background: #ffce00;
+        border-color: #ffce00;
+        color: #01406a;
+    }
 
-.congun_Applynow:visited {
-    background: #ffce00;
-    border-color: #ffce00;
-    color: #01406a;
-}
+    .congun_Applynow:visited {
+        background: #ffce00;
+        border-color: #ffce00;
+        color: #01406a;
+    }
 
 
 .viewall_congun {
@@ -344,7 +347,6 @@ height:200px;
     background-color: #470ca7;
     color: #fff;
     border-bottom-right-radius: 15px;
-    `;
 }
 
 
@@ -353,7 +355,6 @@ height:200px;
     padding: 14px;
     background-color: #4a086e;
     color: #fff;
-    padding-top: 22px;
     font-weight: 800;
 }
 
@@ -383,7 +384,6 @@ height:200px;
     vertical-align: middle;
     background-color: #ffffff;
     border: 1px solid #cccccc;
-    border-radius: 4px;
     -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
     box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
     -webkit-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
@@ -412,39 +412,40 @@ height:200px;
     color: #ffffff;
 }
 
-.hero-content h1 {
-    font-size: 42px;
-}
+    .hero-content h1 {
+        font-size: 35px;
+    }
 
-.hero-content .bottomright {
-    border: 2px solid #d0cfd1;
-    -moz-border-bottom-right-radius: 28px;
-    -webkit-border-bottom-right-radius: 28px;
-    border-bottom-right-radius: 28px;
-    -moz-border-bottom-left-radius: 28px;
-    -webkit-border-bottom-left-radius: 28px;
-    border-bottom-left-radius: 28px;
-    -moz-border-top-left-radius: 28px;
-    -webkit-border-top-left-radius: 28px;
-    border-top-left-radius: 28px;
-    width: 260px;
-    display: inline;
-    color: #0bafeb;
-    padding: 5px;
-    background: #d0cfd1;
-}
+    .hero-content .bottomright {
+        border: 2px solid #d0cfd1;
+        -moz-border-bottom-right-radius: 28px;
+        -webkit-border-bottom-right-radius: 28px;
+        border-bottom-right-radius: 28px;
+        -moz-border-bottom-left-radius: 28px;
+        -webkit-border-bottom-left-radius: 28px;
+        border-bottom-left-radius: 28px;
+        -moz-border-top-left-radius: 28px;
+        -webkit-border-top-left-radius: 28px;
+        border-top-left-radius: 28px;
+        width: 260px;
+        display: inline;
+        color: #f36d6d;
+        padding: 5px;
+        background: #d0cfd1;
+    }
 
 .congun_btn_00 {
     text-decoration: none;
-    color: #009dff;
+    color: #f36d6d;
     font-weight: 800;
     letter-spacing: 1.1px;
     font-size: 16px;
 }
 
-.congun_btn_00:hover {
-    text-decoration: none;
-}
+    .congun_btn_00:hover {
+        text-decoration: none;
+        color: #f36d6d;
+    }
 
 .typed-cursor {
     opacity: 1;
@@ -452,11 +453,36 @@ height:200px;
     -moz-animation: blink 0.7s infinite;
     animation: blink 0.7s infinite;
 }
+.conguTab {
+border-bottom:0px;
+}
+
+    .conguTab li a {
+        margin-right: -5px;
+        line-height: 1.428571429;
+        border: 1px solid #fff;
+        border-radius: 2px;
+        padding: 10px 41px !important;
+        color: #fff;
+        font-size: 16px;
+    }
+
+    .conguTab > li > a:hover {
+        background: transparent;
+    }
+
+.nav-tabs > li {
+    float: none !important;
+    display: inline-block !important;
+    *display: inline; /* ie7 fix */
+    zoom: 1; /* hasLayout ie7 trigger */
+}
 
 .sfs1 {
     margin-top: 10px;
     margin-bottom: 10px;
 }
+
 .sfs2 {
     position: relative;
     background: #fff;
@@ -465,12 +491,14 @@ height:200px;
     transition: all .3s ease;
     border: 1px solid #ddd;
 }
+
 .sfs3 {
     border-top-left-radius: 8px;
     border-top-right-radius: 8px;
-    height: 200px;
+    height: 150px;
     margin: 0 auto;
 }
+
 .sfs4 {
     line-height: 2.25rem;
     border-bottom: 1px solid #ddd;
@@ -480,39 +508,56 @@ height:200px;
     color: #121212;
     font-weight: 800;
 }
+
 .sfs5 {
     border-bottom: 1px solid #ddd;
     margin-right: 0px;
     margin-left: 0px;
     padding: 5px;
 }
+
 .sfs6 {
     border-bottom: 1px solid #ddd;
     margin-right: 0px;
     margin-left: 0px;
     padding: 9px;
 }
+
 .sfs7 {
     display: block;
     bottom: 0;
     right: 0;
     left: 0;
     text-align: center;
-    height: 60px;
-    line-height: 60px;
-    background: #20b3e4;
+    height: 47px;
+    line-height: 47px;
+    background: #f36d6d;
     color: #fff;
     border-radius: 0 0 5px 5px;
     text-transform: uppercase;
 }
-.sfs10{
+.sfs7:hover{
+    text-decoration:none;
+    color:#fff;
+}
+/*.sfs10 {
     margin-right: 0px;
     margin-left: 0px;
-}
-.sfs12{    height: 200px;
+}*/
+
+.sfs12 {
+    height: 150px;
     margin: 0 auto;
-    width: 100%;}
-.rent_buy_congun{
+    width: 100%;
+}
+.sfs15 {
+    font-size: 31px;
+}
+.sfs16 {
+margin-top:6px;
+margin-bottom:6px;  
+}
+.rent_buy_congun {
     margin-top: -41px;
     background: green;
     margin-right: -32px;
@@ -525,22 +570,28 @@ height:200px;
     height: 35px;
     text-align: center;
 }
-.congun_rental_table>tbody>tr>td{
 
+.congun_rental_table > tbody > tr > td {
     border-top: 0px solid #ddd;
 }
-.congun_rental_image{
+
+.congun_rental_image {
     width: 75px;
 }
-.congun_rental_row{
-    border: 1px solid #ddd;border-radius: 5px;    padding: 40px 0px 14px;
+
+.congun_rental_row {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 40px 0px 14px;
 }
-.congun_filter_rental{
-   border: 1px solid #ddd;
-   border-radius: 7px;
-   padding: 42px;
+
+.congun_filter_rental {
+    border: 1px solid #ddd;
+    border-radius: 7px;
+    padding: 42px;
 }
-.checkbox label:after, 
+
+.checkbox label:after,
 .radio label:after {
     content: '';
     display: table;
@@ -563,71 +614,81 @@ height:200px;
     border-radius: 50%;
 }
 
-.checkbox .cr .cr-icon,
-.radio .cr .cr-icon {
-    position: absolute;
-    font-size: .8em;
-    line-height: 0;
-    top: 50%;
-    left: 20%;
-}
+    .checkbox .cr .cr-icon,
+    .radio .cr .cr-icon {
+        position: absolute;
+        font-size: .8em;
+        line-height: 0;
+        top: 50%;
+        left: 20%;
+    }
 
-.radio .cr .cr-icon {
-    margin-left: 0.04em;
-}
+    .radio .cr .cr-icon {
+        margin-left: 0.04em;
+    }
 
 .checkbox label input[type="checkbox"],
 .radio label input[type="radio"] {
     display: none;
 }
 
-.checkbox label input[type="checkbox"] + .cr > .cr-icon,
-.radio label input[type="radio"] + .cr > .cr-icon {
-    transform: scale(3) rotateZ(-20deg);
-    opacity: 0;
-    transition: all .3s ease-in;
-}
+    .checkbox label input[type="checkbox"] + .cr > .cr-icon,
+    .radio label input[type="radio"] + .cr > .cr-icon {
+        transform: scale(3) rotateZ(-20deg);
+        opacity: 0;
+        transition: all .3s ease-in;
+    }
 
-.checkbox label input[type="checkbox"]:checked + .cr > .cr-icon,
-.radio label input[type="radio"]:checked + .cr > .cr-icon {
-    transform: scale(1) rotateZ(0deg);
-    opacity: 1;
-}
+    .checkbox label input[type="checkbox"]:checked + .cr > .cr-icon,
+    .radio label input[type="radio"]:checked + .cr > .cr-icon {
+        transform: scale(1) rotateZ(0deg);
+        opacity: 1;
+    }
 
-.checkbox label input[type="checkbox"]:disabled + .cr,
-.radio label input[type="radio"]:disabled + .cr {
-    opacity: .5;
-}
+    .checkbox label input[type="checkbox"]:disabled + .cr,
+    .radio label input[type="radio"]:disabled + .cr {
+        opacity: .5;
+    }
+
 .gallery {
 }
-.gallery .previews, .gallery .full, .gallery .desc {
-    float: left;
-    margin-right: 10px;
-}
-.gallery .desc, .gallery .full {
-    width: 420px;
-    font-size: 12px;
-}
-.gallery .desc h2 {
-    margin-top: 0;
-}
-.gallery .previews a {
-    display: block;
-    margin-bottom: 10px;
-}
-.gallery .full, .gallery .full img {
-    height: 500px;
-    width: 420px
-}
-.gallery .previews a, .gallery .full {
-    border: 4px solid #eee;
-}
-.gallery .previews a:hover, .gallery .previews a.selected {
-    border: 4px solid #777;
-}
-.gallery .full img:hover {
-    cursor: pointer;
-}
+
+    .gallery .previews, .gallery .full, .gallery .desc {
+        float: left;
+        margin-right: 10px;
+    }
+
+    .gallery .desc, .gallery .full {
+        width: 420px;
+        font-size: 12px;
+    }
+
+        .gallery .desc h2 {
+            margin-top: 0;
+        }
+
+    .gallery .previews a {
+        display: block;
+        margin-bottom: 10px;
+    }
+
+    .gallery .full, .gallery .full img {
+        height: 500px;
+        width: 420px;
+    }
+
+    .gallery .previews a, .gallery .full {
+        border: 4px solid #eee;
+    }
+
+        .gallery .previews a:hover, .gallery .previews a.selected {
+            border: 4px solid #777;
+        }
+
+        .gallery .full img:hover {
+            cursor: pointer;
+        }
+
 .clearfix:after {
     content: ".";
     visibility: hidden;
@@ -636,523 +697,850 @@ height:200px;
     clear: both;
 }
 
-.fontcongunicon{
-   font-size: 18px;
-   margin-right: 5px;
+.fontcongunicon {
+    font-size: 18px;
+    margin-right: 5px;
 }
-.fontcongunname{
-   font-size: 16px;
-   font-weight: 400;
+
+.fontcongunname {
+    font-size: 16px;
+    font-weight: 400;
 }
-.table>tbody>tr>td{
-    padding: 19px 0px 19px 0px;
+
+.table > tbody > tr > td {
+    padding: 12px 0px 8px 0px;
 }
-ul .a-list-item{
+
+ul .a-list-item {
     color: #111;
 }
-.a-ordered-list li, .a-unordered-list li, ol li, ul li{
+
+.a-ordered-list li, .a-unordered-list li, ol li, ul li {
     word-wrap: break-word;
     margin: 0;
 }
+
 .a-unordered-list, ul {
     margin: 0 0 18px 18px;
     color: #949494;
 }
+
 .commentlist li {
     margin-bottom: 20px;
     clear: both;
     position: relative;
     clear: both;
     list-style: none;
-    }.comment-wrap {
+}
+
+.comment-wrap {
+    position: relative;
+    border-bottom: 1px solid #E7E7E7;
+}
+
+.comment-avatar {
+    float: left;
+    margin: 0 10px 0 0;
+}
+
+.commentlist li img {
+    opacity: 1;
+    -webkit-transition: all .4s ease-in-out;
+    -moz-transition: all .4s ease-in-out;
+    -o-transition: all .4s ease-in-out;
+    transition: all .4s ease-in-out;
+}
+
+.comment-content {
+    position: relative;
+    display: block;
+    overflow: hidden;
+    padding-bottom: 15px;
+    margin-left: 80px;
+    min-height: 80px;
+}
+
+.author-comment {
+    overflow: hidden;
+    position: relative;
+    margin-bottom: 5px;
+}
+
+    .author-comment cite {
+        color: #3b3b3b;
         position: relative;
-        border-bottom: 1px solid #E7E7E7;
-        }.comment-avatar {
-            float: left;
-            margin: 0 10px 0 0;
-            }.commentlist li img{
-                opacity: 1;
-                -webkit-transition: all .4s ease-in-out;
-                -moz-transition: all .4s ease-in-out;
-                -o-transition: all .4s ease-in-out;
-                transition: all .4s ease-in-out;
-            }
-            .comment-content {
-                position: relative;
-                display: block;
-                overflow: hidden;
-                padding-bottom: 15px;
-                margin-left: 80px;
-                min-height: 80px;
-            }
-            .author-comment {
-                overflow: hidden;
-                position: relative;
-                margin-bottom: 5px;
-            }
-            .author-comment cite {
-                color: #3b3b3b;
-                position: relative;
-                display: block;
-                margin-bottom: 2px;
-                padding-top: 5px;
-                font-style: normal;
-                font-weight: bold;
-                float: left;
-            }
-            .commentmetadata {
-                display: block;
-                font-size: 85%;
-                float: right;
-                padding-top: 5px;
-            }
-            .clear {
-                clear: both;
-            }
-            .comment-content p {
-                line-height: 17px;
-                margin-bottom: 10px;
-            }
-            #respondcomment {
-                margin-bottom: 10px;
-                position: relative;
-                clear: both;
-                border: 1px solid #ddd;
-                padding: 22px;
-                border-radius: 8px;
-            }
-            #respond:before {
-                height: 1px;
-            }
-            #respond h3 {
-                float: left;
-                margin-right: 10px;
-                font-size: 22px;
-                font-family: "raleway", serif;
-            }
-            .exampleInputUsername {
-                font-size: 18px;
-                font-weight: 500;
-                font-family: "raleway", serif;
-                color: #000;
-            }
-            .scrolldoownbtn {
-                background: #ffd740;
-                border-color: #ffd740;
-                color: #fff;
-                font-size: 18px;
-            }
-            .scrolldoownbtn:hover, .scrolldoownbtn:active, .scrolldoownbtn:focus, .scrolldoownbtn:visited {
-                background: #ffd740;
-                border-color: #ffd740;
-                color: #fff;
-            }
-            @keyframes blink {
-                0% {
-                    opacity: 1;
-                }
+        display: block;
+        margin-bottom: 2px;
+        padding-top: 5px;
+        font-style: normal;
+        font-weight: bold;
+        float: left;
+    }
 
-                50% {
-                    opacity: 0;
-                }
+.commentmetadata {
+    display: block;
+    font-size: 85%;
+    float: right;
+    padding-top: 5px;
+}
 
-                100% {
-                    opacity: 1;
-                }
-            }
+.clear {
+    clear: both;
+}
 
-            @-webkit-keyframes blink {
-                0% {
-                    opacity: 1;
-                }
+.comment-content p {
+    line-height: 17px;
+    margin-bottom: 10px;
+}
 
-                50% {
-                    opacity: 0;
-                }
+#respondcomment {
+    margin-bottom: 10px;
+    position: relative;
+    clear: both;
+    border: 1px solid #ddd;
+    padding: 22px;
+    border-radius: 8px;
+}
 
-                100% {
-                    opacity: 1;
-                }
-            }
+#respond:before {
+    height: 1px;
+}
 
-            @-moz-keyframes blink {
-                0% {
-                    opacity: 1;
-                }
+#respond h3 {
+    float: left;
+    margin-right: 10px;
+    font-size: 22px;
+    font-family: "raleway", serif;
+}
 
-                50% {
-                    opacity: 0;
-                }
+.exampleInputUsername {
+    font-size: 18px;
+    font-weight: 500;
+    font-family: "raleway", serif;
+    color: #000;
+}
 
-                100% {
-                    opacity: 1;
-                }
-            }
+.scrolldoownbtn {
+    background: #ffd740;
+    border-color: #ffd740;
+    color: #fff;
+    font-size: 18px;
+}
 
-            .congun_footer_color {
-                background: #000 url(/images/pattern.png);
-                color: #fff;
-                padding: 30px;
-            }
+    .scrolldoownbtn:hover, .scrolldoownbtn:active, .scrolldoownbtn:focus, .scrolldoownbtn:visited {
+        background: #ffd740;
+        border-color: #ffd740;
+        color: #fff;
+    }
 
-            .congun_ul_h4 {
-                padding-bottom: 22px;
-                color: #02d8ff;
-                font-size: 15px;
-                letter-spacing: 1px;
-                font-family: ubuntu;
-                font-weight: bold;
-            }
+::-webkit-scrollbar {
+    width: 5px;
+}
+::-webkit-scrollbar-thumb {
+    border-radius: 5px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
+    -moz-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
+    -ms-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
+    -o-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
+    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
+    background-color: #f36d6d;
+}
+::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    -moz-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    -ms-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    border-radius: 5px;
+}
 
-            .congun_ul {
-                padding: 0px;
-            }
+@keyframes blink {
+    0% {
+        opacity: 1;
+    }
 
-            .congun_ul li {
-                list-style: none;
-            }
+    50% {
+        opacity: 0;
+    }
 
-            .congun_ul li a {
-                letter-spacing: .07rem;
-                transition: all 0.25s ease-out;
-                color: rgba(255, 255, 255, 0.71);
-                display: block;
-                padding: 0 0 7px;
-                font-size: 14px;
-                font-weight: 400;
-            }
+    100% {
+        opacity: 1;
+    }
+}
+
+@-webkit-keyframes blink {
+    0% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+@-moz-keyframes blink {
+    0% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+.congun_footer_color {
+    background: #000 url(/images/pattern.png);
+    color: #fff;
+    padding: 30px;
+}
+
+.congun_ul_h4 {
+    padding-bottom: 22px;
+    color: #f36d6d;
+    font-size: 15px;
+    letter-spacing: 1px;
+    font-family: ubuntu;
+    font-weight: bold;
+}
+
+.congun_ul {
+    padding: 0px;
+}
+
+    .congun_ul li {
+        list-style: none;
+    }
+
+        .congun_ul li a {
+            letter-spacing: .07rem;
+            transition: all 0.25s ease-out;
+            color: rgba(255, 255, 255, 0.71);
+            display: block;
+            padding: 0 0 7px;
+            font-size: 14px;
+            font-weight: 400;
+        }
 
             .congun_ul li a:hover {
                 text-decoration: none;
             }
 
-            .congun_ul_li_p {
-                color: rgba(255, 255, 255, 0.71);
-            }
+.congun_ul_li_p {
+    color: rgba(255, 255, 255, 0.71);
+}
 
-            .fileinput-button {
-                position: relative;
-                overflow: hidden;
-            }
+.fileinput-button {
+    position: relative;
+    overflow: hidden;
+}
 
-            .fileinput-button input {
-                position: absolute;
-                top: 0;
-                right: 0;
-                margin: 0;
-                opacity: 0;
-                -ms-filter: 'alpha(opacity=0)';
-                font-size: 200px;
-                direction: ltr;
-                cursor: pointer;
-            }
+    .fileinput-button input {
+        position: absolute;
+        top: 0;
+        right: 0;
+        margin: 0;
+        opacity: 0;
+        -ms-filter: 'alpha(opacity=0)';
+        font-size: 200px;
+        direction: ltr;
+        cursor: pointer;
+    }
 
-            .test {
-                margin-top: 23px;
-            }
+.test {
+    margin-top: 23px;
+}
 
-            .test a {
-                color: #fff;
-                text-align: center;
-                text-decoration: none;
-                font-family: fontawesome;
-                position: relative;
-                display: inline-block;
-                width: 40px;
-                height: 40px;
-                padding-top: 12px;
-                margin: 0 2px;
-                transition: all .5s;
-            }
+    .test a {
+        color: #fff;
+        text-align: center;
+        text-decoration: none;
+        font-family: fontawesome;
+        position: relative;
+        display: inline-block;
+        width: 40px;
+        height: 40px;
+        padding-top: 12px;
+        margin: 0 2px;
+        transition: all .5s;
+    }
 
-            .fontsize12em {
-                font-size: 1.2em !important;
-            }
+.fontsize12em {
+    font-size: 1.2em !important;
+}
 
-            /* Fixes for IE < 8 */
-            @media screen\9 {
-                .fileinput-button input {
-                    filter: alpha(opacity=0);
-                    font-size: 100%;
-                    height: 100%;
-                }
-            }
+/* Fixes for IE < 8 */
+@media screen\9 {
+    .fileinput-button input {
+        filter: alpha(opacity=0);
+        font-size: 100%;
+        height: 100%;
+    }
+}
 
-            .shadowBorderBottomRight {
-                -webkit-box-shadow: 5px 8px 0px #ccc5c5;
-                -moz-box-shadow: 5px 8px 0px #ccc5c5;
-                box-shadow: 5px 8px 0px #ccc5c5;
-                padding: 5px;
-            }
+.shadowBorderBottomRight {
+    -webkit-box-shadow: 5px 8px 0px #ccc5c5;
+    -moz-box-shadow: 5px 8px 0px #ccc5c5;
+    box-shadow: 5px 8px 0px #ccc5c5;
+    padding: 5px;
+}
 
-            .color:hover {
-                background: indigo; /* For browsers that do not support gradients */
-                background: -webkit-linear-gradient(#1fc8db, #c4f5f2); /* For Safari 5.1 to 6.0 */
-                background: -o-linear-gradient(#1fc8db, #c4f5f2); /* For Opera 11.1 to 12.0 */
-                background: -moz-linear-gradient(#1fc8db, #c4f5f2); /* For Firefox 3.6 to 15 */
-                background: linear-gradient(#1fc8db, #c4f5f2); /* Standard syntax (must be last) */
-                cursor: pointer;
-            }
+.color:hover {
+    background: indigo; /* For browsers that do not support gradients */
+    background: -webkit-linear-gradient(#1fc8db, #c4f5f2); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(#1fc8db, #c4f5f2); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(#1fc8db, #c4f5f2); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(#1fc8db, #c4f5f2); /* Standard syntax (must be last) */
+    cursor: pointer;
+}
 
-            .contactus_congun_image_mobile {
-                width: 60px;
-            }
-            .customimage_congun img {
-                width: 100%;
-                height: 150px;
-            }
-            .customimage_congun_12 img {
-                width: 100%;
-                height: 300px;
-            }
+.contactus_congun_image_mobile {
+    width: 60px;
+}
+
+.customimage_congun img {
+    width: 100%;
+    height: 150px;
+}
+
+.customimage_congun_12 img {
+    width: 100%;
+    height: 300px;
+}
+
 .navbar-default .navbar-toggle .icon-bar {
     background-color: #ffffff;
 }
+
 .navbar-default .navbar-toggle:hover .icon-bar, .navbar-default .navbar-toggle:focus .icon-bar {
-    background-color: #02d8ff;
+    background-color: #f36d6d;
 }
+
 .navbar-default .navbar-toggle {
     border-color: #ffffff;
 }
+
     .navbar-default .navbar-toggle:hover, .navbar-default .navbar-toggle:focus {
         background-color: #fff;
     }
-            @media (min-width: 1024px) {
-                .footer-menu.wid-50-left {
-                                width: 42%;
-                                float: left;
-                            }
-                .shadowBorder h4 {
-                    font-weight: 800;
-                    font-size: 14px;
-                    margin-top: 15px;
-                    margin-bottom: 11px;
-                }
-            }
-
-            @media (min-width: 1024px) {
-                .list-unstyled {
-                    padding-left: 0;
-                    list-style: none;
-                }
-            }
-
-
-            @media(max-width: 900px) {
-                .FeaturedBuyMargin {
-                    margin-top: 20px;
-                }
-            }
-
-            @media (max-width:768px) {
-                .Congun_Products_00 {
-                    padding: 17px 17px;
-                }
-                .hero_congun_image {
-                    height: 276px;
-                }
-				.inputCongun_00 {
-    display: inline;
-    border-radius: 0px;
-    width: 357px;
-    height: 55px;
+.congun_btn_00_mobile {
+    color: #f36d6d;
 }
-.hero_congun_image{
-	
-background-position: 100% 100%;
-background-attachment: inherit;
+#divComments .form-group {
+    margin-right:0px;
+    margin-left:0px;
 }
-            }
+.sfs17 {
+    width: 107px;
+}
+@media only screen and (max-width: 1024px) {
+    .help-tip {
+        right: 7px;
+    } 
+    .list-unstyled {
+        padding-left: 0;
+        list-style: none;
+    }
+
+    .footer-menu.wid-50-left {
+        width: 42%;
+        float: left;
+    }
+
+    .shadowBorder h4 {
+        font-weight: 800;
+        font-size: 14px;
+        margin-top: 15px;
+        margin-bottom: 11px;
+    }
+}
 
 
-            @media (max-width:425px) {
-                .congun_rent_h2 h2{
-                    font-size:25px;
-                }
-                .congun_cfs_col{
-                    margin-top:15px;
-                }
-                .margintop20 {
-                    margin-top: 15px;
-                }
-                .hero_congun_image {
-                    background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(../Images/C772755.jpg);
-                    background-position: 33% -188px;
-                    padding: 10px;
-                    background-attachment: fixed;
-                    width: 100%;
-                    height: 260px;
-                    background-repeat: no-repeat;
-                    -webkit-background-size: cover;
-                    -moz-background-size: cover;
-                    -o-background-size: cover;
-                    background-size: cover;
-                }
-                .FeaturedBuyMargin h2{
-                    font-size:25px;
-                }
-                .congun_image_feature{
-                    width:100%;
-                    height:150px;
-                }
-                .customimage_congun img {
-                    width: 100%;
-                    height: 120px;
-                } 
-                .hero-content h1 {
-                    font-size: 18px;
-                }
+@media only screen and (max-width: 900px) {
+    .FeaturedBuyMargin {
+        margin-top: 20px;
+    }
+}
 
-                .inputCongun_00 {
-                    display: inline;
-                    border-radius: 0px;
-                    width: 200px;
-                    height: 55px;
-                }
+@media only screen and (max-width:768px) {
+    .help-tip {
+        right: 76px;
+    }
+    h3, .h3 {
+        font-size: 16px;
+    }
 
-                .inputCongun_01 {
-                    display: inline;
-                    margin-left: -4px;
-                    width: 100px;
-                    margin-right: -3px;
-                    border: none;
-                    border-radius: 0px;
-                    height: 55px;
-                    box-shadow: none;
-                    transition: none;
-                }
+    .fontcongunname {
+        font-size: 12px;
+        font-weight: 400;
+    }
 
-                .inputCongun_02 {
-                    margin-top: 15px;
-                }
+    .sfs15 {
+        font-size: 20px;
+    }
 
-                .shadowBorder_mobile {
-                    background: #fff;
-                    -webkit-box-shadow: 0px 5px 1px #ccc5c5;
-                    -moz-box-shadow: 0px 5px 1px #ccc5c5;
-                    box-shadow: 0px 5px 1px #ccc5c5;
-                    padding: 15px;
-                    border: 1px solid #ddd;
-                }
+    .gallery .full, .gallery .full img {
+        height: 350px;
+        width: 335px;
+    }
 
-                .shadowBorder_mobile h4 {
-                    font-weight: 800;
-                    font-size: 10px;
-                    margin-top: 15px;
-                    margin-bottom: 18px;
-                }
+    .Congun_Products_00 {
+        padding: 17px 17px;
+    }
 
-                .congun_btn_00 {
-                    text-decoration: none;
-                    color: #009dff;
-                    font-weight: 800;
-                    letter-spacing: 1.1px;
-                    font-size: 16px;
-                }
+    .hero_congun_image {
+        height: 276px;
+    }
 
-                .contactus_congun_image_mobile {
-                    width: 42px;
-                }
-
-                .contactus_congun_image_h2_mobile {
-                    font-size: 15px;
-                }
-
-                .Congun_Products_00 {
-                    padding: 17px 0px;
-                }
-
-                .marginleft25minus {
-                    margin-left: 0px;
-                }
-            }
-            @media (max-width: 375px){
-                .shadowBorder_mobile {
-                    background: transparent;
-                    -webkit-box-shadow: none;
-                    -moz-box-shadow: none;
-                    box-shadow: none;
-                    padding: 1px;
-                    border: 0px solid #ddd;
-                }
-            }
-
-@media (max-width:320px) {
     .inputCongun_00 {
         display: inline;
         border-radius: 0px;
-        width: 200px;
-        height: 39px;
+        width: 357px;
+        height: 40px;
     }
 
-    .hero-content {
-        padding-top: 21px;
+    .hero_congun_image {
+        background-position: 100% 100%;
+        background-attachment: inherit;
     }
-    .inputCongun_01{
-        display:none;
-    }
-    .inputCongun_02 {
-        display: inline;
-        border-radius: 0px;
-        height: 42px;
-        width: 175px;
-        background-color: #02d8ff;
-        border-color: #02d8ff;
-        border: 1px solid #02d8ff;
-        font-size: 18px;
-        margin-top: 15px;
-    }
-    .FeaturedBuyMargin h2 {
-        font-size: 18px;
-    }
-    .congun_rent_h2 h2 {
-        font-size: 18px;
-    }
-    .shadowBorder_mobile {
-        background: transparent;
-        -webkit-box-shadow: none;
-        -moz-box-shadow: none;
-        box-shadow: none;
-        padding: 1px;
-        border: 0px solid #ddd;
-    }
+
     .hero-content h1 {
-        font-size: 14px;
+        font-size: 27px;
     }
 
+    .conguTab li a {
+        padding: 4px 41px !important;
+    }
+
+    .shadowBorder_mobile {
+        border: 1px solid #ddd;
+        padding: 10px;
+        border-radius: 2px;
+    }
+    .custom-combobox-input {
+        margin: 0;
+        padding: 5px 10px;
+        width: 530px;
+    }
 }
 
+@media only screen and (max-width:767px) {
+    .custom-combobox-input {
+        margin: 0;
+        padding: 5px 10px;
+        width: 530px;
+    }
+    .sfs15 {
+        font-size: 15px;
+    }
 
-            /*set a border on the images to prevent shifting*/
-            #gallery_01 img {
-                border: 2px solid white;
+    .sfs17 {
+        width: 55px;
+    }
+
+    .gallery .full, .gallery .full img {
+        height: 300px;
+        width: 310px;
+    }
+    .gallery .previews, .gallery .full, .gallery .desc {
+        float: left;
+        margin-right: 5px;
+    }
+}
+
+    @media only screen and (max-width:425px) {
+        .help-tip{
+            right:19px;
+        } .gallery .previews, .gallery .full, .gallery .desc {
+            float: left;
+            margin-right: 5px;
+        }
+
+        .sfs15 {
+            font-size: 15px;
+        }
+
+        .sfs17 {
+            width: 55px;
+        }
+
+        .gallery .full, .gallery .full img {
+            height: 300px;
+            width: 310px;
+        }
+
+        .congun_rent_h2 h2 {
+            font-size: 25px;
+        }
+
+        .congun_cfs_col {
+            margin-top: 15px;
+        }
+
+        .margintop20 {
+            margin-top: 0px;
+        }
+
+        .hero_congun_image {
+            background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(../Images/C772755.jpg);
+            background-position: 33% -188px;
+            padding: 10px;
+            background-attachment: fixed;
+            width: 100%;
+            height: 260px;
+            background-repeat: no-repeat;
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+            background-size: cover;
+        }
+
+        .FeaturedBuyMargin h2 {
+            font-size: 25px;
+        }
+
+        .congun_image_feature {
+            width: 100%;
+            height: 150px;
+        }
+
+        .customimage_congun img {
+            width: 100%;
+            height: 120px;
+        }
+
+        .hero-content h1 {
+            font-size: 18px;
+        }
+
+        .inputCongun_00 {
+            display: inline;
+            border-radius: 0px;
+            width: 200px;
+            height: 40px;
+        }
+
+        .inputCongun_01 {
+            display: inline;
+            margin-left: -4px;
+            width: 100px;
+            margin-right: -3px;
+            border: none;
+            border-radius: 0px;
+            height: 55px;
+            box-shadow: none;
+            transition: none;
+        }
+
+        .shadowBorder_mobile {
+            background: #fff;
+            -webkit-box-shadow: 0px 5px 1px #ccc5c5;
+            -moz-box-shadow: 0px 5px 1px #ccc5c5;
+            box-shadow: 0px 5px 1px #ccc5c5;
+            padding: 15px;
+            border: 1px solid #ddd;
+        }
+
+            .shadowBorder_mobile h4 {
+                font-weight: 800;
+                font-size: 10px;
+                margin-top: 15px;
+                margin-bottom: 18px;
             }
 
-            /*Change the colour*/
-            .active img {
-                border: 2px solid #333 !important;
-            }
+        .congun_btn_00 {
+            text-decoration: none;
+            color: #009dff;
+            font-weight: 800;
+            letter-spacing: 1.1px;
+            font-size: 16px;
+        }
 
-            .fa-plus-circle:hover {
-                color: blueviolet;
-            }
+        .contactus_congun_image_mobile {
+            width: 42px;
+        }
 
-            div.ui-datepicker {
-                font-size: 12px;
-            }
+        .contactus_congun_image_h2_mobile {
+            font-size: 15px;
+        }
 
-            .dashboardRentalGrad {
-                background: indigo; /* For browsers that do not support gradients */
-                background: -webkit-linear-gradient(indigo, violet); /* For Safari 5.1 to 6.0 */
-                background: -o-linear-gradient(indigo, violet); /* For Opera 11.1 to 12.0 */
-                background: -moz-linear-gradient(indigo, violet); /* For Firefox 3.6 to 15 */
-                background: linear-gradient(indigo, violet); /* Standard syntax (must be last) */
-                color: white;
-            }
+        .Congun_Products_00 {
+            padding: 17px 17px;
+        }
 
-            .shadowBorderDetail {
-                background: #fff;
-                -webkit-box-shadow: 0px 5px 1px #ccc5c5;
-                -moz-box-shadow: 0px 5px 1px #ccc5c5;
-                box-shadow: 0px 5px 1px #ccc5c5;
-            }
+        .marginleft25minus {
+            margin-left: 0px;
+        }
+
+        .clearfx_congun {
+            margin-top: 0px;
+            margin-bottom: 0px;
+        }
+
+        .conguTab li a {
+            margin-right: -5px;
+            line-height: 1.428571429;
+            border: 1px solid #fff;
+            border-radius: 2px;
+            padding: 10px 41px !important;
+            color: #fff;
+            font-size: 12px;
+        }
+
+        .conguTab li a {
+            padding: 2px 41px !important;
+        }
+
+        .customimage_congun_12 img {
+            width: 100%;
+            height: 200px;
+        }
+    }
+
+    @media only screen and (max-width: 375px) {
+        .custom-combobox-input {
+            margin: 0;
+            padding: 5px 10px;
+            width: 278px;
+        }
+        .gallery .previews, .gallery .full, .gallery .desc {
+            float: left;
+            margin-right: 5px;
+        }
+
+        .sfs15 {
+            font-size: 15px;
+        }
+
+        .sfs17 {
+            width: 55px;
+        }
+
+        .gallery .full, .gallery .full img {
+            height: 300px;
+            width: 260px;
+        }
+
+        .customimage_congun_12 img {
+            width: 100%;
+            height: 200px;
+        }
+
+        .shadowBorder_mobile {
+            background: transparent;
+            -webkit-box-shadow: none;
+            -moz-box-shadow: none;
+            box-shadow: none;
+            padding: 1px;
+            border: 0px solid #ddd;
+        }
+
+        .shadowBorder_mobile {
+            background: #fff;
+            -webkit-box-shadow: 0px 5px 1px #ccc5c5;
+            -moz-box-shadow: 0px 5px 1px #ccc5c5;
+            box-shadow: 0px 5px 1px #ccc5c5;
+            padding: 6px;
+            border: 1px solid #ddd;
+        }
+
+        .FeaturedBuyMargin h2 {
+            font-size: 23px;
+        }
+
+        .inputCongun_02 {
+            display: inline;
+            border-radius: 0px;
+            height: 40px;
+            width: 100%;
+            background-color: #f36d6d;
+            border-color: #f36d6d;
+            border: 1px solid #f36d6d;
+            font-size: 17px;
+            margin-top: 0px;
+            margin-left: 0px;
+        }
+
+        .inputCongun_00 {
+            display: inline;
+            border-radius: 0px;
+            width: 100%;
+            height: 40px;
+        }
+
+        .conguTab li a {
+            margin-right: -5px;
+            line-height: 1.428571429;
+            border: 1px solid #fff;
+            border-radius: 2px;
+            padding: 10px 41px !important;
+            color: #fff;
+            font-size: 13px;
+        }
+
+        .conguTab li a {
+            padding: 2px 41px !important;
+        }
+    }
+
+    @media only screen and (max-width:320px) {
+        .custom-combobox-input {
+            margin: 0;
+            padding: 5px 10px;
+            width: 235px;
+        }
+        .gallery .previews, .gallery .full, .gallery .desc {
+            float: left;
+            margin-right: 5px;
+        }
+
+        .sfs17 {
+            width: 45px;
+        }
+
+        .sfs15 {
+            font-size: 15px;
+        }
+
+        .gallery .full, .gallery .full img {
+            height: 300px;
+            width: 220px;
+        }
+
+        .customimage_congun_12 img {
+            width: 100%;
+            height: 200px;
+        }
+
+        .shadowBorder_mobile {
+            background: #fff;
+            -webkit-box-shadow: none;
+            -moz-box-shadow: none;
+            box-shadow: none;
+            padding: 6px;
+            border: 1px solid #ddd;
+            font-size: 10px;
+        }
+
+        .inputCongun_00 {
+            display: inline;
+            border-radius: 0px;
+            width: 265px;
+            height: 40px;
+        }
+
+        .hero-content {
+            padding-top: 21px;
+        }
+
+        .inputCongun_01 {
+            display: none;
+        }
+
+        .conguTab li a {
+            padding: 3px 41px !important;
+        }
+
+        .conguTab li a {
+            font-size: 12px;
+        }
+
+        .inputCongun_02 {
+            margin-left: 1px;
+            display: inline;
+            border-radius: 0px;
+            height: 40px;
+            width: 265px;
+            background-color: #f36d6d;
+            border-color: #f36d6d;
+            border: 1px solid #f36d6d;
+            font-size: 18px;
+            margin-top: 0px;
+        }
+
+        .FeaturedBuyMargin h2 {
+            font-size: 18px;
+        }
+
+        .congun_rent_h2 h2 {
+            font-size: 18px;
+        }
+
+        .shadowBorder_mobile h4 {
+            font-weight: 800;
+            font-size: 6px;
+            margin-top: 15px;
+            margin-bottom: 18px;
+        }
+
+        .hero-content h1 {
+            font-size: 14px;
+        }
+    }
+
+
+    /*set a border on the images to prevent shifting*/
+    #gallery_01 img {
+        border: 2px solid white;
+    }
+
+    /*Change the colour*/
+    .active img {
+        border: 2px solid #333 !important;
+    }
+
+    .fa-plus-circle:hover {
+        color: blueviolet;
+    }
+
+    div.ui-datepicker {
+        font-size: 12px;
+    }
+
+    .dashboardRentalGrad {
+        background: indigo; /* For browsers that do not support gradients */
+        background: -webkit-linear-gradient(indigo, violet); /* For Safari 5.1 to 6.0 */
+        background: -o-linear-gradient(indigo, violet); /* For Opera 11.1 to 12.0 */
+        background: -moz-linear-gradient(indigo, violet); /* For Firefox 3.6 to 15 */
+        background: linear-gradient(indigo, violet); /* Standard syntax (must be last) */
+        color: white;
+    }
+
+    .shadowBorderDetail {
+        background: #fff;
+        -webkit-box-shadow: 0px 5px 1px #ccc5c5;
+        -moz-box-shadow: 0px 5px 1px #ccc5c5;
+        box-shadow: 0px 5px 1px #ccc5c5;
+    }
+
+    label {
+        font-weight: normal;
+    }
+
+    .form-control {
+        border-radius: 0px !important;
+    }
+
+    a#JqueryComboBoxArrow {
+        border-radius: 0px;
+    }
+
+    input.custom-combobox-input.ui-widget.ui-widget-content.ui-state-default.ui-corner-left.ui-autocomplete-input {
+        border-radius: 0px;
+    }
+
+    .form-horizontal .control-label {
+        text-align: left;
+    }
+
+    .btn {
+        border-radius: 0px;
+    }

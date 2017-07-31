@@ -3,8 +3,35 @@
 @{
     ViewBag.Title = "Post your Equipment";
 }
-<script src="~/Scripts/jquery-ui-1.11.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <link href="~/Content/themes/base/all.css" rel="stylesheet" />
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<script src="~/Scripts/jqueryCombobox.js"></script>
+<style>
+    .custom-combobox {
+        position: relative;
+        display: inline-block;
+    }
+
+    .custom-combobox-toggle {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        margin-left: -1px;
+        padding: 0;
+    }
+
+    .custom-combobox-input {
+        margin: 0;
+        padding: 5px 10px;
+        width: 330px;
+    }
+
+    #ui-id-1 {
+        height: 300px;
+        overflow-y: auto;
+    }
+</style>
 <script type="text/javascript">
     var userType = "";
     $(document).ready(function () {
@@ -15,11 +42,16 @@
             $("#hdnYearSelected").val($("#YearOption").val());
         });
 
-        $('#txtEquipmentTypeOption').autocomplete(
+
+        @*$('#txtEquipmentTypeOption').autocomplete(
         {
+            minLength: 0,
             source: '@Url.Action("EquipmentTypeSearch", "Used")',
             close: function (event, ui) { SetEquipValue(); }
-        });
+        }).focus(function () {
+            $('#txtEquipmentTypeOption').autocomplete("search", "");
+        });*@
+
 
         if ($("#UserName").val() != "") {
             $("#divUserFields").css("display", "block");
@@ -60,11 +92,17 @@
                 }
             }
         });
+
+        $("#EquipmentTypeOption").combobox({
+            select: function (event, ui) {
+                $("#hdnEquipmentTypeSelected").val(ui.item.value);
+            }
+        });
     });
 
-    function SetEquipValue() {
-        $("#hdnEquipmentTypeSelected").val($("#txtEquipmentTypeOption").val().split("-")[1].trim());
-    }
+    //function SetEquipValue() {
+    //    $("#hdnEquipmentTypeSelected").val($("#txtEquipmentTypeOption").val().split("-")[1].trim());
+    //}
 
     function ValidateFields(type) {
         userType = type;
@@ -114,8 +152,6 @@
     }
 </script>
 
-
-
 @using (Html.BeginForm("Create", "Used", FormMethod.Post, new { enctype = "multipart/form-data", role = "form", @id = "UsedCreateForm" }))
 {
     @Html.AntiForgeryToken()
@@ -130,36 +166,36 @@
                 <span class="text-danger">@ViewBag.ErrorMessageLogin</span>
             }
             <div class="form-group">
-                <div class="col-md-2">
-                    <div class="col-md-11 control-label">
+                <div class="col-md-2 col-lg-2 col-sm-12 col-xs-12">
+                    <label>
                         @Html.LabelFor(model => model.EquipmentType, new { @class = "" })
-                    </div>
-                    <div style="text-align:center;color:red;font-size:15pt;" class="control-label">
+                    </label>
+                    <span style="text-align:center;color:red;font-size:15pt;">
                         *
-                    </div>
+                    </span>
                 </div>
-                <div class="col-md-4">
-                    @*@Html.DropDownList("EquipmentTypeOption", "-- Select --")*@
-                    @Html.TextBox("txtEquipmentTypeOption", "", new { @class = "form-control", @style = "" })
+                <div class="col-md-4 col-lg-4 col-sm-10 col-xs-10">
+                    @Html.DropDownList("EquipmentTypeOption", "-- Select --")
+                    @*@Html.TextBox("txtEquipmentTypeOption", "", new { @class = "form-control", @style = "" })*@
                     @Html.HiddenFor(m => m.EquipmentType, new { @id = "hdnEquipmentTypeSelected" })
                     @Html.ValidationMessageFor(model => model.EquipmentType)
                 </div>
-                <div class="col-md-1">
+                <div class="col-md-1 col-sm-2 col-xs-2">
                     <div class="help-tip">
                         <p>Please select the Equipment Type</p>
                     </div>
                 </div>
             </div>
             <div class="form-group">
-                <div class="col-md-2">
-                    <div class="col-md-11 control-label">
+                <div class="col-md-2 col-lg-2 col-sm-12 col-xs-12">
+                    <label>
                         @Html.LabelFor(model => model.Make, htmlAttributes: new { @class = "" })
-                    </div>
-                    <div style="text-align:center;color:red;font-size:15pt;" class="control-label">
+                    </label>
+                    <span style="text-align:center;color:red;font-size:15pt;" class="control-label">
                         *
-                    </div>
+                    </span>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-4 col-sm-12 col-xs-12">
                     @Html.EditorFor(model => model.Make, new { htmlAttributes = new { @class = "form-control" } })
                     @Html.ValidationMessageFor(model => model.Make, "", new { @class = "text-danger" })
                 </div>
@@ -173,34 +209,34 @@
             </div>
             <div class="form-group">
 
-                <div class="col-md-2">
-                    <div class="col-md-11 control-label">
+                <div class="col-md-2 col-lg-2 col-sm-12 col-xs-12">
+                    <label>
                         @Html.LabelFor(model => model.Readings, htmlAttributes: new { @class = "" })
-                    </div>
-                    <div style="text-align:center;color:red;font-size:15pt;" class="control-label">
+                    </label>
+                    <span style="text-align:center;color:red;font-size:15pt;" class="control-label">
                         *
-                    </div>
+                    </span>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-4 col-sm-12 col-xs-12">
                     @Html.DropDownList("YearOption", "-- Select --")
                     @Html.HiddenFor(m => m.Readings, new { @id = "hdnYearSelected" })
                     @Html.ValidationMessageFor(model => model.Readings)
                 </div>
             </div>
             <div class="form-group">
-                <div class="col-md-2">
-                    <div class="col-md-11 control-label">
+                <div class="col-md-2 col-lg-2 col-sm-12 col-xs-12">
+                    <label>
                         @Html.LabelFor(model => model.Price, htmlAttributes: new { @class = "" })
-                    </div>
-                    <div style="text-align:center;color:red;font-size:15pt;" class="control-label">
+                    </label>
+                    <span style="text-align:center;color:red;font-size:15pt;" class="control-label">
                         *
-                    </div>
+                    </span>
                 </div>
-                <div class="col-md-2">
+                <div class="col-md-2 col-sm-6 col-xs-12">
                     @Html.EditorFor(model => model.Price, new { htmlAttributes = new { @class = "form-control" } })
                     @Html.ValidationMessageFor(model => model.Price, "", new { @class = "text-danger" })
                 </div>
-                <div class="col-md-2" style="vertical-align:bottom">
+                <div class="col-md-2 col-xs-12 col-sm-6" style="vertical-align:bottom">
                     @foreach (var depart in Model.PriceList)
                     {
                         @Html.RadioButtonFor(m => m.PriceCategory, depart.Id, new { @onclick = "SetPriceCategory(this)", @id = depart.Value })<span style="margin-right:10px;">@depart.Value </span>
@@ -209,57 +245,57 @@
                 </div>
             </div>
             <div class="form-group">
-                <div class="col-md-2">
-                    <div class="col-md-11 control-label">
+                <div class="col-md-2 col-lg-2 col-sm-12 col-xs-12">
+                    <label>
                         @Html.LabelFor(model => model.Location, htmlAttributes: new { @class = "" })
-                    </div>
-                    <div style="text-align:center;color:red;font-size:15pt;" class="control-label">
+                    </label>
+                    <span style="text-align:center;color:red;font-size:15pt;" class="control-label">
                         *
-                    </div>
+                    </span>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-4 col-sm-12 col-xs-12">
                     @Html.EditorFor(model => model.Location, new { htmlAttributes = new { @class = "form-control" } })
                     @Html.ValidationMessageFor(model => model.Location, "", new { @class = "text-danger" })
                 </div>
             </div>
             <div class="form-group">
-                <div class="col-md-2">
-                    <div class="col-md-11 control-label">
+                <div class="col-md-2 col-lg-2 col-sm-12 col-xs-12">
+                    <label>
                         @Html.LabelFor(model => model.ContactNumber, htmlAttributes: new { @class = "" })
-                    </div>
-                    <div style="text-align:center;color:red;font-size:15pt;" class="control-label">
+                    </label>
+                    <span style="text-align:center;color:red;font-size:15pt;" class="control-label">
                         *
-                    </div>
+                    </span>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-4 col-sm-12 col-xs-12">
                     @Html.EditorFor(model => model.ContactNumber, new { htmlAttributes = new { @class = "form-control" } })
                     @Html.ValidationMessageFor(model => model.ContactNumber, "", new { @class = "text-danger" })
                 </div>
             </div>
             <div class="form-group">
-                <div class="col-md-2">
-                    <div class="col-md-11 control-label">
+                <div class="col-md-2 col-lg-2 col-sm-12 col-xs-12">
+                    <label>
                         @Html.LabelFor(model => model.EmailID, htmlAttributes: new { @class = "" })
-                    </div>
+                    </label>
                     <div style="text-align:center;color:red;font-size:15pt;" class="control-label">
                     </div>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-4 col-sm-12 col-xs-12">
                     @Html.EditorFor(model => model.EmailID, new { htmlAttributes = new { @class = "form-control" } })
                     @Html.ValidationMessageFor(model => model.EmailID, "", new { @class = "text-danger" })
                 </div>
             </div>
             <div class="form-group">
-                <div class="col-md-2">
-                    <div class="col-md-11 control-label">
+                <div class="col-md-2 col-lg-2 col-sm-12 col-xs-12">
+                    <label>
                         @Html.LabelFor(model => model.ImagePath, htmlAttributes: new { @class = "" })
-                    </div>
-                    <div style="text-align:center;color:red;font-size:15pt;" class="control-label">
+                    </label>
+                    <span style="text-align:center;color:red;font-size:15pt;" class="control-label">
                         *
-                    </div>
+                    </span>
                 </div>
 
-                <div class="col-md-4">
+                <div class="col-md-4 col-sm-12 col-xs-12">
                     @*@Html.EditorFor(model => model.ImagePath, new { htmlAttributes = new { @class = "form-control" } })
                         @Html.ValidationMessageFor(model => model.ImagePath, "", new { @class = "text-danger" })*@
                     <input type="file" name="file_Uploader" multiple accept="image/*" />
