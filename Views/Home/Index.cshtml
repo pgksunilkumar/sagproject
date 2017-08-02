@@ -28,13 +28,21 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
-                    <input type="text" class="form-control inputCongun_00" placeholder="Enter Equipment Name, Model No., Type and so on.." />
-                    <select class="form-control inputCongun_01" id="ddlSearch">
-                        <option value="1">Rent</option>
-                        <option value="2">Sell</option>
-                        <option value="3">Congun Elite Services</option>
-                    </select>
-                    <button class="btn btn-primary inputCongun_02" onclick="return SearchText();">Search</button>
+                    <ul class="nav nav-tabs conguTab text-center">
+                        <li class="active"><a data-toggle="tab" href="#home">Rent</a></li>
+                        <li><a data-toggle="tab" href="#menu1">Buy</a></li>
+                    </ul>
+
+                    <div class="tab-content margintop5">
+                        <div id="home" class="tab-pane fade in active">
+                            <input type="text" class="form-control inputCongun_00" placeholder="Enter Equipment Name, Model No., Type and so on.." />
+                            <button class="btn btn-primary inputCongun_02" onclick="return SearchText();">Search</button>
+                        </div>
+                        <div id="menu1" class="tab-pane fade">
+                            <input type="text" class="form-control inputCongun_00" placeholder="Enter Equipment Name, Model No., Type and so on.." />
+                            <button class="btn btn-primary inputCongun_02" onclick="return SearchText();">Search</button>
+                        </div>
+                    </div> 
                 </div>
             </div>
         </div>
@@ -75,7 +83,7 @@
     </div>
 </div>
 
-<div class="container hidden-lg hidden-md">
+<div class="container hidden-lg hidden-md" style="margin-top: 10px;">
     <div class="row text-center">
         <div class="col-xs-4 col-sm-4">
             <div class="shadowBorder_mobile">
@@ -116,7 +124,7 @@
         </div>
         <div class="row FeaturedBuyMargin hidden-md hidden-lg hidden-sm">
             <div class="col-xs-2" style="text-align:center;">
-                <img height="60" width="60" class="img-responsive" src="~/Images/buy.png" />
+                <img height="60" width="60" class="" src="~/Images/buy.png" />
             </div>
             <div class="col-xs-10" style="text-align:center;">
                 <h2>Featured Products to Buy</h2>
@@ -138,7 +146,7 @@
                                     {
                                         <img id="img1" src="@ViewBag.ImagePath1" class="img-responsive marginauto congun_image_feature" onclick="return returnToUsedList();" />
                                     }
-                                  
+
                                 </div>
                                 <div class="col-md-3 col-sm-3 col-xs-3">
                                     <a href="../Used/List/">
@@ -220,13 +228,13 @@
                 <div class="col-md-12 col-sm-12 col-xs-12">
                     <div class="col-md-6 col-sm-6 col-xs-12 congun_cfs_col">
                         <div class="congun_posting_for_rent_00" onclick="return returnToRentalList();" style="cursor:pointer;">
-                             @Html.Raw(ViewBag.RentDetail1)
+                            @Html.Raw(ViewBag.RentDetail1)
 
                         </div>
                     </div>
                     <div class="col-md-6 col-sm-6 col-xs-12 congun_cfs_col">
                         <div class="congun_posting_for_rent_01" onclick="return returnToRentalList();" style="cursor:pointer;">
-                             @Html.Raw(ViewBag.RentDetail2)
+                            @Html.Raw(ViewBag.RentDetail2)
                         </div>
                     </div>
                 </div>
