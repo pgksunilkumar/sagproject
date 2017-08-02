@@ -1,6 +1,12 @@
 ﻿@model BusinessAccessLayer.UsedModel 
 
-@{ ViewBag.Title = "Details"; ViewBag.ImagePath1 = Model.ImagePath; }
+@{
+    ViewBag.Title = "home page";
+    ViewBag.ImagePath1 = Model.ImagePath;
+    ViewBag.Description = "Sign up for our elite services today! We will work with you on your needs.";
+}
+
+
 
 <script>
     $(document).ready(function () {
@@ -155,7 +161,56 @@
                             </div>
                         </a>
                     </td>
-                    <td></td>
+                    <td>
+                        <ul class="rrssb-buttons">
+
+                            <li class="rrssb-email">
+                                <!-- Replace subject with your message using URL Endocding: http://meyerweb.com/eric/tools/dencoder/ -->
+                                <a href="mailto:?Subject=@ViewBag.Description">
+                                    <i class="fa fa-envelope fontsharecolor"></i>
+                                </a>
+                            </li>
+
+                            <li class="rrssb-facebook">
+                                <!--  Replace with your URL. For best results, make sure you page has the proper FB Open Graph tags in header:
+                  https://developers.facebook.com/docs/opengraph/howtos/maximizing-distribution-media-content/ -->
+                                <a href="https://www.facebook.com/sharer/sharer.php?u=http://ramsubra.com/crm/facebook/" class="popup">
+                                    <i class="fa fa-facebook fontsharecolor"></i>
+                                </a>
+                            </li>
+
+
+
+                            <li class="rrssb-linkedin">
+                                <!-- Replace href with your meta and URL information -->
+                                <a href=" http://www.linkedin.com/shareArticle?mini=true&url=http://congun.com&title=@ViewBag.Title&summary=@ViewBag.Description" class="popup">
+                                    <i class="fa fa-linkedin fontsharecolor"></i>
+                                </a>
+                            </li>
+
+                            <li class="rrssb-twitter">
+                                <!-- Replace href with your Meta and URL information  -->
+                                <a href="https://twitter.com/intent/tweet?text=http://ramsubra.com/crm/facebook/"
+                                   class="popup">
+                                    <i class="fa fa-twitter fontsharecolor"></i>
+                                </a>
+                            </li>
+
+                            <li class="rrssb-googleplus">
+                                <!-- Replace href with your meta and URL information.  -->
+                                <a href="https://plus.google.com/share?url=http://ramsubra.com/crm/facebook/" class="popup">
+                                    <i class="fa fa-google-plus fontsharecolor"></i>
+                                </a>
+                            </li>
+
+
+                            <li class="rrssb-whatsapp">
+                                <a href="whatsapp://send?text=http://congun.com |@ViewBag.Description" data-action="share/whatsapp/share">
+                                    <i class="fa fa-whatsapp fontsharecolor" aria-hidden="true"></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </td>
                 </tr>
 
             </table>

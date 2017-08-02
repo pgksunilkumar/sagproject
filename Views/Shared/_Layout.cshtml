@@ -3,8 +3,36 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Congun | @ViewBag.Title</title>
-    <meta name="twitter:domain" content="@ViewBag.ImagePath1" />
+     
+    <link rel="shortcut icon" href="favicon.ico" />
+
+    <title>@ViewBag.Title</title>
+    <meta name="description" content="Congun" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- sample fb meta -->
+    <meta prefix="og: http://ogp.me/ns#" property="og:title" content="@ViewBag.Title" />
+    <meta prefix="og: http://ogp.me/ns#" property="og:type" content="website" />
+    <meta prefix="og: http://ogp.me/ns#" property="og:image" content="@ViewBag.ImagePath1" />
+    <meta prefix="og: http://ogp.me/ns#" property="og:url" content="http://congun.com/" />
+    <meta property="og: http://ogp.me/ns#" property="og:description" content="@ViewBag.Description" />
+    <meta property="og: http://ogp.me/ns#" property="og:site_name" content="Congun" />
+
+
+    <!-- sample twitter meta -->
+    <meta name="twitter:card" content="Congun Congun is super">
+    <meta name="twitter:site" content="@ViewBag.Title">
+    <meta name="twitter:creator" content="@ViewBag.Title">
+    <meta name="twitter:title" content="@ViewBag.Title">
+    <meta name="twitter:description" content="@ViewBag.Description">
+    <meta name="twitter:image" content="@ViewBag.ImagePath1">
+
+    <link rel="icon" type="image/png" href="@ViewBag.ImagePath1" />
+
+
+
+
+
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 
@@ -13,7 +41,8 @@
     @RenderSection("scripts", required: false)
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="fancybox/jquery.fancybox.css">
+    <link rel="stylesheet" type="text/css" href="../../fancybox/jquery.fancybox.css">
+    <link rel="stylesheet" type="text/css" href="~/Content/rrssb.css">
     <script src="~/Scripts/bootstrap.min.js"></script>
     <style type="text/css">
         .navbar-login {
@@ -47,6 +76,7 @@
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Used Equipment", "List", "Used")</li>
                     <li>@Html.ActionLink("Rental Posts", "List", "Rental")</li>
+                    <li>@Html.ActionLink("Business Listing", "List", "BList")</li>
                     @*<li>@Html.ActionLink("Finance", "Index", "Home")</li>*@
 
                 </ul>
@@ -120,7 +150,8 @@
     </div>
     @*<script src="~/Scripts/bootstrap.min.js"></script>*@
     <script src="http://cdnjs.cloudflare.com/ajax/libs/typed.js/1.1.4/typed.min.js"></script>
-    <script type="text/javascript" src="fancybox/jquery.fancybox.js"></script>
+    <script type="text/javascript" src="../../fancybox/jquery.fancybox.js"></script>
+    <script type="text/javascript" src="~/Scripts/rrssb.min.js"></script>
     <script src="~/Scripts/app.js"></script>
 </body>
 </html>
