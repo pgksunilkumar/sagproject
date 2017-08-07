@@ -138,26 +138,22 @@
             </div>
             <div class="row text-center">
                 <div class="col-md-12" style=" cursor:pointer;">
-                    <div class="col-md-12">
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="col-md-9 col-sm-8 col-xs-9 customimage_congun_12">
-                                    @if (ViewBag.ImagePath1 != null)
-                                    {
-                                        <img id="img1" src="@ViewBag.ImagePath1" class="img-responsive marginauto congun_image_feature" onclick="return returnToUsedList();" />
-                                    }
+                    <div class="col-md-8 col-sm-12 col-lg-8 col-xs-12">
+                        <div class="col-md-12 col-sm-12 col-xs-12 customimage_congun_12">
+                            @if (ViewBag.ImagePath1 != null)
+                            {
+                                <img id="img1" src="@ViewBag.ImagePath1" class="img-responsive marginauto congun_image_feature" onclick="return returnToUsedList();" />
+                                 
+                            }
+                            <div class="sfs100">
+                                <p class="sfs101">Rs 9,00,000</p>
+                            <a href="#" class="btn sfs102">Contact</a>
 
-                                </div>
-                                <div class="col-md-3 col-sm-3 col-xs-3">
-                                    <a href="../Used/List/">
-                                        <img src="/Images/angleright.png" class="marginauto viewall_congun">
-                                        <p>View all</p>
-                                    </a>
-                                </div>
                             </div>
+                            
                         </div>
                         <div class="row margintop5">
-                            <div class="col-md-3 col-sm-3 col-xs-6 congun_cfs_col">
+                            <div class="col-md-4 col-sm-4 col-xs-6 congun_cfs_col">
                                 <div class="customimage_congun">
 
                                     @if (ViewBag.ImagePath2 != null)
@@ -168,7 +164,7 @@
                                 </div>
 
                             </div>
-                            <div class="col-md-3 col-sm-3 col-xs-6 congun_cfs_col">
+                            <div class="col-md-4 col-sm-4 col-xs-6 congun_cfs_col">
                                 <div class="customimage_congun">
 
                                     @if (ViewBag.ImagePath3 != null)
@@ -179,7 +175,7 @@
                                 </div>
 
                             </div>
-                            <div class="col-md-3 col-sm-3 col-xs-6 congun_cfs_col">
+                            <div class="col-md-4 col-sm-4 col-xs-6 congun_cfs_col">
                                 <div class="customimage_congun">
 
                                     @if (ViewBag.ImagePath4 != null)
@@ -190,19 +186,55 @@
                                 </div>
 
                             </div>
-                            <div class="col-md-3 col-sm-3 col-xs-6 congun_cfs_col">
-                                <div class="customimage_congun">
+                            <div class="hidden-lg hidden-md col-xs-6 col-sm-12">
+                                <div class="margintop5">
+                                    <a href="../Used/List/">
+                                        <img src="/Images/angleright.png" class="marginauto viewall_congun">
+                                        <p>View all</p>
+                                    </a>
+                                </div>
+                            </div>
+                            </div>
 
-                                    @if (ViewBag.ImagePath5 != null)
+
+                        </div>
+                    <div class="col-md-4 sfs1ocolind hidden-xs hidden-sm">
+                        <div class="col-md-12 col-sm-12 col-xs-3 customimage_congun_12 con_margin_bot">
+                            <div class="">
+                                @if (ViewBag.ImagePath5 != null)
+                                {
+                                    <img id="img1" src="@ViewBag.ImagePath5" class="img-responsive marginauto congun_image_feature congu_index_im" onclick="return returnToUsedList();" />
+                                }
+                            </div>
+                            <div class="sfs100_2">
+                                <p class="sfs101">Rs 9,00,000</p>
+                                <a href="#" class="btn sfs102">Contact</a>
+
+                            </div>
+                        </div>
+                        <div class="margintop5">
+                            <div class="col-md-8 col-sm-8 col-xs-6 congun_cfs_col customimage_congun">
+                                <div class="">
+
+                                    @if (ViewBag.ImagePath6 != null)
                                     {
-                                        <img id="img2" src="@ViewBag.ImagePath5" class="img-responsive marginauto" onclick="return returnToUsedList();" />
+                                        <img id="img2" src="@ViewBag.ImagePath6" class="img-responsive marginauto congu_index_im2" onclick="return returnToUsedList();" />
                                     }
 
                                 </div>
 
+
+                            </div>
+                            <div class="col-md-4">
+                                <a href="../Used/List/">
+                                    <img src="/Images/angleright.png" class="marginauto viewall_congun">
+                                    <p>View all</p>
+                                </a>
                             </div>
                         </div>
                     </div>
+
+
                 </div>
             </div>
         </div>

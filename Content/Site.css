@@ -1045,6 +1045,118 @@ ul .a-list-item {
 .sfs17 {
     width: 107px;
 }
+.panel-title > a:before {
+    font-family: FontAwesome;
+    content: "\f077";
+    padding-right: 5px;
+}
+
+.panel-title > a.collapsed:before {
+    content: "\f078";
+}
+
+.panel-title > a:hover,
+.panel-title > a:active,
+.panel-title > a:focus {
+    text-decoration: none;
+}
+.panel-body {
+    padding: 5px;
+}
+.filterhead {
+    padding: 0px 0px 2px 2px;
+    font-size: 19px;
+    color: #f36d6d;
+    margin-top: 0px;
+    font-weight: 600;
+    letter-spacing: 0.6px;
+}
+.cd-filter-content {
+    margin: 11px 0px 7px -40px;
+    height:100px;
+    overflow: auto;
+}
+    .cd-filter-content li {
+        list-style:none;
+
+    }
+    .cd-filter-block .list li {
+        position: relative;
+        margin-bottom: .8em;
+    }
+
+    .cd-filter-block .checkbox-label::before, .cd-filter-block .radio-label::before {
+        width: 16px;
+        height: 16px;
+        left: 0;
+    }
+.sfs5col {
+padding-right:8px;
+padding-left:8px;
+}
+.sfscolleft {
+    text-align:left;
+}
+.sfscolright {
+    text-align: right;
+}
+.cd-filter-content-rent {
+    margin: 11px 0px 7px -40px;
+    height: 54px;
+    overflow: auto;
+}
+.cd-filter-content-rent li {
+    list-style: none;
+}
+.sfscolrenthe {
+margin-top:55px;
+}
+.sfs10colrent {
+    margin-right: 0px;
+    margin-left: 0px;
+}
+.sfs1ocolind{
+    padding-right:0px;
+    padding-left:0px;
+}
+.congu_index_im {
+    height: 250px !important;
+}
+.con_margin_bot {
+    margin-bottom: 12px;
+}
+.congu_index_im2 {
+    height:193px !important;
+}
+.sfs100 {
+    position: absolute;
+    top: 230px;
+    left: 0;
+    height: 100px;
+    width: 100%;
+    background: rgba(243, 109, 109, 0.68);
+}
+.sfs100_2 {
+    position: absolute;
+    top: 180px;
+    left: 0;
+    height: 100px;
+    width: 100%;
+    background: rgba(243, 109, 109, 0.68);
+}
+.sfs101 {
+    color: #fff;
+    font-size: 23px;
+    font-weight: 600;
+    margin-top: 9px;
+}
+.sfs102 {
+    background-color: #FFEB3B;
+    border-color: #ffeb3b;
+    width: 100px;
+    font-size: 18px;
+    color: #fff;
+}
 @media only screen and (max-width: 1024px) {
     .help-tip {
         right: 7px;
@@ -1137,7 +1249,9 @@ ul .a-list-item {
 }
 
 @media only screen and (max-width:767px) {
-    .custom-combobox-input {
+    .rentFontHead {
+        font-size: 18px;
+    } .custom-combobox-input {
         margin: 0;
         padding: 5px 10px;
         width: 530px;
@@ -1158,10 +1272,28 @@ ul .a-list-item {
         float: left;
         margin-right: 5px;
     }
+    .consfs150 {
+        margin-top: 350px;
+    }
 }
 
     @media only screen and (max-width:425px) {
-        
+        .sfs100 {
+            top: 130px;
+        }
+        .sfscolleft {
+            text-align: center;
+        }
+        .sfs12 {
+            height: 100px;
+        }
+        .sfs3 {
+            height: 100px;
+        }
+
+            .sfscolright {
+            text-align: center;
+        }
             .help-tip {
                 right: 19px;
             } .gallery .previews, .gallery .full, .gallery .desc {
@@ -1308,13 +1440,19 @@ ul .a-list-item {
             width: 100%;
             height: 200px;
         }
+        .consfs150 {
+            margin-top: 350px;
+        }
     }
 
     @media only screen and (max-width: 375px) {
+        .sfs100 {
+            top: 130px;
+        }
         .custom-combobox-input {
             margin: 0;
             padding: 5px 10px;
-            width: 278px;
+            width: 285px !important;
         }
         .gallery .previews, .gallery .full, .gallery .desc {
             float: left;
@@ -1394,14 +1532,126 @@ ul .a-list-item {
         .conguTab li a {
             padding: 2px 41px !important;
         }
+        .consfs150 {
+            margin-top: 350px;
+        }
+       
+    }
+@media only screen and (max-width:412px) {
+    .sfs100 {
+        top: 130px;
+    }
+    .gallery .previews, .gallery .full, .gallery .desc {
+        float: left;
+        margin-right: 5px;
+    }
+    .gallery .full, .gallery .full img {
+            height: 300px;
+            width: 290px;
+        }
+    .customimage_congun_12 img {
+        width: 100%;
+        height: 200px;
+    }
+    .custom-combobox-input {
+        width: 280px !important;
+    }
+    .consfs150 {
+        margin-top: 350px;
+    }
+}
+@media only screen and (max-width:384px) {
+    .sfs100 {
+        top: 130px;
     }
 
+    .gallery .previews, .gallery .full, .gallery .desc {
+        float: left;
+        margin-right: 5px;
+    }
+
+        .gallery .full, .gallery .full img {
+            height: 300px;
+            width: 270px;
+        }
+
+    .customimage_congun_12 img {
+        width: 100%;
+        height: 200px;
+    }
+    .custom-combobox-input {
+        width: 235px !important;
+    }
+    .consfs150 {
+        margin-top: 350px;
+    }
+}
+@media only screen and (max-width:375px) {
+    .sfs100 {
+        top: 130px;
+    }
+    .gallery .previews, .gallery .full, .gallery .desc {
+        float: left;
+        margin-right: 5px;
+    }
+
+        .gallery .full, .gallery .full img {
+            height: 300px;
+            width: 265px;
+        }
+
+    .customimage_congun_12 img {
+        width: 100%;
+        height: 200px;
+    }
+    .custom-combobox-input {
+        width: 235px !important;
+    }
+    .consfs150 {
+        margin-top: 350px;
+    }
+}
+
+@media only screen and (max-width:360px) {
+    .sfs100 {
+        top: 130px;
+    }
+    .gallery .previews, .gallery .full, .gallery .desc {
+        float: left;
+        margin-right: 5px;
+    }
+        .gallery .full, .gallery .full img {
+            height: 300px;
+            width: 250px;
+        }
+
+    .customimage_congun_12 img {
+        width: 100%;
+        height: 200px;
+    }
+    .custom-combobox-input {
+        width: 235px !important;
+    }
+    .consfs150 {
+        margin-top: 350px;
+    }
+}
+
+
+
     @media only screen and (max-width:320px) {
+        .consfs150{
+            margin-top:350px;
+        }
+        .sfs100 {
+            top: 130px;
+        }
         .custom-combobox-input {
             margin: 0;
             padding: 5px 10px;
-            width: 235px;
+            width: 235px !important;
         }
+
         .gallery .previews, .gallery .full, .gallery .desc {
             float: left;
             margin-right: 5px;
