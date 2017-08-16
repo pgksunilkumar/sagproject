@@ -1,0 +1,181 @@
+﻿@{
+    ViewBag.Title = "MyProfile";
+}
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<script>
+    $(document).ready(function () {
+        $(function () {
+            $("#tabs").tabs();
+        });
+
+    });
+</script>
+
+<div class="container">
+    <h3>Profile Details</h3>
+    <div class="row">
+        <div class="col-md-6">
+            <table class="table table-hover">
+                <tr>
+                    <th>
+                        Mobile
+                    </th>
+                    <td>
+                        @ViewBag.ProfileDetail.Rows[0]["Mobile"]
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        EmailID
+                    </th>
+                    <td>
+                        @ViewBag.ProfileDetail.Rows[0]["EmailID"]
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        Created Date
+                    </th>
+                    <td>
+                        @ViewBag.ProfileDetail.Rows[0]["CreatedDate"]
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        Status
+                    </th>
+                    <td>
+                        @ViewBag.ProfileDetail.Rows[0]["Status"]
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div class="row" style="padding-bottom:20px;">
+        <div class="col-md-12">
+            <div id="tabs" style="font-size:10pt;">
+                <ul>
+                    <li><a href="#tabs-1">Used Equipment List</a></li>
+                    <li><a href="#tabs-2">Rental Post List</a></li>
+                </ul>
+                <div id="tabs-1">
+                    <table class="table">
+                        <tr>
+                            <th></th>
+                            <th>
+                                Equipment Type
+                            </th>
+                            <th>
+                                Make
+                            </th>
+                            <th>
+                                Price
+                            </th>
+                            <th>
+                                Contact Number
+                            </th>
+                            <th>
+                                Location
+                            </th>
+                            <th></th>
+                        </tr>
+                        @if (ViewBag.ProfileUsedDetail != null)
+                        {
+                            foreach (System.Data.DataRow dr in (ViewBag.ProfileUsedDetail as System.Data.DataTable).Rows)
+                            {
+                                <tr>
+                                    <td><img src="@dr["ImagePath"]" width="70" height="70" /></td>
+                                    <td>
+                                        @dr["EquipmentType"]
+                                    </td>
+                                    <td>
+                                        @dr["Make"] (@dr["ModelNumber"])
+                                    </td>
+                                    <td>
+                                        <i class="fa fa-inr"></i> @dr["Price"] (@dr["IsFixed"])
+                                    </td>
+                                    <td>
+                                        @dr["ContactNumber"]
+                                    </td>
+                                    <td>
+                                        @dr["Location"]
+                                    </td>
+                                    <td>
+                                        <a href="../Used/Details?id= @dr["EquipmentID"]"  style="color:#428bca;">View</a>
+                                    </td>
+                                </tr>
+                            }
+                        }
+                        <tr>
+                            <td colspan="7" style="text-align:right;">
+                                <a href="../Used/List/?id=@Session["UserID"]" style="color:#428bca;">
+                                    <p>View all</p>
+                                </a>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div id="tabs-2">
+                    <table class="table">
+                        <tr>
+                            <th>
+                                Equipment Type
+                            </th>
+                            <th>
+                                From Date
+                            </th>
+                            <th>
+                                To Date
+                            </th>
+                            <th>
+                                Location
+                            </th>
+                            <th>
+                                Contact Number
+                            </th>
+                            <th>
+                                Other Details
+                            </th>
+                            <th></th>
+                        </tr>
+                        @if (ViewBag.ProfileRentalDetail != null)
+                        {
+                            foreach (System.Data.DataRow dr in (ViewBag.ProfileRentalDetail as System.Data.DataTable).Rows)
+                            {
+                                <tr>
+                                    <td>
+                                        @dr["EquipmentType"]
+                                    </td>
+                                    <td>
+                                        @dr["FromDate"]
+                                    </td>
+                                    <td>
+                                        @dr["ToDate"]
+                                    </td>
+                                    <td>
+                                        @dr["Location"]
+                                    </td>
+                                    <td>
+                                        @dr["ContactNumber"]
+                                    </td>
+                                    <td>
+                                        @dr["Comments"]
+                                    </td>
+                                </tr>
+                            }
+                        }
+                        <tr>
+                            <td colspan="6" style="text-align:right;">
+                                <a href="../Rental/List/?id=@Session["UserID"]" style="color:#428bca;">
+                                    <p>View all</p>
+                                </a>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

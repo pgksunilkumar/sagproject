@@ -1,0 +1,145 @@
+﻿@model IEnumerable<BusinessAccessLayer.UsedModel>
+
+@{
+    ViewBag.Title = "Used Equipment List";
+
+}
+
+<script type="text/javascript">
+    function ReturnToDetails(itemID) {
+        //window.location = '../Details/' + itemID;
+        window.location = '@Url.Action("Details", "Used")?id=' + itemID;
+    }
+
+    function DeleteUsesListItem() {
+        if (confirm("Are you sure you want to delete this?")) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    $(document).ready(function () {
+
+        $(".aDeleteLink").click(function (ev) {
+            if (confirm("Are you sure you want to delete this?")) {
+                return true;
+            } else {
+                ev.preventDefault();
+                return false;
+            }
+        });
+        
+    });
+
+    function RaiseSearch(type, element) {
+        //var SearchText = "";
+        //window.location = '@Url.Action("List", "Used")?id=&SearchText=&' + type + '=' + element;
+        var listItems = $("#ulCategory li");
+        var checkedCategoryID = "";
+        listItems.each(function (idx, li) {
+            var lielem = $(li);
+            if (lielem.children(0)["0"].checked) {
+                checkedCategoryID = lielem.children(0)["0"].id + "," + checkedCategoryID;
+            }
+
+        });
+
+        $("#home").load('@(Url.Action("GetUsedEquipmentListForSearch", "Used",null, Request.Url.Scheme))?Category=' + checkedCategoryID);
+    }
+
+    function SearchFilter(txtSearch, ulCategory) {
+        if ($(txtSearch).val() != "") {
+            var count = 0;
+            $(ulCategory).children('li').each(function () {
+                var match = false;
+                if ($($(this).children(1)[1]).text().toUpperCase().indexOf($(txtSearch).val().toUpperCase()) > -1)
+                    match = true;
+                if (match) {
+                    $(this).show();
+                    count++;
+                }
+                else { $(this).hide(); }
+            });
+        }
+    }
+
+    function ShareUserprofile() {
+        $('#modalShare').modal('show');
+    }
+</script>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-11 col-xs-10">
+            <h3>
+                Used Equipment List&nbsp;&nbsp; @if (Session["UserID"] != null)
+            {<a id="aUserShare" style="font-size:12pt !important;cursor:pointer;text-decoration:underline;" title="Share your page" onclick="return ShareUserprofile()">Share</a>}
+            </h3>
+        </div>
+        <div class="col-md-1 col-xs-1" style="padding-top:10px;">
+            <a href="/Used/Create" style="color:black;"><i class="fa fa-plus-circle fa-3x" aria-hidden="true" title="Rent Equipment" style="cursor:pointer;"></i></a>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <hr style="height:1px;border:none;color:#333;background-color:#d4d4d4;" />
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-3 col-xs-12 col-lg-3 col-sm-3">
+            <div style="border:1px solid #d4d2d2;margin-bottom:20px;background-color:white;padding:10px;">
+                <h4 class="filterhead">Filters</h4>
+                <div class="panel-group" role="tablist" aria-multiselectable="true">
+                    <div class="panel panel-default">
+                        <div class="panel-heading" role="tab" id="headingTwo">
+                            <h4 class="panel-title">
+                                <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                    Equipment Types
+                                </a>
+                            </h4>
+                        </div>
+                        <div id="collapseTwo" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingTwo">
+                            <div class="panel-body">
+                                <input type="search" placeholder="Enter Your Equipment Type" class="form-control" onkeyup="SearchFilter(this, '#ulCategory');" />
+
+                                <ul class="cd-filter-content cd-filters list" style="display: block;height:240px !important;" id="ulCategory">
+                                    @foreach (System.Data.DataRow dr in (ViewBag.EquipCategories as System.Data.DataTable).Rows)
+                                    {
+                                        <li>
+                                            <input class="filter" type="checkbox" id='@dr["EquipmentTypeID"]' onchange="return RaiseSearch('Category',@dr["EquipmentTypeID"]);">
+                                            <label class="checkbox-label" for='@dr["EquipmentTypeID"]'>@dr["EquipmentType"]</label>
+                                        </li>
+                                    }
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-9 col-xs-12 col-lg-9 col-sm-9" style="text-align:center" id="home">
+            @Html.Partial("_UsedEquipmentListPatial", Model)
+        </div>
+    </div>
+
+
+    <div class="modal fade" id="modalShare" role="dialog">
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Share</h4>
+                </div>
+                <div class="modal-body">
+                    Please copy and share the below url to share your entire equipment list.
+                </div>
+                @*<div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>*@
+            </div>
+
+        </div>
+    </div>
+</div>

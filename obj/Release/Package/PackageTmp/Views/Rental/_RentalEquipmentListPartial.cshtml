@@ -1,0 +1,27 @@
+﻿@model IEnumerable<BusinessAccessLayer.RentalModel>
+
+@foreach (var item in Model)
+{
+    <div class="row form-group">
+        <div class="col-md-6  col-xs-6">
+            <b>@Html.DisplayFor(modelItem => item.EquipmentType)</b><br />
+            <span style="color:gray;">From</span> &nbsp; @Html.DisplayFor(modelItem => item.FromDate) &nbsp; <span style="color:gray;">To</span> &nbsp;@Html.DisplayFor(modelItem => item.ToDate)<br />
+            <span style="color:gray;">Contact</span> &nbsp;<i class="fa fa-phone"></i>&nbsp;@Html.DisplayFor(modelItem => item.ContactNumber)<br />
+            <span style="color:gray;">Comments</span> &nbsp;@Html.DisplayFor(modelItem => item.Comments)
+        </div>
+        <div class="col-md-2  col-xs-3">
+            @if (item.RentalType == "Rent")
+            {
+                <h4><span class="label label-primary">Rent</span></h4>
+            }
+            else
+            {
+                <h4><span class="label label-success">Buy</span></h4>
+            }
+        </div>
+        <div>
+            <i class="fa fa-map-marker"></i>&nbsp;&nbsp;@Html.DisplayFor(modelItem => item.Location)
+        </div>
+    </div>
+                    <hr />
+}

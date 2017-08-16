@@ -1,0 +1,354 @@
+﻿@model BusinessAccessLayer.BListModel
+
+@{
+    ViewBag.Title = "Post your Business";
+}
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<link href="~/Content/themes/base/all.css" rel="stylesheet" />
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<script src="~/Scripts/jqueryCombobox.js"></script>
+<style>
+    .custom-combobox {
+        position: relative;
+        display: inline-block;
+    }
+
+    .custom-combobox-toggle {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        margin-left: -1px;
+        padding: 0;
+    }
+
+    .custom-combobox-input {
+        margin: 0;
+        padding: 5px 10px;
+        width: 235px;
+    }
+
+    #ui-id-1 {
+        height: 300px;
+        overflow-y: auto;
+    }
+    .required:after { content:" *";color:red; }
+</style>
+
+<script type="text/javascript">
+    var userType = "";
+    $(document).ready(function () {
+        $("#YearOption").addClass("CustomDropDown");
+
+        $("#YearOption").on("change", function () {
+            $("#hdnYearSelected").val($("#YearOption").val());
+        });
+
+        $("#CategoryOption").on("change", function () {
+            $("#hdnCategorySelected").val($("#CategoryOption").val());
+        });
+
+        if ($("#hdnCheckForUser").val() == "True") {
+            $("#btnSubmitDetail").val("Submit");
+        }
+
+        $("#BListCreateForm").submit(function (e) {
+            if (userType == 'user') {
+                var strusername = $("#LoginContactNumber").val();
+                var strpassword = $("#LoginPassword").val();
+
+                if (strusername != "" && strpassword != "") {
+
+                    var url = '@Url.Action("ValidateUserDetail", "Rental")';
+
+                    $.ajax({
+                        url: url,
+                        type: "POST",
+                        data: { 'ContactNumber': strusername, 'Password': strpassword },
+                        success: function (result) {
+                            if (result != null && result != undefined && result == "False") {
+                                alert('Invalid Login. Please enter valid credentails and try again.');
+                                e.preventDefault();
+                                return false;
+                            } else {
+                                $("#RentalCreateForm").unbind('submit').submit();
+                                return true;
+                            }
+                        },
+                        error: function (result, error) {
+                            return false;
+                        }
+                    });
+                    return false;
+                }
+            }
+        });
+
+        $("#CategoryOption").combobox({
+            select: function (event, ui) {
+                $("#hdnCategorySelected").val(ui.item.value);
+            }
+        });
+    });
+
+    function ValidateEquipmentDropDown(type) {
+        userType = type;
+        var equipmentTypeVal = $("#hdnCategorySelected").val();
+        var yearVal = $("#hdnYearSelected").val();
+        var msg = "";
+
+        if (equipmentTypeVal != undefined && equipmentTypeVal == "") {
+            msg = "Please select Category.\n";
+        }
+
+        if (yearVal != undefined && yearVal == "") {
+            msg = msg + "Please select Year.\n";
+        }
+
+        if (msg == "") {
+            if (type == 'guest') {
+                return true;
+            }
+            else if (type == 'user') {
+                var $form = $('form');
+                if ($form.valid()) {
+                    $('#myModal').modal('show');
+                }
+                return false;
+            }
+        }
+        alert(msg);
+        return false;
+    }
+
+</script>
+
+@using (Html.BeginForm("Create", "BList", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { role = "form", @id = "BListCreateForm" }))
+{
+    @Html.AntiForgeryToken()
+    <div class="container" style="margin-bottom:10px;">
+        <h3>Post Your Business</h3>
+        <hr style="height:1px;border:none;color:#333;background-color:#d4d4d4;" />
+        <div class="form-horizontal" style="border:1px solid #d4d4d4;background-color: white;">   
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @Html.HiddenFor(model => model.CheckForUser, new { @id = "hdnCheckForUser" })
+            <div class="form-group">
+                <div class="col-md-7">
+                    <div class="col-md-12 control-label">
+                        <b>Company Details</b><br />
+                        <hr style="margin:0px;" />
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-2 col-xs-6">
+                    <div class="col-md-12 control-label">
+                        @Html.LabelFor(model => model.Category, new { @class = "required" })
+                    </div>
+                </div>
+                <div class="col-md-3 col-xs-6">
+                    @Html.DropDownList("CategoryOption", "-- Select --")
+                    @*@Html.TextBox("txtEquipmentTypeOption", "", new { @class = "form-control", @style = "" })*@
+                    @Html.HiddenFor(m => m.Category, new { @id = "hdnCategorySelected" })
+                    @Html.ValidationMessageFor(model => model.Category)
+                </div>
+                <div class="col-md-2 col-xs-6 BListContentPadding">
+                    <div class="col-md-12 control-label">
+                        @Html.LabelFor(model => model.CompanyName, htmlAttributes: new { @class = "required" })
+                    </div>
+                </div>
+                <div class="col-md-3 col-xs-6 BListContentPadding">
+                    @Html.EditorFor(model => model.CompanyName, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.CompanyName, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-2 col-xs-6">
+                    <div class="col-md-12 control-label">
+                        @Html.LabelFor(model => model.Year, htmlAttributes: new { @class = "required" })
+                    </div>
+                </div>
+                <div class="col-md-3 col-xs-6">
+                    @Html.DropDownList("YearOption", "-- Select --")
+                    @Html.HiddenFor(m => m.Year, new { @id = "hdnYearSelected" })
+                    @Html.ValidationMessageFor(model => model.Year)
+                </div>
+                <div class="col-md-2 col-xs-6 BListContentPadding">
+                    <div class="col-md-12 control-label">
+                        @Html.LabelFor(model => model.Website, htmlAttributes: new { @class = "" })
+                    </div>
+                </div>
+                <div class="col-md-3 col-xs-6 BListContentPadding">
+                    @Html.EditorFor(model => model.Website, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Website, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-2 col-xs-6">
+                    <div class="col-md-12 control-label">
+                        @Html.LabelFor(model => model.FBLink, htmlAttributes: new { @class = "" })
+                    </div>
+                </div>
+                <div class="col-md-3 col-xs-6">
+                    @Html.EditorFor(model => model.LinkedInLink, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.LinkedInLink, "", new { @class = "text-danger" })
+                </div>
+                <div class="col-md-2 col-xs-6 BListContentPadding">
+                    <div class="col-md-12 control-label">
+                        @Html.LabelFor(model => model.LinkedInLink, htmlAttributes: new { @class = "" })
+                    </div>
+                </div>
+                <div class="col-md-3 col-xs-6 BListContentPadding">
+                    @Html.EditorFor(model => model.LinkedInLink, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.LinkedInLink, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-2">
+                    <div class="col-md-12 control-label col-xs-6">
+                        @Html.LabelFor(model => model.GooglePlusLink, htmlAttributes: new { @class = "" })
+                    </div>
+                </div>
+                <div class="col-md-3 col-xs-6">
+                    @Html.EditorFor(model => model.GooglePlusLink, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.GooglePlusLink, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-7">
+                    <div class="col-md-12 control-label">
+                        <b>Contact Details</b><br />
+                        <hr style="margin:0px;" />
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-2 col-xs-6">
+                    <div class="col-md-12 control-label">
+                        @Html.LabelFor(model => model.LandPhone, htmlAttributes: new { @class = "" })
+                    </div>
+                </div>
+                <div class="col-md-3 col-xs-6">
+                    @Html.EditorFor(model => model.LandPhone, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.LandPhone, "", new { @class = "text-danger" })
+                </div>
+                <div class="col-md-2 col-xs-6 BListContentPadding">
+                    <div class="col-md-12 control-label">
+                        @Html.LabelFor(model => model.MobilePhone, htmlAttributes: new { @class = "required" })
+                    </div>
+                </div>
+                <div class="col-md-3 col-xs-6 BListContentPadding">
+                    @Html.EditorFor(model => model.MobilePhone, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.MobilePhone, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-2 col-xs-6">
+                    <div class="col-md-12 control-label">
+                        @Html.LabelFor(model => model.AlternatePhone, htmlAttributes: new { @class = "" })
+                    </div>
+                </div>
+                <div class="col-md-3 col-xs-6">
+                    @Html.EditorFor(model => model.AlternatePhone, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.AlternatePhone, "", new { @class = "text-danger" })
+                </div>
+                <div class="col-md-2 col-xs-6 BListContentPadding">
+                    <div class="col-md-12 control-label">
+                        @Html.LabelFor(model => model.EmailID, htmlAttributes: new { @class = "" })
+                    </div>
+                </div>
+                <div class="col-md-3 col-xs-6 BListContentPadding">
+                    @Html.EditorFor(model => model.EmailID, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.EmailID, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-7">
+                    <div class="col-md-12 control-label">
+                        <b>Address Details</b><br />
+                        <hr style="margin:0px;" />
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-2 col-xs-6">
+                    <div class="col-md-12 control-label">
+                        @Html.LabelFor(model => model.Address, htmlAttributes: new { @class = "" })
+                    </div>
+                </div>
+                
+                <div class="col-md-3 col-xs-6">
+                    @Html.EditorFor(model => model.Address, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Address, "", new { @class = "text-danger" })
+                </div>
+                <div class="col-md-2 col-xs-6 BListContentPadding">
+                    <div class="col-md-12 control-label">
+                        @Html.LabelFor(model => model.Location, htmlAttributes: new { @class = "required" })
+                    </div>
+                </div>
+                <div class="col-md-3 col-xs-6 BListContentPadding">
+                    @Html.EditorFor(model => model.Location, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Location, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-2 col-xs-6">
+                    <div class="col-md-12 control-label">
+                        @Html.LabelFor(model => model.State, htmlAttributes: new { @class = "" })
+                    </div>
+                </div>
+                <div class="col-md-3 col-xs-6">
+                    @Html.EditorFor(model => model.State, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.State, "", new { @class = "text-danger" })
+                </div>
+                <div class="col-md-2 col-xs-6 BListContentPadding">
+                    <div class="col-md-12 control-label">
+                        @Html.LabelFor(model => model.District, htmlAttributes: new { @class = "" })
+                    </div>
+                </div>
+                <div class="col-md-3 col-xs-6 BListContentPadding">
+                    @Html.EditorFor(model => model.District, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.District, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-2 col-xs-6">
+                    <div class="col-md-12 control-label">
+                       @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "" })
+                    </div>
+                </div>
+                <div class="col-md-3 col-xs-6">
+                    @Html.TextAreaFor(m => m.Description, new { @id = "Description", @class = "form-control", @rows = 3 })
+                    @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-12" style="margin-left:15px;">
+                    <input id="btnSubmitDetail" type="submit" value="Post As Guest" class="btn btn-primary" onclick="return ValidateEquipmentDropDown('guest');" />
+                    @if (Session["UserID"] == null)
+                    {
+                        <input type="submit" value="Post As Congun User" class="btn btn-success" onclick="return ValidateEquipmentDropDown('user');" />
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Login</h4>
+                </div>
+                <div class="modal-body">
+                    @Html.Partial("_LoginFieldPartial", Model.LoginModel)
+                </div>
+            </div>
+
+        </div>
+    </div>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

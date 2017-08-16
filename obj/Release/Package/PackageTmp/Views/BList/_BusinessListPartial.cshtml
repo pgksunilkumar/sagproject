@@ -1,0 +1,23 @@
+﻿@model IEnumerable<BusinessAccessLayer.BListModel>
+
+@foreach (var item in Model)
+{
+    <div class="row form-group">
+        <div class="col-md-4  col-xs-6">
+            <b>@Html.DisplayFor(modelItem => item.CompanyName)</b><br />
+            <span style="color:gray;">Year</span> &nbsp; @Html.DisplayFor(modelItem => item.Year) &nbsp; <span style="color:gray;">To</span> &nbsp;@Html.DisplayFor(modelItem => item.Address)<br />
+            <span style="color:gray;">Contact</span> &nbsp;<i class="fa fa-phone"></i>&nbsp;@Html.DisplayFor(modelItem => item.MobilePhone)<br />
+            <span style="color:gray;">Comments</span> &nbsp;@Html.DisplayFor(modelItem => item.Description)
+        </div>
+        <div class="col-md-4  col-xs-3">
+            <h5>@Html.DisplayFor(modelItem => item.Category)</h5>
+        </div>
+        <div class="col-md-2  col-xs-3">
+            <i class="fa fa-map-marker"></i>&nbsp;@Html.DisplayFor(modelItem => item.Location)
+        </div>
+        <div>
+            @Html.ActionLink("View Details", "Details", new { id = item.BusniessListID })
+        </div>
+    </div>
+    <hr />
+}

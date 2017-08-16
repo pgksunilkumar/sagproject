@@ -1,0 +1,366 @@
+﻿@model BusinessAccessLayer.UsedModel
+
+@{
+    ViewBag.Title = "Post your Equipment";
+}
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<link href="~/Content/themes/base/all.css" rel="stylesheet" />
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<script src="~/Scripts/jqueryCombobox.js"></script>
+<style>
+    .custom-combobox {
+        position: relative;
+        display: inline-block;
+    }
+
+    .custom-combobox-toggle {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        margin-left: -1px;
+        padding: 0;
+    }
+
+    .custom-combobox-input {
+        margin: 0;
+        padding: 5px 10px;
+        width: 330px;
+    }
+
+    #ui-id-1 {
+        height: 300px;
+        overflow-y: auto;
+    }
+</style>
+<script type="text/javascript">
+    var userType = "";
+    $(document).ready(function () {
+        //$("#EquipmentTypeOption").addClass("CustomDropDown");
+        $("#YearOption").addClass("CustomDropDown");
+
+        $("#YearOption").on("change", function () {
+            $("#hdnYearSelected").val($("#YearOption").val());
+        });
+
+
+        @*$('#txtEquipmentTypeOption').autocomplete(
+        {
+            minLength: 0,
+            source: '@Url.Action("EquipmentTypeSearch", "Used")',
+            close: function (event, ui) { SetEquipValue(); }
+        }).focus(function () {
+            $('#txtEquipmentTypeOption').autocomplete("search", "");
+        });*@
+
+
+        if ($("#UserName").val() != "") {
+            $("#divUserFields").css("display", "block");
+        }
+
+        if ($("#hdnCheckForUser").val() == "True") {
+            $("#btnSubmitDetail").val("Submit");
+        }
+
+        $("#Negotiable").attr("Checked", "True");
+
+        $("#UsedCreateForm").submit(function (e) {
+            if (userType == 'user') {
+                var strusername = $("#LoginContactNumber").val();
+                var strpassword = $("#LoginPassword").val();
+                if (strusername != "" && strpassword != "") {
+                    var url = '@Url.Action("ValidateUserDetail", "Used")';
+
+                    $.ajax({
+                        url: url,
+                        type: "POST",
+                        data: { 'ContactNumber': strusername, 'Password': strpassword },
+                        success: function (result) {
+                            if (result != null && result != undefined && result == "False") {
+                                alert('Invalid Login. Please enter valid credentails and try again.');
+                                e.preventDefault();
+                                return false;
+                            } else {
+                                $("#UsedCreateForm").unbind('submit').submit();
+                                return true;
+                            }
+                        },
+                        error: function (result, error) {
+                            return false;
+                        }
+                    });
+                    return false;
+                }
+            }
+        });
+
+        $("#EquipmentTypeOption").combobox({
+            select: function (event, ui) {
+                $("#hdnEquipmentTypeSelected").val(ui.item.value);
+            }
+        });
+    });
+
+    //function SetEquipValue() {
+    //    $("#hdnEquipmentTypeSelected").val($("#txtEquipmentTypeOption").val().split("-")[1].trim());
+    //}
+
+    function ValidateFields(type) {
+        userType = type;
+        var equipmentTypeVal = $("#hdnEquipmentTypeSelected").val();
+        var yearVal = $("#hdnYearSelected").val();
+        var $fileUpload = $("input[type='file']");
+        var msg = "";
+
+        if (equipmentTypeVal != undefined && equipmentTypeVal == "") {
+            msg = msg + "Please select Equipment Type.\n";
+        }
+
+        if (yearVal != undefined && yearVal == "") {
+            msg = msg + "Please select Year.\n";
+        }
+
+        if (parseInt($fileUpload.get(0).files.length) > 5) {
+            msg = msg + "Please upload images upto 5 only.\n";
+        }
+        else if (parseInt($fileUpload.get(0).files.length) == 0) {
+            msg = msg + "Please select atleast one image to upload.\n";
+        }
+
+        if (msg == "") {
+            if (type == 'guest') {
+                return true;
+            }
+            else if (type == 'user') {
+                var $form = $('form');
+                if ($form.valid()) {
+                    $('#myModal').modal('show');
+                }
+                return false;
+            }
+        }
+        alert(msg);
+        return false;
+    }
+
+    function SetPriceCategory(element) {
+        if (element.value == "1") {
+            $("#hdnPriceCategory").val("True");
+        } else {
+            $("#hdnPriceCategory").val("False");
+        }
+        return false;
+    }
+</script>
+
+@using (Html.BeginForm("Create", "Used", FormMethod.Post, new { enctype = "multipart/form-data", role = "form", @id = "UsedCreateForm" }))
+{
+    @Html.AntiForgeryToken()
+    <div class="container">
+        <h3>Add your Equipment</h3>
+        <div class="form-horizontal">
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @Html.HiddenFor(model => model.CheckForUser, new { @id = "hdnCheckForUser" })
+            @if (ViewBag.ErrorMessageLogin != null)
+            {
+                <span class="text-danger">@ViewBag.ErrorMessageLogin</span>
+            }
+            <div class="form-group">
+                <div class="col-md-2">
+                    <div class="col-md-11 control-label">
+                        @Html.LabelFor(model => model.EquipmentType, new { @class = "" })
+                    </div>
+                    <div style="text-align:center;color:red;font-size:15pt;" class="control-label">
+                        *
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    @Html.DropDownList("EquipmentTypeOption", "-- Select --")
+                    @*@Html.TextBox("txtEquipmentTypeOption", "", new { @class = "form-control", @style = "" })*@
+                    @Html.HiddenFor(m => m.EquipmentType, new { @id = "hdnEquipmentTypeSelected" })
+                    @Html.ValidationMessageFor(model => model.EquipmentType)
+                </div>
+                <div class="col-md-1">
+                    <div class="help-tip">
+                        <p>Please select the Equipment Type</p>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-2">
+                    <div class="col-md-11 control-label">
+                        @Html.LabelFor(model => model.Make, htmlAttributes: new { @class = "" })
+                    </div>
+                    <div style="text-align:center;color:red;font-size:15pt;" class="control-label">
+                        *
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    @Html.EditorFor(model => model.Make, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Make, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.ModelNumber, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-4">
+                    @Html.EditorFor(model => model.ModelNumber, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.ModelNumber, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+
+                <div class="col-md-2">
+                    <div class="col-md-11 control-label">
+                        @Html.LabelFor(model => model.Readings, htmlAttributes: new { @class = "" })
+                    </div>
+                    <div style="text-align:center;color:red;font-size:15pt;" class="control-label">
+                        *
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    @Html.DropDownList("YearOption", "-- Select --")
+                    @Html.HiddenFor(m => m.Readings, new { @id = "hdnYearSelected" })
+                    @Html.ValidationMessageFor(model => model.Readings)
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-2">
+                    <div class="col-md-11 control-label">
+                        @Html.LabelFor(model => model.Price, htmlAttributes: new { @class = "" })
+                    </div>
+                    <div style="text-align:center;color:red;font-size:15pt;" class="control-label">
+                        *
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    @Html.EditorFor(model => model.Price, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Price, "", new { @class = "text-danger" })
+                </div>
+                <div class="col-md-2" style="vertical-align:bottom">
+                    @foreach (var depart in Model.PriceList)
+                    {
+                        @Html.RadioButtonFor(m => m.PriceCategory, depart.Id, new { @onclick = "SetPriceCategory(this)", @id = depart.Value })<span style="margin-right:10px;">@depart.Value </span>
+                    }
+                    @Html.HiddenFor(m => m.PriceCategory, new { @id = "hdnPriceCategory" })
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-2">
+                    <div class="col-md-11 control-label">
+                        @Html.LabelFor(model => model.Location, htmlAttributes: new { @class = "" })
+                    </div>
+                    <div style="text-align:center;color:red;font-size:15pt;" class="control-label">
+                        *
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    @Html.EditorFor(model => model.Location, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Location, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-2">
+                    <div class="col-md-11 control-label">
+                        @Html.LabelFor(model => model.ContactNumber, htmlAttributes: new { @class = "" })
+                    </div>
+                    <div style="text-align:center;color:red;font-size:15pt;" class="control-label">
+                        *
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    @Html.EditorFor(model => model.ContactNumber, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.ContactNumber, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-2">
+                    <div class="col-md-11 control-label">
+                        @Html.LabelFor(model => model.EmailID, htmlAttributes: new { @class = "" })
+                    </div>
+                    <div style="text-align:center;color:red;font-size:15pt;" class="control-label">
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    @Html.EditorFor(model => model.EmailID, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.EmailID, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-2">
+                    <div class="col-md-11 control-label">
+                        @Html.LabelFor(model => model.ImagePath, htmlAttributes: new { @class = "" })
+                    </div>
+                    <div style="text-align:center;color:red;font-size:15pt;" class="control-label">
+                        *
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    @*@Html.EditorFor(model => model.ImagePath, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.ImagePath, "", new { @class = "text-danger" })*@
+                    <input type="file" name="file_Uploader" multiple accept="image/*" />
+                    <span style="color:red;">* Note: A maximum of 5 images can be uploaded.</span>
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.Comments, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-4">
+                    @Html.EditorFor(model => model.Comments, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Comments, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div id="divUserFields" style="display:none;">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.UserName, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-4">
+                        @Html.EditorFor(model => model.UserName, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.UserName, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-4">
+                        @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input id="btnSubmitDetail" type="submit" value="Post As Guest" class="btn btn-primary" onclick="return ValidateFields('guest');" />
+                    @if (Session["UserID"] == null)
+                    {
+                        <input type="submit" value="Post As Congun User" class="btn btn-success" onclick="return ValidateFields('user');" />
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Login</h4>
+                </div>
+                <div class="modal-body">
+                    @Html.Partial("_LoginFieldPartial", Model.LoginModel)
+                </div>
+                @*<div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>*@
+            </div>
+
+        </div>
+    </div>
+}
+
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryval")
+}

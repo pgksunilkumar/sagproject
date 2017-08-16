@@ -1,0 +1,117 @@
+﻿@model BusinessAccessLayer.BListModel
+@{
+    ViewBag.Title = "Details";
+}
+
+<div class="container">
+    <h3>Business Details</h3>
+    <hr style="height:1px;border:none;color:#333;background-color:#d4d4d4;" />
+    <div class="row">
+        <div class="col-md-12">
+            <h4 style="font-size:31px;"><i class="fa fa-building-o fontcongunicon"></i>&nbsp;&nbsp;@Html.DisplayFor(model => model.CompanyName)</h4>
+            <hr />
+            <div class="row">
+                <div class="col-md-2 col-xs-6">
+                    <label><i class="fa fa-bookmark-o fontcongunicon"></i><span class=""><b>Category</b> </span></label>
+                </div>
+                <div class="col-md-4 col-xs-6">
+                    <label class=""> @Html.DisplayFor(model => model.Category)</label>
+                </div>
+                <div class="col-md-2 col-xs-6">
+                    <label><i class="fa fa-calendar fontcongunicon"></i><span class=""><b>Year</b></span></label>
+                </div>
+                <div class="col-md-4 col-xs-6">
+                    <label class=""> @Html.DisplayFor(model => model.Year)</label>
+                </div>
+            </div>
+            <hr />
+            <div class="row">
+                <div class="col-md-2 col-xs-6">
+                    <label><i class="fa fa-phone fontcongunicon"></i><span class=""><b>Mobile Phone</b></span></label>
+                </div>
+                <div class="col-md-4 col-xs-6">
+                    <label class="">@Html.DisplayFor(model => model.MobilePhone)</label>
+                </div>
+                <div class="col-md-2 col-xs-6">
+                    <label><i class="fa fa-phone fontcongunicon"></i><span class=""><b>Land Phone</b></span></label>
+                </div>
+                <div class="col-md-4 col-xs-6">
+                    <label class="">@Html.DisplayFor(model => model.LandPhone)</label>
+                </div>
+            </div>
+            <hr />
+            <div class="row">
+                <div class="col-md-2 col-xs-6">
+                    <label><i class="fa fa-phone fontcongunicon"></i><span class=""><b>Alternate Phone</b></span></label>
+                </div>
+                <div class="col-md-4 col-xs-6">
+                    <label class=""> @Html.DisplayFor(model => model.AlternatePhone)</label>
+                </div>
+                <div class="col-md-2 col-xs-6">
+                    <label><i class="fa fa-envelope fontcongunicon"></i><span class=""><b>Email</b></span></label>
+                </div>
+                <div class="col-md-4 col-xs-6">
+                    <label class="">@Html.DisplayFor(model => model.EmailID)</label>
+                </div>
+            </div>
+            <hr />
+            <div class="row">
+                <div class="col-md-2 col-xs-6">
+                    <label><i class="fa fa-external-link fontcongunicon"></i><span class=""><b>Website</b></span></label>
+                </div>
+                <div class="col-md-4 col-xs-6">
+                    <label class=""> @Html.DisplayFor(model => model.Website)</label>
+                </div>
+                <div class="col-md-2 col-xs-6">
+                    <label><i class="fa fa-facebook fontcongunicon"></i><span class=""><b>Facebook Page</b></span></label>
+                </div>
+                <div class="col-md-4 col-xs-6">
+                    <label class="">@Html.DisplayFor(model => model.FBLink)</label>
+                </div>
+            </div>
+            <hr />
+            <div class="row">
+                <div class="col-md-2 col-xs-6">
+                    <label><i class="fa fa-linkedin fontcongunicon"></i><span class=""><b>Linked In</b></span></label>
+                </div>
+                <div class="col-md-4 col-xs-6">
+                    <label class=""> @Html.DisplayFor(model => model.LinkedInLink)</label>
+                </div>
+                <div class="col-md-2 col-xs-6">
+                    <label><i class="fa fa-google-plus fontcongunicon"></i><span class=""><b>Google Plus</b></span></label>
+                </div>
+                <div class="col-md-4 col-xs-6">
+                    <label class="">@Html.DisplayFor(model => model.GooglePlusLink)</label>
+                </div>
+            </div>
+            <hr />
+            <div class="row">
+                <div class="col-md-2">
+                    <label><i class="fa fa-address-card-o fontcongunicon"></i><span class=""><b>Address</b></span></label>
+                </div>
+                <div class="col-md-9 col-xs-12">
+                    <label class="">
+                        @Html.DisplayFor(model => model.Address)&nbsp; @Html.DisplayFor(model => model.Location)<br />
+                        @Html.DisplayFor(model => model.State)&nbsp; @Html.DisplayFor(model => model.District)
+                    </label>
+                </div>
+            </div>
+            <hr />
+            <div class="row">
+                <div class="col-md-2">
+                    <label><i class="fa fa-file-text fontcongunicon"></i><span class=""><b>Description</b></span></label>
+                </div>
+                <div class="col-md-9 col-xs-12">
+                    <label class="">
+                        @Html.DisplayFor(model => model.Description)
+                    </label>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div style="padding-top:20px;padding-bottom:20px;">
+        @*@Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |*@ @Html.ActionLink("Back to List", "List")
+    </div>
+
+</div>

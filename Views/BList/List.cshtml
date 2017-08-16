@@ -1,0 +1,94 @@
+﻿@model IEnumerable<BusinessAccessLayer.BListModel>
+
+@{
+    ViewBag.Title = "Business List";
+}
+
+<script>
+    function RaiseSearch() {
+        var listItems = $("#ulCategory li");
+        var checkedCategoryID = "";
+        listItems.each(function (idx, li) {
+            var lielem = $(li);
+            if (lielem.children(0)["0"].checked) {
+                checkedCategoryID = lielem.children(0)["0"].id + "," + checkedCategoryID;
+            }
+
+        });
+
+        $("#home").load('@(Url.Action("GetBListForSearch", "BList",null, Request.Url.Scheme))?Category=' + checkedCategoryID);
+    }
+
+    function SearchFilter(txtSearch, ulCategory) {
+        if ($(txtSearch).val() != "") {
+            var count = 0;
+            $(ulCategory).children('li').each(function () {
+                var match = false;
+                if ($($(this).children(1)[1]).text().toUpperCase().indexOf($(txtSearch).val().toUpperCase()) > -1)
+                    match = true;
+                if (match) {
+                    $(this).show();
+                    count++;
+                }
+                else { $(this).hide(); }
+            });
+        }
+    }
+</script>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-11 col-xs-10">
+            <h3>Business List</h3>
+        </div>
+        <div class="col-md-1 col-xs-1" style="padding-top:10px;">
+            <a href="/BList/Create" style="color:black;"><i class="fa fa-plus-circle fa-3x" aria-hidden="true" title="Rent Equipment" style="cursor:pointer;"></i></a>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <hr style="height:1px;border:none;color:#333;background-color:#d4d4d4;" />
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-3 col-lg-3 col-sm-3 hidden-xs">
+            <div style="border:1px solid #d4d2d2;margin-bottom:20px;background-color:white;padding:10px;width: 287px;">
+                <h4 class="filterhead">Filters</h4>
+                <div class="panel-group" role="tablist" aria-multiselectable="true">
+                    <div class="panel panel-default">
+                        <div class="panel-heading" role="tab" id="headingTwo">
+                            <h4 class="panel-title">
+                                <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                    Categories
+                                </a>
+                            </h4>
+
+                        </div>
+                        <div id="collapseTwo" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingTwo">
+                            <div class="panel-body">
+                                <input type="search" placeholder="Enter Your Categories" class="form-control" onkeyup="SearchFilter(this, '#ulCategory');" />
+
+                                <ul class="cd-filter-content cd-filters list" style="display: block;height:180px !important;" id="ulCategory">
+                                    @foreach (System.Data.DataRow dr in (ViewBag.Categories as System.Data.DataTable).Rows)
+                                    {
+                                        <li>
+                                            <input class="filter" type="checkbox" id='@dr["CategoryID"]' onchange="return RaiseSearch();">
+                                            <label class="checkbox-label" for='@dr["CategoryID"]'>@dr["Category"]</label>
+                                        </li>
+                                    }
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-9 col-lg-9 col-sm-9 col-xs-12">
+            <div style="border:1px solid #d4d2d2;background-color:white;padding:10px;margin-bottom:20px;" id="home">
+                @Html.Partial("_BusinessListPartial", Model)
+            </div>
+        </div>
+    </div>
+
+</div>

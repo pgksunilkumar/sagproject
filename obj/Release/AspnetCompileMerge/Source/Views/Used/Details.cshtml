@@ -1,0 +1,235 @@
+﻿@model BusinessAccessLayer.UsedModel 
+
+@{ ViewBag.Title = "Details"; ViewBag.ImagePath1 = Model.ImagePath; }
+
+<script>
+    $(document).ready(function () {
+        $('a').click(function () {
+            var largeImage = $(this).attr('data-full');
+            $('.selected').removeClass();
+            $(this).addClass('selected');
+            $('.full img').hide();
+            $('.full img').attr('src', largeImage);
+            $('.full img').fadeIn();
+
+        }); // closing the listening on a click
+        $('.full img').on('click', function () {
+            var modalImage = $(this).attr('src');
+            $.fancybox.open(modalImage);
+        });
+        function EnlargeImage(imageId) {
+            var Img1Src = $("#img1")[0].src;
+            var Img2Src = imageId.src;
+            $(imageId).attr("src", Img1Src);
+            $("#img1").attr("src", Img2Src);
+            return false;
+        }
+    });
+
+    function ValidatePostComments() {
+        var userid = '@Request.RequestContext.HttpContext.Session["UserID"]';
+
+        var errorMessage = "";
+        if ($("#Postcomment").val() == "")
+            errorMessage = "Please type in your message.\n";
+
+        if (userid == null || userid == "") {
+            if ($("#Postname").val() == "")
+                errorMessage = errorMessage + "Please type in your name.";
+        }
+
+        if (errorMessage == "")
+            return true;
+        else {
+            alert(errorMessage)
+            return false;
+        }
+    }
+
+</script>
+
+<div class="container">
+    <h3>Used Equipment Details</h3>
+    <hr />
+    <div class="row">
+        <div class="col-md-6">
+            <div class="gallery">
+                <div class="previews">
+                    @if (Model.ImagePath5 != null && Model.ImagePath5 != "#")
+                    {
+                        <div class="divImage1">
+                            <a href="#" class="selected" data-full="@Model.ImagePath">
+                                <img class="img1" src="@Model.ImagePath" style="width: 107px;" />
+                            </a>
+                        </div>
+                    } @if (Model.ImagePath2 != null && Model.ImagePath2 != "#")
+                    {
+                        <div class="divImage2">
+                            <a href="#" data-full="@Model.ImagePath2">
+                                <img class="img2" src="@Model.ImagePath2" style="width: 107px;" />
+                            </a>
+                        </div>
+                    } @if (Model.ImagePath3 != null && Model.ImagePath3 != "#")
+                    {
+                        <div class="divImage3">
+                            <a href="#" data-full="@Model.ImagePath3">
+                                <img class="img3" src="@Model.ImagePath3" style="width: 107px;" />
+                            </a>
+                        </div>
+                    } @if (Model.ImagePath4 != null && Model.ImagePath4 != "#")
+                    {
+                        <div class="divImage4">
+                            <a href="#" data-full="@Model.ImagePath4">
+                                <img class="img4" src="@Model.ImagePath4" style="width: 107px;" />
+                            </a>
+                        </div>
+                    } @if (Model.ImagePath5 != null && Model.ImagePath5 != "#")
+                    {
+                        <div class="divImage5">
+                            <a href="#" data-full="@Model.ImagePath5">
+                                <img class="img5" src="@Model.ImagePath5" style="width: 107px;">
+                            </a>
+                        </div>
+                    }
+                </div>
+                <div class="full">
+                    <!-- first image is viewable to start -->
+                    <div class="divImage1">
+                        <img src="@Model.ImagePath" class="img-responsive img1" />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <h4 style="font-size:31px;">@Html.DisplayFor(model => model.EquipmentType)</h4>
+            <table class="table">
+                <tr>
+                    <td>
+                        <div class="">
+                            <label><i class="fa fa-inr fontcongunicon"></i><span class="fontcongunname">Price</span></label> :
+                            <label class="fontcongunname"> @Html.DisplayFor(model => model.Price) &nbsp;(@Html.DisplayFor(model => model.PriceCategory))</label>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="">
+                            <label><i class="fa fa-map-marker fontcongunicon"></i><span class="fontcongunname">Location</span></label> :
+                            <label class="fontcongunname"> @Html.DisplayFor(model => model.Location)</label>
+                        </div>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <div class="">
+                            <label><i class="fa fa-building-o fontcongunicon"></i><span class="fontcongunname">Make</span></label> :
+                            <label class="fontcongunname">@Html.DisplayFor(model => model.Make)</label>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="">
+                            <label><i class="fa fa-cube fontcongunicon"></i><span class="fontcongunname">Model</span></label> :
+                            <label class="fontcongunname">@Html.DisplayFor(model => model.ModelNumber)</label>
+                        </div>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <div class="">
+                            <label><i class="fa fa-calendar fontcongunicon"></i><span class="fontcongunname">Year</span></label> :
+                            <label class="fontcongunname"> @Html.DisplayFor(model => model.Readings)</label>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="">
+                            <label><i class="fa fa-phone fontcongunicon"></i><span class="fontcongunname">Contact</span></label> :
+                            <label class="fontcongunname">@Html.DisplayFor(model => model.ContactNumber)</label>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href="#commentbox">
+                            <div class="">
+                                <label><i class="fa fa-comments-o fontcongunicon"></i><span class="fontcongunname">Comments</span></label> :
+                                <label class="fontcongunname">3</label>
+                            </div>
+                        </a>
+                    </td>
+                    <td></td>
+                </tr>
+
+            </table>
+            <div class="col-md-12">
+                <h4>Description</h4>
+
+                <p>@Html.DisplayFor(model => model.Comments)</p>
+            </div>
+            <div class="row" id="commentbox">
+                <div class="col-md-12">
+                    <div class="row">
+                        <div class="col-md-6 text-left">
+                            <h3>3 comments:</h3>
+                        </div>
+                        <div class="col-md-6 text-right">
+                            <div style="    margin-top: 20px;
+                    margin-bottom: 10px;">
+                                <a href="#respondcomment">Post Comment</a>
+                            </div>
+                        </div>
+                    </div>
+                    <ul class="commentlist">
+                        @foreach (var item in Model.PostCommentList)
+                        {
+
+
+                            <li id="comment">
+                                <div class="comment odd alt thread-odd thread-alt depth-1 comment-wrap">
+                                    <div class="comment-avatar"><img alt="" src="~/Images/CommentPerson.png" height="65" width="65"></div>
+
+                                    <div class="comment-content">
+                                        <div class="author-comment">
+                                            <cite class="fn">@item.Name</cite>
+                                            <div class="comment-meta commentmetadata"></div>
+                                            <div class="clear"></div>
+                                        </div>
+                                        <p>@item.Comments</p>
+                                    </div>
+                                </div>
+                            </li>
+
+                        }
+                    </ul>
+                    @using (Html.BeginForm("PostComment", "Used", new { ReturnUrl = ViewBag.ReturnUrl, id = Model.EquipmentID }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                    { @Html.AntiForgeryToken() @Html.ValidationSummary("", new { @class = "text-danger" })
+                        <div id="respondcomment" class="comment-respond">
+                            <h4>Leave a Comment</h4>
+                            <div id="divComments">
+                                <div class="form-group">
+                                    <label class="exampleInputUsername">Your Name</label>
+                                    @Html.TextBoxFor(m => m.PostComment.Name, new { @id = "Postname", @class = "form-control", @placeholder = "Type in your name" })
+                                </div>
+                                <div class="form-group">
+                                    <label class="description">Your Comment</label>
+                                    @Html.TextAreaFor(m => m.PostComment.Comments, new { @id = "Postcomment", @class = "form-control", @placeholder = "Type in your message", @rows = 5 })
+                                </div>
+                                <div style="text-align: right;">
+
+                                    <input type="submit" class="btn btn-warning scrolldoownbtn text-right" value="Post your comment" onclick="return ValidatePostComments();" />
+
+                                </div>
+                            </div>
+                        </div>
+                    }
+
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+    <div style="padding-top:20px;padding-bottom:20px;">
+        @*@Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |*@ @Html.ActionLink("Back to List", "List")
+    </div>
+
+</div>

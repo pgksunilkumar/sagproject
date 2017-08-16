@@ -1,0 +1,54 @@
+﻿@model IEnumerable<BusinessAccessLayer.RentalModel>
+
+@{
+    ViewBag.Title = "Rental Equipment List";
+}
+<div class="container">
+    <div class="row">
+        <div class="col-md-10">
+            <h3>Rental Equipment List</h3>
+        </div>
+        <div class="col-md-2">
+            <h4><a href="/Rental/Create" style="color:black;"><i class="fa fa-plus-circle fa-3x" aria-hidden="true" title="Rent Equipment" style="cursor:pointer;"></i></a></h4>
+        </div>
+    </div>
+
+    <div style="border:1px solid #d4d2d2;border-radius:10px;padding:10px;margin-bottom:20px;">
+        @foreach (var item in Model)
+        {
+            <div class="row form-group">
+                <div class="col-md-2 hidden-xs">
+                    @if (item.RentalType == "Rent")
+                    {
+                        <img src="~/Images/ToRent.png" height="120" width="120" alt="rent" />
+                    }
+                    else
+                    {
+                        <img src="~/Images/ToBuy.png" height="120" width="120"  alt="buy" />
+                    }
+                </div>
+                <div class="col-md-6  col-xs-6">
+                    <b>@Html.DisplayFor(modelItem => item.EquipmentType)</b><br />
+                    <span style="color:gray;">From</span> &nbsp; @Html.DisplayFor(modelItem => item.FromDate) &nbsp; <span style="color:gray;">To</span> &nbsp;@Html.DisplayFor(modelItem => item.ToDate)<br />
+                    <span style="color:gray;">Contact</span> &nbsp;<i class="fa fa-phone"></i>&nbsp;@Html.DisplayFor(modelItem => item.ContactNumber)<br />
+                    <span style="color:gray;">Comments</span> &nbsp;@Html.DisplayFor(modelItem => item.Comments)
+                </div>
+                <div class="col-md-2  col-xs-3">
+                    @if (item.RentalType == "Rent")
+                    {
+                        <h4><span class="label label-primary">Rent</span></h4>
+                    }
+                    else
+                    {
+                        <h4><span class="label label-success">Buy</span></h4>
+                    }
+                </div>
+                <div class="col-md-2  col-xs-3">
+                    <i class="fa fa-map-marker"></i>&nbsp;@Html.DisplayFor(modelItem => item.Location)
+                </div>
+            </div>
+            <hr />
+        }
+    </div>
+
+</div>
