@@ -106,9 +106,30 @@ body {
     border: 10px solid #ddd;
     border-radius: 2px;
 }
+.post-ad-btn {
+    background: #fcec52;
+    border: 1px solid #e1b80f;
+    padding: 5px 6px;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    -ms-border-radius: 2px;
+    border-radius: 2px;
+    font-weight: bold;
+    font-size: 12px;
+    display: inline-block;
+    text-align: center;
+    vertical-align: middle;
+    touch-action: manipulation;
+    cursor: pointer;
+    background-image: none;
+    white-space: nowrap;
+    height: 35px;
+    margin-top: 0 !important;
+    line-height: 2px !important;
+    font-weight: bold !important;
+}
 
-
-.desc {
+    .desc {
     background: rgba(12, 85, 120, 0.85);
     padding: 0px;
     position: relative;

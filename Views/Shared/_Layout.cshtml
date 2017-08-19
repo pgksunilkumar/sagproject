@@ -74,6 +74,8 @@
                     @*<li>@Html.ActionLink("Finance", "Index", "Home")</li>*@
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
+                    <li style="padding-top:9px;"><a class="post-ad-btn" title="Post Free Ad" href="#" style=" background: #f1e45d !important;
+    border-color: #f1c922 !important;color: #26536b !important;" data-toggle="modal" data-target="#myModal">Post Equipment</a></li>
                     <li>@Html.Partial("_LoginPartial")</li>
                 </ul>
             </div>
@@ -119,6 +121,25 @@
                 </div>
             </div>
         </footer>
+    </div>
+    <div id="myModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Modal Header</h4>
+                </div>
+                <div class="modal-body">
+                    <p>Some text in the modal.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+
+        </div>
     </div>
     @*<script src="~/Scripts/bootstrap.min.js"></script>*@
     <script src="http://cdnjs.cloudflare.com/ajax/libs/typed.js/1.1.4/typed.min.js"></script>
