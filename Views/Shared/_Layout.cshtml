@@ -127,15 +127,36 @@
 
             <!-- Modal content-->
             <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title">Modal Header</h4>
-                </div>
                 <div class="modal-body">
-                    <p>Some text in the modal.</p>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <div class="row">
+                        <div class="col-md-12 text-right">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        </div>
+                    </div>
+                    
+                    <div class="row congun_image_pop_row">
+                        <div class="col-md-4" style="text-align:center;cursor:pointer" onclick="return Create(1);">
+                            <div class="congun_image_pop">
+                                <img src="/Images/Rent-icon.png" class="congun_image_pop2" alt="PostUsed"><br>
+                            </div>
+                                <p class="congun_image_pop_p">Used Equipment</p>
+                            
+                        </div>
+                        <div class="col-md-4" style="text-align:center;cursor:pointer" onclick="return Create(2);">
+                            <div class="congun_image_pop">
+                                <img src="/Images/Rent-icon.png" alt="PostUsed" class="congun_image_pop2"><br>
+                            </div>
+                                <p class="congun_image_pop_p">Rental Equipment</p>
+                           
+                        </div>
+                        <div class="col-md-4" style="text-align:center;cursor:pointer" onclick="return Create(3);">
+                            <div class="congun_image_pop">
+                                <img src="/Images/business.png" alt="PostUsed" class="congun_image_pop2"><br>
+                            </div>
+                                <p class="congun_image_pop_p">Business Listing</p>
+                            
+                            </div>
+                    </div>
                 </div>
             </div>
 

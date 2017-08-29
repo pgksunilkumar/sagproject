@@ -128,8 +128,32 @@ body {
     line-height: 2px !important;
     font-weight: bold !important;
 }
+.congun_image_pop_row{
+    padding:40px 10px;
+}
+.congun_image_pop {
+    border: 7px solid #ddd;
+    border-radius: 85px;
+}
+.congun_image_pop2 {
+    width: 137px;
+}
+.congun_image_pop:hover {
+    border: 7px solid #f1e45d;
+    opacity: 0.5;
+}
+.congun_image_pop_p {
+    margin: 15px;
+    font-size: 14px;
+    font-weight: 600;
+}
+    .congun_image_pop_p:hover {
+        font-size: 14px;
+        color: #f1e45d;
+        font-weight: 800;
+    }
 
-    .desc {
+.desc {
     background: rgba(12, 85, 120, 0.85);
     padding: 0px;
     position: relative;
