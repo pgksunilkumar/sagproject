@@ -2,25 +2,47 @@
 
 @foreach (var item in Model)
 {
-    <div class="row form-group">
-        <div class="col-md-6  col-xs-6">
-            <b>@Html.DisplayFor(modelItem => item.EquipmentType)</b><br />
-            <span style="color:gray;">From</span> &nbsp; @Html.DisplayFor(modelItem => item.FromDate) &nbsp; <span style="color:gray;">To</span> &nbsp;@Html.DisplayFor(modelItem => item.ToDate)<br />
-            <span style="color:gray;">Contact</span> &nbsp;<i class="fa fa-phone"></i>&nbsp;@Html.DisplayFor(modelItem => item.ContactNumber)<br />
-            <span style="color:gray;">Comments</span> &nbsp;@Html.DisplayFor(modelItem => item.Comments)
+    <div class="row form-group rentEquipmentrow">
+        <div class="col-md-6 col-sm-8  col-xs-12">
+            <div class="row visible-xs hidden-sm">
+                <div class="col-xs-10">
+                    <p><b>@Html.DisplayFor(modelItem => item.EquipmentType)</b></p> 
+                </div>
+                <div class="col-xs-2">
+                    <p class="text-right">
+                        @if (item.RentalType == "Rent")
+                {
+                        <span class="label label-primary">Rent</span>
+                    }
+                    else
+                    {
+                        <span class="label label-success">Buy</span>
+                    }
+                </p>
+                </div>
+            </div>
+            <p class="hidden-xs"><b>@Html.DisplayFor(modelItem => item.EquipmentType)</b></p> 
+            <p><span style="color:gray;">From</span> &nbsp; @Html.DisplayFor(modelItem => item.FromDate) &nbsp; <span style="color:gray;">To</span> &nbsp;@Html.DisplayFor(modelItem => item.ToDate)</p>
+           <p> <span style="color:gray;">Contact</span> &nbsp;<i class="fa fa-phone"></i>&nbsp;@Html.DisplayFor(modelItem => item.ContactNumber)</p>
+            <p><span style="color:gray;">Comments</span> &nbsp;@Html.DisplayFor(modelItem => item.Comments)</p>
+            <p class="visible-sm visible-xs"><span style="color:gray;">Location</span> &nbsp;<i class="fa fa-map-marker"></i>&nbsp;&nbsp;@Html.DisplayFor(modelItem => item.Location)</p>
         </div>
-        <div class="col-md-2  col-xs-3">
-            @if (item.RentalType == "Rent")
-            {
-                <h4><span class="label label-primary">Rent</span></h4>
-            }
-            else
-            {
-                <h4><span class="label label-success">Buy</span></h4>
-            }
+        <div class="col-md-3 col-sm-4  hidden-xs">
+            <div style="margin-top:45px;">
+                @if (item.RentalType == "Rent")
+                {
+                    <h4><span class="label label-primary">Rent</span></h4>
+                }
+                else
+                {
+                    <h4><span class="label label-success">Buy</span></h4>
+                }
+            </div>
         </div>
-        <div>
-            <i class="fa fa-map-marker"></i>&nbsp;&nbsp;@Html.DisplayFor(modelItem => item.Location)
+        <div class="col-md-3 hidden-sm hidden-xs">
+            <div style="margin-top:45px;">
+                <p><i class="fa fa-map-marker"></i>&nbsp;&nbsp;@Html.DisplayFor(modelItem => item.Location)</p>
+            </div>
         </div>
     </div>
                     <hr />

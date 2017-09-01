@@ -2,22 +2,30 @@
 
 @foreach (var item in Model)
 {
-    <div class="row form-group">
-        <div class="col-md-4  col-xs-6">
-            <b>@Html.DisplayFor(modelItem => item.CompanyName)</b><br />
-            <span style="color:gray;">Year</span> &nbsp; @Html.DisplayFor(modelItem => item.Year) &nbsp; <span style="color:gray;">To</span> &nbsp;@Html.DisplayFor(modelItem => item.Address)<br />
-            <span style="color:gray;">Contact</span> &nbsp;<i class="fa fa-phone"></i>&nbsp;@Html.DisplayFor(modelItem => item.MobilePhone)<br />
-            <span style="color:gray;">Comments</span> &nbsp;@Html.DisplayFor(modelItem => item.Description)
+    <div class="rentEquipmentrow">
+        <div class="row form-group">
+            <div class="col-md-4  col-xs-12">
+                <p><b>@Html.DisplayFor(modelItem => item.CompanyName)</b></p>
+                <p><span style="color:gray;">Year</span> &nbsp; @Html.DisplayFor(modelItem => item.Year) &nbsp; <span style="color:gray;">To</span> &nbsp;@Html.DisplayFor(modelItem => item.Address) </p>
+                <p><span style="color:gray;">Contact</span> &nbsp;<i class="fa fa-phone"></i>&nbsp;@Html.DisplayFor(modelItem => item.MobilePhone) </p>
+                <p><span style="color:gray;">Comments</span> &nbsp;@Html.DisplayFor(modelItem => item.Description)</p>
+                <p class="visible-sm visible-xs"><span style="color:gray;">Location</span> &nbsp;<i class="fa fa-map-marker"></i>&nbsp;&nbsp;@Html.DisplayFor(modelItem => item.Location)</p>
+                <h5 class="visible-sm visible-xs">@Html.DisplayFor(modelItem => item.Category)</h5>
+            </div>
+            <div class="col-md-4  hidden-sm hidden-xs">
+                <div class="businesscate">
+                    <h5>@Html.DisplayFor(modelItem => item.Category)</h5>
+                </div>
+            </div>
+            <div class="col-md-2 hidden-xs">
+                <p class="hidden-xs hidden-sm businesscate"> <i class="fa fa-map-marker"></i>&nbsp;@Html.DisplayFor(modelItem => item.Location)</p>
+            </div>
+            <div class="col-md-2 hidden-xs hidden-sm businesscate">
+                @Html.ActionLink("View Details", "Details", new { id = item.BusniessListID })
+            </div>
+            
         </div>
-        <div class="col-md-4  col-xs-3">
-            <h5>@Html.DisplayFor(modelItem => item.Category)</h5>
-        </div>
-        <div class="col-md-2  col-xs-3">
-            <i class="fa fa-map-marker"></i>&nbsp;@Html.DisplayFor(modelItem => item.Location)
-        </div>
-        <div>
-            @Html.ActionLink("View Details", "Details", new { id = item.BusniessListID })
-        </div>
+        <p class="visible-xs visible-sm btn btn-success businessbtn">@Html.ActionLink("View Details", "Details", new { id = item.BusniessListID }, new { @class = "businessbtncol" })</p>
     </div>
     <hr />
 }

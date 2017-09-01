@@ -13,7 +13,35 @@ body {
     padding-left: 15px;
     padding-right: 15px;
 }
-
+.rentEquipmentrow {
+    border: 1px solid #d4d2d2 !important;
+    background-color: white !important;
+    padding: 10px !important;
+    margin-bottom: 10px !important;
+    margin-left: 0px !important;
+    margin-right: 0px !important;
+    border-radius: 5px !important;
+}
+.businessbtn {
+    margin-right: -11px;
+    margin-left: -11px;
+    margin-bottom: -10px;
+    border-radius: 5px !important;
+    color: #fff;
+}
+.businessbtncol{
+    color:#fff;
+}
+.businessbtncol:hover {
+    color: #fff;
+    text-decoration:none;
+}
+.businesscate{
+    margin-top:50px;
+}
+.cd-filter-content label{
+    font-size:13px;
+}
 /* Override the default bootstrap behavior where horizontal description lists 
    will truncate terms that are too long to fit in the left column 
    */
@@ -147,6 +175,8 @@ body {
     font-size: 14px;
     font-weight: 600;
 }
+
+
     .congun_image_pop_p:hover {
         font-size: 14px;
         color: #f1e45d;
